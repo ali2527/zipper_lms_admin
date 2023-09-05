@@ -89,7 +89,7 @@ const content = (
                 padding: "10px 10px 10px 10px",
                 width: "35px",
                 display: "flex",
-                backgroundColor: "#3d1c6f",
+                backgroundColor: "#203453",
                 borderRadius: "5px",
               }}
             >
@@ -117,7 +117,7 @@ const content = (
                 padding: "10px 10px 10px 10px",
                 width: "35px",
                 display: "flex",
-                backgroundColor: "#3d1c6f",
+                backgroundColor: "#203453",
                 borderRadius: "5px",
               }}
             >
@@ -145,7 +145,7 @@ const content = (
                 padding: "10px 10px 10px 10px",
                 width: "35px",
                 display: "flex",
-                backgroundColor: "#3d1c6f",
+                backgroundColor: "#203453",
                 borderRadius: "5px",
               }}
             >
@@ -230,7 +230,7 @@ const ClientHeader = ({ visible, setVisible, visible2, setVisible2 }) => {
                 arrow={false}
                 className="headerPopover"
               >
-                <Badge count={5} style={{ backgroundColor: "#3d1c6f" }}>
+                <Badge count={5} style={{ backgroundColor: "#203453" }}>
                   <FiBell style={{ fontSize: "25px" }} />
                 </Badge>
               </Popover>
@@ -278,7 +278,7 @@ const ClientHeader = ({ visible, setVisible, visible2, setVisible2 }) => {
                 }}
               >
                 <FaEllipsisV
-                  style={{ fontSize: 22, color: "#3d1c6f" }}
+                  style={{ fontSize: 22, color: "#203453" }}
                   onClick={() => setVisible2(!visible2)}
                 />
               </Col>
@@ -299,7 +299,7 @@ const ClientHeader = ({ visible, setVisible, visible2, setVisible2 }) => {
                 }}
               >
                 <FaBars
-                  style={{ fontSize: 22, color: "#3d1c6f" }}
+                  style={{ fontSize: 22, color: "#203453" }}
                   onClick={() => setVisible(!visible)}
                 />
               </Col>

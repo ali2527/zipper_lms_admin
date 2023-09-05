@@ -228,7 +228,7 @@ function BookingAndPaymentDetails() {
         key: "_id",
         render: (item) => (
           <FaEye
-            style={{ fontSize: "16px", color: "#3d1c6f",  cursor: "pointer" }}
+            style={{ fontSize: "16px", color: "#203453",  cursor: "pointer" }}
                onClick={() => navigate("/notifications/edit/" + item )}
           />
         ),
@@ -366,7 +366,7 @@ function BookingAndPaymentDetails() {
               suffix={
                 <FaSearch
                   style={{
-                    color: "#3d1c6f",
+                    color: "#203453",
                     fontSize: 16,
                     cursor: "pointer",
                   }}
@@ -392,7 +392,7 @@ function BookingAndPaymentDetails() {
                 style={{
                   padding: "10px 15px",
                   height: "auto",
-                  backgroundColor: "#3d1c6f",
+                  backgroundColor: "#203453",
                 }}
               >
                 <FaFilter style={{ fontSize: "16px", color: "white" }} />
@@ -462,8 +462,8 @@ function BookingAndPaymentDetails() {
         cancelText="No"
         cancelButtonProps={{
           style: {
-            border: "2px solid #3d1c6f",
-            color: "#3d1c6f",
+            border: "2px solid #203453",
+            color: "#203453",
             height: "auto",
             padding: "6px 35px",
             borderRadius: "50px",
@@ -473,14 +473,14 @@ function BookingAndPaymentDetails() {
         }}
         okButtonProps={{
           style: {
-            backgroundColor: "#3d1c6f",
+            backgroundColor: "#203453",
             color: "white",
             marginTop: "15px",
             height: "auto",
             padding: "5px 35px",
             borderRadius: "50px",
             fontSize: "16px",
-            border: "2px solid #3d1c6f",
+            border: "2px solid #203453",
           },
         }}
       >

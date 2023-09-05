@@ -22,6 +22,7 @@ import { UPLOAD_URL } from "../../config/constants";
 import { Post } from "../../config/api/post";
 import { AUTH, ADMIN } from "../../config/constants";
 import { addUser, removeUser } from "../../redux/slice/authSlice";
+import { FaLongArrowAltLeft } from "react-icons/fa";
 import { CONTENT_TYPE } from "../../config/constants/index";
 import swal from "sweetalert";
 import dayjs from "dayjs";
@@ -97,10 +98,28 @@ function Profile() {
 
   return (
     <Layout className="configuration">
-      <h1 className="pageTitle" style={{ marginBottom: 20 }}>
-        Profile Information
-      </h1>
+     
       <div className="boxDetails2" style={{ padding: "50px" }}>
+      <h1 className="pageTitle" style={{ marginBottom: 20, display:'flex',alignItems:"center" }}>
+        <>
+        <FaLongArrowAltLeft
+          style={{
+            fontSize: "30px",
+            
+            cursor: "pointer",
+           
+          }}
+          onClick={() => navigate(-1)}
+        />
+        &emsp;
+        <>
+        Profile Information
+        </>
+        </>
+        
+      </h1>
+      
+      <br/>
         <Form
           layout="vertical"
           name="basic"
@@ -140,7 +159,7 @@ function Profile() {
                           right: -10,
                           zIndex: 2,
                           bottom: 40,
-                          backgroundColor: "#9b76d2",
+                          backgroundColor: "#7CC059",
                           display: "flex",
                           maxWidth: "fit-content",
                           color: "white",
@@ -180,9 +199,9 @@ function Profile() {
                 <>
                   <Row>
                     <Col
-                      xs={12}
-                      sm={10}
-                      style={{ display: "flex", alignItems: "center" }}
+                      xs={24}
+                      sm={16}
+                      style={{ display: "flex", alignItems: "flex-start",flexDirection:'column' }}
                     >
                       <Typography.Title
                         className="fontFamily1"
@@ -194,38 +213,35 @@ function Profile() {
                           marginBottom: 20,
                         }}
                       >
-                        Full Name :
+                        First Name :
                       </Typography.Title>
-                    </Col>
-
-                    <Col
-                      xs={12}
-                      sm={12}
-                      style={{ display: "flex", alignItems: "center" }}
-                    >
+                   
                       <Form.Item
-                        name="fullName"
-                        initialValue={user?.fullName}
+                        name="firstName"
+                        initialValue={user?.firstName}
                         style={{ width: "100%" }}
                         rules={[
                           {
                             required: true,
-                            message: "Please input your full name",
+                            message: "Please input your first name",
                           },
                         ]}
                       >
                         <Input
                           size="large"
                           placeholder="Enter FullName"
-                          className="signupFormInput2"
+                          className="signupFormInput"
                         />
                       </Form.Item>
                     </Col>
                   </Row>
-                  <br />
-
+         
                   <Row>
-                    <Col xs={12} sm={10}>
+                    <Col
+                      xs={24}
+                      sm={16}
+                      style={{ display: "flex", alignItems: "flex-start",flexDirection:'column' }}
+                    >
                       <Typography.Title
                         className="fontFamily1"
                         style={{
@@ -233,26 +249,74 @@ function Profile() {
                           fontWeight: 600,
                           color: "black",
                           textAlign: "left",
-                          marginTop: 0,
+                          marginBottom: 20,
                         }}
                       >
-                        Email Address :
+                        Last Name :
                       </Typography.Title>
-                    </Col>
-
-                    <Col xs={12} sm={12}>
-                      <Typography.Text
-                        className="fontFamily1"
-                        style={{
-                          fontSize: "16px",
-                          color: "grey",
-                          textAlign: "left",
-                        }}
+                   
+                      <Form.Item
+                        name="lastName"
+                        initialValue={user?.lastName}
+                        style={{ width: "100%" }}
+                        rules={[
+                          {
+                            required: true,
+                            message: "Please input your last name",
+                          },
+                        ]}
                       >
-                        {user?.email}
-                      </Typography.Text>
+                        <Input
+                          size="large"
+                          placeholder="Enter FullName"
+                          className="signupFormInput"
+                        />
+                      </Form.Item>
                     </Col>
                   </Row>
+                  <Row>
+                    <Col
+                      xs={24}
+                      sm={16}
+                      style={{ display: "flex", alignItems: "flex-start",flexDirection:'column' }}
+                    >
+                      <Typography.Title
+                        className="fontFamily1"
+                        style={{
+                          fontSize: "18px",
+                          fontWeight: 600,
+                          color: "black",
+                          textAlign: "left",
+                          marginBottom: 20,
+                        }}
+                      >
+                        Email:
+                      </Typography.Title>
+                   
+                      <Form.Item
+                        name="email"
+                        initialValue={user?.email}
+                        style={{ width: "100%" }}
+                        rules={[
+                          {
+                            required: true,
+                            message: "Please input your email",
+                          },
+                        ]}
+                      >
+                        <Input
+                        disabled
+                          size="large"
+                          placeholder="Enter FullName"
+                          className="signupFormInput"
+                        />
+                      </Form.Item>
+                    </Col>
+                  </Row>
+                 
+              
+
+                
                 </>
               ) : (
                 <>
@@ -268,11 +332,11 @@ function Profile() {
                           marginTop: 0,
                         }}
                       >
-                        Full Name :
+                        First Name :
                       </Typography.Title>
                     </Col>
 
-                    <Col xs={12} sm={12}>
+                    <Col xs={12} sm={16}>
                       <Typography.Text
                         className="fontFamily1"
                         style={{
@@ -281,7 +345,37 @@ function Profile() {
                           textAlign: "left",
                         }}
                       >
-                        {user?.fullName}
+                        {user?.firstName}
+                      </Typography.Text>
+                    </Col>
+                  </Row>
+                  <br />
+                  <Row>
+                    <Col xs={12} sm={10}>
+                      <Typography.Title
+                        className="fontFamily1"
+                        style={{
+                          fontSize: "18px",
+                          fontWeight: 600,
+                          color: "black",
+                          textAlign: "left",
+                          marginTop: 0,
+                        }}
+                      >
+                        Last Name :
+                      </Typography.Title>
+                    </Col>
+
+                    <Col xs={12} sm={16}>
+                      <Typography.Text
+                        className="fontFamily1"
+                        style={{
+                          fontSize: "16px",
+                          color: "grey",
+                          textAlign: "left",
+                        }}
+                      >
+                        {user?.lastName}
                       </Typography.Text>
                     </Col>
                   </Row>
@@ -303,7 +397,7 @@ function Profile() {
                       </Typography.Title>
                     </Col>
 
-                    <Col xs={12} sm={12}>
+                    <Col xs={12} sm={16}>
                       <Typography.Text
                         className="fontFamily1"
                         style={{
@@ -338,7 +432,7 @@ function Profile() {
                         padding: "10px 30px",
                         cursor: "pointer",
                         color: "black",
-                        borderRadius: "50px",
+                        borderRadius: "5px",
                         height: "auto",
                         border: "1px solid #203657",
                         fontWeight: "bold",
@@ -373,49 +467,7 @@ function Profile() {
           </Row>
         </Form>
 
-        {/* <Row>
-          <Col xs={24} md={8}>
-            {!editMode && (
-              <Row justify={"center"}>
-                <Col style={{ textAlign: "center" }}>
-                  <Button
-                    type="primary"
-                    htmlType="button"
-                    className="loginButton"
-                    onClick={() => setEditMode(true)}
-                  >
-                    Edit Profile Information
-                  </Button>
-                  <br />
-                  <Typography.Text
-                    className="fontFamily1"
-                    style={{
-                      fontSize: "14px",
-                      color: "black",
-                      justifyContent: "center",
-                      textAlign: "center",
-                      marginTop: 0,
-                      marginBottom: 30,
-                    }}
-                  >
-                    <>
-                      <span
-                        onClick={() => navigate("/change-password")}
-                        style={{
-                          cursor: "pointer",
-                          fontWeight: "bold",
-                          textDecoration: "underline",
-                        }}
-                      >
-                        Change Password
-                      </span>
-                    </>
-                  </Typography.Text>
-                </Col>
-              </Row>
-            )}
-          </Col>
-        </Row> */}
+      
       </div>
     </Layout>
   );

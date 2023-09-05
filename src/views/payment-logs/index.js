@@ -565,7 +565,7 @@ function PaymentLogs() {
               suffix={
                 <FaSearch
                   style={{
-                    color: "#3d1c6f",
+                    color: "#203453",
                     fontSize: 16,
                     cursor: "pointer",
                   }}
@@ -591,7 +591,7 @@ function PaymentLogs() {
                 style={{
                   padding: "10px 15px",
                   height: "auto",
-                  backgroundColor: "#3d1c6f",
+                  backgroundColor: "#203453",
                 }}
               >
                 <FaFilter style={{ fontSize: "16px", color: "white" }} />
@@ -686,7 +686,7 @@ function PaymentLogs() {
               suffix={
                 <FaSearch
                   style={{
-                    color: "#3d1c6f",
+                    color: "#203453",
                     fontSize: 16,
                     cursor: "pointer",
                   }}
@@ -712,7 +712,7 @@ function PaymentLogs() {
                 style={{
                   padding: "10px 15px",
                   height: "auto",
-                  backgroundColor: "#3d1c6f",
+                  backgroundColor: "#203453",
                 }}
               >
                 <FaFilter style={{ fontSize: "16px", color: "white" }} />

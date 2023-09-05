@@ -258,8 +258,8 @@ function SPDetails() {
         cancelText="No"
         cancelButtonProps={{
           style: {
-            border: "2px solid #3d1c6f",
-            color: "#3d1c6f",
+            border: "2px solid #203453",
+            color: "#203453",
             height: "auto",
             padding: "6px 35px",
             borderRadius: "50px",
@@ -269,14 +269,14 @@ function SPDetails() {
         }}
         okButtonProps={{
           style: {
-            backgroundColor: "#3d1c6f",
+            backgroundColor: "#203453",
             color: "white",
             marginTop: "15px",
             height: "auto",
             padding: "5px 35px",
             borderRadius: "50px",
             fontSize: "16px",
-            border: "2px solid #3d1c6f",
+            border: "2px solid #203453",
           },
         }}
       >

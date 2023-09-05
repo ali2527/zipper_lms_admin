@@ -24,60 +24,82 @@ import side3 from  "../../assets/images/subscription-management.png"
 import side4 from  "../../assets/images/appointment-logs.png"
 import side5 from  "../../assets/images/property-management.png"
 import side6 from  "../../assets/images/chat.png"
-
-
+import logo from "../../assets/images/logo.png"
+import { HiOutlineSquares2X2,HiOutlineDocumentText,HiOutlineCalendar } from "react-icons/hi2";
+import {FiUser} from "react-icons/fi"
+import {BsClipboard,BsChatLeft,BsQuestionSquare} from "react-icons/bs"
+import {TfiLayoutListThumb} from "react-icons/tfi"
+import {CgPlayListCheck} from "react-icons/cg"
+import {SlWallet} from "react-icons/sl"
+import {BiNotification,BiListCheck} from "react-icons/bi"
 const { Header, Content, Sider } = Layout;
 
 
 const sideNavItems = [
-  { key: 1, icon: side1, label: "Dashboard", path: "/" },
+  { key: 1, icon: <HiOutlineSquares2X2 style={{fontSize:20}}/>, label: "Dashboard", path: "/" },
   {
     key: 2,
-    icon: side2,
-    label: "User",
+    icon: <FiUser style={{fontSize:20}}/>,
+    label: "Learner Management",
     path: "/user-management",
   },
   {
     key: 3,
-    icon: side3,
-    label: "Subscription",
+    icon: <BsClipboard style={{fontSize:18}}/>,
+    label: "Tutor/Coach Management",
     path: "/subscription-management",
   },
   {
     key: 4,
-    icon: side4,
-    label: "Contest",
+    icon: <HiOutlineDocumentText style={{fontSize:20}}/>,
+    label: "Comission Management",
     path: "/contest-management",
   },
 
   {
     key: 5,
-    icon: side6,
-    label: "Payment Logs",
+    icon: <TfiLayoutListThumb style={{fontSize:18}}/>,
+    label: "Upcoming Lessons",
     path: "/payment-logs",
   },
   {
     key: 6,
-    icon: side5,
-    label: "Feedbacks",
+    icon: <BsChatLeft style={{fontSize:18}}/>,
+    label: "Completed Lessons",
+    path: "/feedback-management",
+  },
+  {
+    key: 7,
+    icon: <BiListCheck style={{fontSize:28}}/>,
+    label: "Submitted Lessons",
+    path: "/feedback-management",
+  },
+  {
+    key: 8,
+    icon: <HiOutlineCalendar style={{fontSize:20}}/>,
+    label: "Calander",
+    path: "/feedback-management",
+  },
+  {
+    key: 9,
+    icon: <SlWallet style={{fontSize:18}}/>,
+    label: "Payment Logs",
+    path: "/feedback-management",
+  },
+  {
+    key: 10,
+    icon: <BiNotification style={{fontSize:18}}/>,
+    label: "Push Notifications",
+    path: "/feedback-management",
+  },
+  {
+    key: 11,
+    icon: <BsQuestionSquare style={{fontSize:18}}/>,
+    label: "Queries",
     path: "/feedback-management",
   },
 
-].map((item, index) => {
-  return {
-    key: item.key,
-    icon: (
-      <Image
-        src={item.icon}
-        alt="Picture of the author"
-        preview={false}
-        style={{paddingRight:"10px"}}
-      />
-    ),
-    label: item.label,
-    path: item.path,
-  };
-});
+]
 
 const items = [
   {
@@ -257,16 +279,11 @@ const ClientLayout = ({ children, head }) => {
   };
 
   return (
-    <Layout style={{ backgroundColor: "white", scrollBehavior: "smooth" }}>
+    <Layout style={{ backgroundColor: "white", scrollBehavior: "smooth" ,height:'100vh'}}>
      
-      <ClientHeader
-        visible={visible}
-        setVisible={setVisible}
-        visible2={visible2}
-        setVisible2={setVisible2} 
-      />
+     
 
-      <Layout style={{ height: "88vh" }}>
+      <Layout style={{ height: "100vh" }}>
         <Row
           className="siderWrapper"
           style={{
@@ -278,6 +295,16 @@ const ClientLayout = ({ children, head }) => {
               width={280}
               className="mainSider"
             >
+              <br/>
+              <div className="logoBox">
+              <Image
+                src={logo}
+                alt="Picture of the author"
+                style={{maxWidth:"130px"}}
+                preview={false}
+              />
+              </div>
+              <br/>
               <Menu
                 mode="inline"
                 selectedKeys={[selectedItem]}
@@ -306,13 +333,20 @@ const ClientLayout = ({ children, head }) => {
 
         <Layout
           style={{
-            padding: "30px",
-            overflow: "auto",
+            padding: "0px",
+            // height:"100vh",
+            // overflow: "auto",
             backgroundColor: "#f4f4f4",
             position: "relative",
             outline: "none",
           }}
         >
+          <ClientHeader
+        visible={visible}
+        setVisible={setVisible}
+        visible2={visible2}
+        setVisible2={setVisible2} 
+      />
           {visible2 && (
             <div
               style={{
@@ -326,7 +360,7 @@ const ClientLayout = ({ children, head }) => {
                 <Col xs={24} md={0}>
                   <div
                     style={{
-                      backgroundColor: "#3d1c6f",
+                      backgroundColor: "#203453",
                       padding: "20px",
                       display: "flex",position:'absolute',
                       zIndex:2,
@@ -348,7 +382,7 @@ const ClientLayout = ({ children, head }) => {
                         arrow={false}
                         className="headerPopover"
                       >
-                        <Badge count={5} style={{ backgroundColor: "#3d1c6f" }}>
+                        <Badge count={5} style={{ backgroundColor: "#203453" }}>
                           <FiBell
                             style={{ fontSize: "25px", color: "white" }}
                           />
@@ -379,8 +413,21 @@ const ClientLayout = ({ children, head }) => {
               </Row>
             </div>
           )}
+            <Layout
+          style={{
+            padding: "0px",
+            // height:"100vh",
+            overflow: "auto",
+            backgroundColor: "#f4f4f4",
+            position: "relative",
+            outline: "none",
+          }}
+        >
 
           {children}
+
+        </Layout>
+
 
           <Drawer
             className="drawer"

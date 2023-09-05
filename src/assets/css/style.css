@@ -195,14 +195,14 @@ header {
 .web-btn-sm {
     width: 129px;
     height: 47px;
-    background: #9b76d2;
+    background: #7CC059;
     border-radius: 50px;
     text-align: center;
     justify-content: center;
 }
 
 .web-btn-sm:hover {
-    background: #9b76d2!important;
+    background: #7CC059!important;
 }
 
 
@@ -421,7 +421,7 @@ header {
     position: absolute;
     bottom: 40px;
     font-size: 30px;
-    background: #9b76d2db;
+    background: #7CC059db;
     width: 45px;
     height: 40px;
     text-align: center;
@@ -548,7 +548,7 @@ header {
     max-width: 138px;
     height: 42px;
     border-radius: 50px!important;
-    background: #3d1c6f;
+    background: #203453;
     font-family: "Open Sans";
     font-weight: 600;
     font-size: 11px;
@@ -814,7 +814,7 @@ body {
     font-family: 'Great Vibes', cursive;
     font-weight: normal;
     font-size: 56px;
-    color: #3d1c6f;
+    color: #203453;
 }
 
 .form-field {
@@ -869,11 +869,11 @@ i.right-icon {
     transform: translateY(-50%);
     right: 26px;
     cursor: pointer;
-    color: #3D1C6F!important;
+    color: #203453!important;
 }
 
 .form-field i {
-    color: #9B76D2;
+    color: #7CC059;
     font-size: 17px;
 }
 
@@ -936,12 +936,12 @@ i.right-icon {
     font-weight: 600;
     text-decoration: underline;
     font-size: 12px;
-    color: #3d1c6f;
+    color: #203453;
 }
 
 .site-btn {
     color: #fff !important;
-    background-color: #3D1C6F;
+    background-color: #203453;
     font-weight: 600;
     font-size: 14px;
     font-family: 'Open Sans', sans-serif;
@@ -952,19 +952,19 @@ i.right-icon {
     cursor: pointer;
     transition: ease-in-out .2s;
     border: none;
-    border: 1px solid #3D1C6F;
+    border: 1px solid #203453;
     text-decoration: none;
 }
 
 .site-btn:hover {
-    color: #3D1C6F !important;
+    color: #203453 !important;
     background-color: #fff;
-    border: 1px solid #3D1C6F;
+    border: 1px solid #203453;
 }
 
 .site-btn2 {
     color: #fff !important;
-    background-color: #9B76D2;
+    background-color: #7CC059;
     font-weight: 600;
     font-size: 14px;
     font-family: 'Open Sans', sans-serif;
@@ -975,12 +975,12 @@ i.right-icon {
     cursor: pointer;
     transition: ease-in-out .2s;
     border: none;
-    border: 1px solid #9B76D2;
+    border: 1px solid #7CC059;
     text-decoration: none;
 }
 
 .site-btn3 {
-    color: #3D1C6F !important;
+    color: #203453 !important;
     background-color: transparent;
     font-weight: 600;
     font-size: 14px;
@@ -992,20 +992,20 @@ i.right-icon {
     cursor: pointer;
     transition: ease-in-out .2s;
     border: none;
-    border: 1px solid #3D1C6F;
+    border: 1px solid #203453;
     text-decoration: none;
 }
 
 .site-btn3:hover {
     color: #fff !important;
-    background-color: #3D1C6F;
-    border: 1px solid #3D1C6F;
+    background-color: #203453;
+    border: 1px solid #203453;
 }
 
 .site-btn:hover {
-    color: #9B76D2 !important;
+    color: #7CC059 !important;
     background-color: #fff;
-    border: 1px solid #9B76D2;
+    border: 1px solid #7CC059;
 }
 
 .back-web {
@@ -1018,7 +1018,7 @@ i.right-icon {
 }
 
 .back-web:hover {
-    color: #3D1C6F;
+    color: #203453;
 }
 
 .login-logo {
@@ -1071,7 +1071,7 @@ i.right-icon {
     font-family: 'GoodVibrations';
     font-weight: normal;
     font-size: 40px;
-    color: #3d1c6f;
+    color: #203453;
     border: 1px solid rgba(0, 0, 0, 0);
 }
 
@@ -1163,7 +1163,7 @@ i.right-icon {
 }
 
 .months-box {
-    background-color: #9B76D2;
+    background-color: #7CC059;
     position: relative;
     width: 110px;
     height: 472px;
@@ -1838,8 +1838,8 @@ table.dataTable .dropdown-menu a.dropdown-item:hover i {
 }
 
 .site-pagin .page-item.active .page-link {
-    background-color: #3D1C6F;
-    border-color: #3D1C6F;
+    background-color: #203453;
+    border-color: #203453;
     border: 1px solid #fff;
     border-left: 0;
     border-right: 0;
@@ -1869,7 +1869,7 @@ table.dataTable .dropdown-menu a.dropdown-item:hover i {
     width: 230px;
     height: 50px;
     border-radius: 50px;
-    background: #9b76d2;
+    background: #7CC059;
 }
 
 .table-page .nav-pills .nav-link {
@@ -1877,7 +1877,7 @@ table.dataTable .dropdown-menu a.dropdown-item:hover i {
     height: 50px;
     border-radius: 50px;
     background: transparent;
-    border: 1px solid #9b76d2;
+    border: 1px solid #7CC059;
     color: #fff;
 }
 
@@ -2005,7 +2005,7 @@ textarea {
     width: 42px;
     height: 42px;
     font-size: 20px;
-    background-color: #9B76D2;
+    background-color: #7CC059;
     box-shadow: 0 3px 6px rgb(0, 0, 0, .16);
     border-radius: 100%;
     border: 2px solid #fff;
@@ -2103,7 +2103,7 @@ textarea {
 }
 
 .notifications-bg .page-item.active .page-link {
-    background: #3D1C6F;
+    background: #203453;
     /* border-color: #F26800 !important; */
     color: white;
     transition: all 0.3s ease;
@@ -2134,7 +2134,7 @@ textarea {
 .see-all {
     color: #000;
     text-decoration: none;
-    color: #3D1C6F;
+    color: #203453;
     font-size: 18px;
     font-weight: bold;
     font-family: 'Open Sans', sans-serif;

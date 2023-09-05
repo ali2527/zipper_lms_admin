@@ -9,7 +9,7 @@
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
-  --primaryColor: #3d1c6f;
+  --primaryColor: #203453;
 
   --primary-glow: conic-gradient(
     from 180deg at 50% 50%,
@@ -109,7 +109,7 @@ a {
 .notificationHeading {
   font-size: 14px;
   font-weight: 600;
-  color: #3d1c6f;
+  color: #203453;
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
@@ -148,17 +148,22 @@ a {
   margin: 0;
 }
 .siderWrapper{
-  background: url("../assets/images/sidebar-bg.png")!important;
-  background-size: cover;
+  background: url("/public/images/blue.png")!important;
+  background-size: cover!important;
 }
-
+.logoBox{
+  min-height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .mainSider{
   background: transparent!important;
 }
 .mainSider .ant-menu-item-selected{
-  background: #9b76d2!important;
-  border-radius: 0!important;
-  margin:5px 0 5px 0!important;
+  background: #7CC059!important;
+  border-radius: 10px!important;
+  margin:10px 0 5px 0!important;
   color:white!important;
 }
 
@@ -172,29 +177,32 @@ a {
 }
 
 .mainSider .ant-menu-item:hover{
-  background: #9b76d2!important;
-  border-radius: 0!important;
+  background: #7CC059!important;
+  border-radius: 10px!important;
   color: white!important;
+  border-radius: 50px;
   transition: 0.3s linear;
 }
 
 .mainSider .ant-menu-item{
   margin:5px 0 5px 0!important;
-  height: 48px!important;
+  font-family: 'Nunito', sans-serif!important;
+  height: 50px!important;
+  font-weight: bold;
   color:#c0c6d9;
-  border-radius: 0!important;
+  border-radius: 10px!important;
   font-size: 14px!important;
   width: auto!important;
 }
 
 .mainSider li.ant-menu-item{
-  margin:5px 0 5px 0!important;
+  margin:15px 0 15px 0!important;
 }
 
 .drawer .ant-menu-item-selected{
-  background: #9b76d2!important;
+  background: #7CC059!important;
   border-radius: 0!important;
-  border-right: 4px solid #3d1c6f;
+  border-right: 4px solid #203453;
   margin:5px 0 5px 0!important;
   color:white!important;
 }
@@ -243,7 +251,7 @@ color: white;
 }
 
 .ant-dropdown-menu-item:hover{
-  background-color: #3d1c6f!important;
+  background-color: #203453!important;
   color:white!important;
   border-radius: 0!important;
 }
