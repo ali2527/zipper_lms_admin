@@ -49,11 +49,17 @@ export const CONTEST = {
   };
 
   export const USERS = {
-    get: "/admin/user/getAllUsers",
-    getOne: "/admin/user/getUserById/",
-    toggleStatus: "/admin/user/toggleStatus",
+    getAllStudents: "/admin/user/getAllStudents",
+    getStudentById: "/admin/user/getStudentById/",
+    toggleStatus: "/admin/user/toggleStatus/",
   };
 
+
+  export const COACH = {
+    getAllTutorAndCoaches: "/admin/user/getAllTutorAndCoaches",
+    getCoachById: "/admin/user/getCoachById/",
+    toggleStatus: "/admin/user/toggleStatus/",
+  };
   export const SERVICE_PROVIDERS = {
     get: "/users/admin/serviceProvider",
     getOne: "/users/getSpById/",

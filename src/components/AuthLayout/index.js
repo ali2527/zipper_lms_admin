@@ -22,7 +22,7 @@ const sideNavItems = [
     key: 2,
     icon: "/images/dside-icon/2.png",
     label: "User Management",
-    path: "/user-management",
+    path: "/learner-management",
   },
   {
     key: 3,

@@ -230,7 +230,7 @@ input[type=number] {
 
 .pageTitle {
     font-family: 'Nunito', sans-serif!important;
-    font-size: 22px;
+    font-size: 25px;
     font-weight: bolder;
     margin-bottom: 20px;
     color: #203453;
@@ -943,6 +943,7 @@ select.mainInput {
     width: auto !important;
     background: #fff !important;
     border: 1px solid #e0e0e0 !important;
+    box-shadow: none;
 }
 
 .siteInput {

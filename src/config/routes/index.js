@@ -5,8 +5,11 @@ import Signin from "../../views/signin";
 import ForgotPassword from "../../views/forget-password-1";
 import ForgotPassword2 from "../../views/forget-password-2";
 import ForgotPassword3 from "../../views/forget-password-3";
-import UserManagement from "../../views/user-management";
-import UserDetails from "../../views/user-management/userDetails";
+import LearnerManagement from "../../views/learner-management";
+import LearnerDetails from "../../views/learner-management/learnerDetails";
+import TutorCoachManagement from "../../views/tutor-coach-management"
+import TutorCoachDetails from "../../views/tutor-coach-management/tutorCoachDetails"
+import TutorCoachEducation from "../../views/tutor-coach-management/tutorCoachEducation"
 import ServiceProviderManaqgement from "../../views/service-provider-management";
 import ServiceProviderDetails from "../../views/service-provider-management/spDetails";
 import SubscriptionManagement from "../../views/subscription-management";
@@ -93,38 +96,88 @@ const MyRouter = () => {
           }
         />
         <Route
-          path="/user-management"
+          path="/learner-management"
           activeTab="test"
           index
           element={
             <UserAuthCheck>
               <ClientLayout
                 head={{
-                  title: "User Management",
+                  title: "Learner Management",
                   description: "Some Description.",
                 }}
               >
-                <UserManagement />
+                <LearnerManagement />
               </ClientLayout>
             </UserAuthCheck>
           }
         />
         <Route
-          path="/user-management/:id"
+          path="/learner-management/:id"
           index
           element={
             <UserAuthCheck>
               <ClientLayout
                 head={{
-                  title: "User Management",
+                  title: "Learner Management",
                   description: "Some Description.",
                 }}
               >
-                <UserDetails />
+                <LearnerDetails />
               </ClientLayout>
             </UserAuthCheck>
           }
         />
+         <Route
+          path="/tutor-coach-management"
+          activeTab="test"
+          index
+          element={
+            <UserAuthCheck>
+              <ClientLayout
+                head={{
+                  title: "Tutor/Coach Management",
+                  description: "Some Description.",
+                }}
+              >
+                <TutorCoachManagement />
+              </ClientLayout>
+            </UserAuthCheck>
+          }
+        />
+        <Route
+          path="/tutor-coach-management/:id"
+          index
+          element={
+            <UserAuthCheck>
+              <ClientLayout
+                head={{
+                  title: "Tutor/Coach Management",
+                  description: "Some Description.",
+                }}
+              >
+                <TutorCoachDetails />
+              </ClientLayout>
+            </UserAuthCheck>
+          }
+        />
+          <Route
+          path="/tutor-coach-education/:id"
+          index
+          element={
+            <UserAuthCheck>
+              <ClientLayout
+                head={{
+                  title: "Tutor/Coach Management",
+                  description: "Some Description.",
+                }}
+              >
+                <TutorCoachEducation />
+              </ClientLayout>
+            </UserAuthCheck>
+          }
+        />
+
          <Route
           path="/posts/:id"
           index

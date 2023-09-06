@@ -41,13 +41,13 @@ const sideNavItems = [
     key: 2,
     icon: <FiUser style={{fontSize:20}}/>,
     label: "Learner Management",
-    path: "/user-management",
+    path: "/learner-management",
   },
   {
     key: 3,
     icon: <BsClipboard style={{fontSize:18}}/>,
     label: "Tutor/Coach Management",
-    path: "/subscription-management",
+    path: "/tutor-coach-management",
   },
   {
     key: 4,

@@ -256,6 +256,16 @@ color:white!important;
 font-weight: 400!important;
 }
 
+.loginButton2{
+  min-width: 157px;
+height: 46px;
+border-radius: 8px!important;
+background: #e8373d!important;
+font-family: 'Visby', sans-serif!important;
+color:white!important;
+font-weight: 400!important;
+}
+
 .upcomingButton{
   min-width: 250px;
 height: 50px;
