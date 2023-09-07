@@ -24,6 +24,7 @@ import { Get } from "../../config/api/get";
 import { UPLOAD_URL , COACH } from "../../config/constants";
 import { useNavigate,useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
+import Item from "antd/es/list/Item";
 
 
 function LearnerDetails() {
@@ -509,6 +510,453 @@ function LearnerDetails() {
                     </Col>
                   </Row>
 
+<br/><br/>
+                  <Row style={{ padding: "20px" }}>
+
+                      <Typography.Title
+                        className="fontFamily1"
+                        style={{
+                          fontSize: "20px",
+                          fontWeight: 600,
+                          color: "black",
+                          textAlign: "left",
+                          marginTop: 0,
+                        }}
+                      >
+                        Application Information
+                      </Typography.Title>
+                  </Row>
+
+                  <Row style={{ padding: "10px 20px" }}>
+                    <Col xs={12} sm={6}>
+                      <Typography.Title
+                        className="fontFamily1"
+                        style={{
+                          fontSize: "16px",
+                          fontWeight: 600,
+                          color: "black",
+                          textAlign: "left",
+                          marginTop: 0,
+                        }}
+                      >
+                       Have you ever been a Tutor or Coach?
+                      </Typography.Title>
+                      <Typography.Text
+                        className="fontFamily1"
+                        style={{
+                          fontSize: "14px",
+                          color: "grey",
+                          textAlign: "left",
+                        }}
+                      >
+                        {coach?.isTutor ? "Yes" : "No"}
+                      </Typography.Text>
+                    </Col>
+
+                    <Col xs={12} sm={12}>
+                      <Typography.Title
+                        className="fontFamily1"
+                        style={{
+                          fontSize: "16px",
+                          fontWeight: 600,
+                          color: "black",
+                          textAlign: "left",
+                          marginTop: 0,
+                        }}
+                      >
+                       Application Type
+                      </Typography.Title>
+                      <Typography.Text
+                        className="fontFamily1"
+                        style={{
+                          fontSize: "14px",
+                          color: "grey",
+                          textAlign: "left",
+                        }}
+                      >
+                        {coach?.applicationType == "TUTORING" ? "Tutor" : coach?.applicationType == "COACHING" ? "Coach" : "Tutor & Coach" }
+                      </Typography.Text>
+                    </Col>
+                  </Row>
+                  {/* <Row style={{ padding: "10px 20px" }}>
+                    <Col xs={12} sm={6}>
+                      <Typography.Title
+                        className="fontFamily1"
+                        style={{
+                          fontSize: "16px",
+                          fontWeight: 600,
+                          color: "black",
+                          textAlign: "left",
+                          marginTop: 0,
+                        }}
+                      >
+                       Service
+                      </Typography.Title>
+                      <Typography.Text
+                        className="fontFamily1"
+                        style={{
+                          fontSize: "14px",
+                          color: "grey",
+                          textAlign: "left",
+                        }}
+                      >
+                        {coach?.tagLine}
+                      </Typography.Text>
+                    </Col>
+
+                  
+                  </Row> */}
+
+<br/><br/>
+<Row style={{ padding: "20px" }}>
+
+<Typography.Title
+  className="fontFamily1"
+  style={{
+    fontSize: "20px",
+    fontWeight: 600,
+    color: "black",
+    textAlign: "left",
+    marginTop: 0,
+  }}
+>
+Former Employment
+</Typography.Title>
+</Row>
+
+{coach.employment.map(emp =>{
+  return(<>
+  <Row style={{ padding: "10px 20px" }}>
+<Col xs={12} sm={6}>
+<Typography.Title
+  className="fontFamily1"
+  style={{
+    fontSize: "16px",
+    fontWeight: 600,
+    color: "black",
+    textAlign: "left",
+    marginTop: 0,
+  }}
+>
+Company
+</Typography.Title>
+<Typography.Text
+  className="fontFamily1"
+  style={{
+    fontSize: "14px",
+    color: "grey",
+    textAlign: "left",
+  }}
+>
+  {emp?.company}
+</Typography.Text>
+</Col>
+
+<Col xs={12} sm={12}>
+<Typography.Title
+  className="fontFamily1"
+  style={{
+    fontSize: "16px",
+    fontWeight: 600,
+    color: "black",
+    textAlign: "left",
+    marginTop: 0,
+  }}
+>
+ Company Address
+</Typography.Title>
+<Typography.Text
+  className="fontFamily1"
+  style={{
+    fontSize: "14px",
+    color: "grey",
+    textAlign: "left",
+  }}
+>
+  {emp?.address}
+</Typography.Text>
+</Col>
+</Row> 
+<Row style={{ padding: "10px 20px" }}>
+<Col xs={12} sm={6}>
+<Typography.Title
+  className="fontFamily1"
+  style={{
+    fontSize: "16px",
+    fontWeight: 600,
+    color: "black",
+    textAlign: "left",
+    marginTop: 0,
+  }}
+>
+Salary
+</Typography.Title>
+<Typography.Text
+  className="fontFamily1"
+  style={{
+    fontSize: "14px",
+    color: "grey",
+    textAlign: "left",
+  }}
+>
+  ${emp?.salary}
+</Typography.Text>
+</Col>
+
+<Col xs={12} sm={12}>
+<Typography.Title
+  className="fontFamily1"
+  style={{
+    fontSize: "16px",
+    fontWeight: 600,
+    color: "black",
+    textAlign: "left",
+    marginTop: 0,
+  }}
+>
+Position
+</Typography.Title>
+<Typography.Text
+  className="fontFamily1"
+  style={{
+    fontSize: "14px",
+    color: "grey",
+    textAlign: "left",
+  }}
+>
+  {emp?.position}
+</Typography.Text>
+</Col>
+</Row> 
+<Row style={{ padding: "10px 20px" }}>
+<Col xs={12} sm={6}>
+<Typography.Title
+  className="fontFamily1"
+  style={{
+    fontSize: "16px",
+    fontWeight: 600,
+    color: "black",
+    textAlign: "left",
+    marginTop: 0,
+  }}
+>
+Start Date
+</Typography.Title>
+<Typography.Text
+  className="fontFamily1"
+  style={{
+    fontSize: "14px",
+    color: "grey",
+    textAlign: "left",
+  }}
+>
+  {dayjs(new Date(emp?.start)).format('hh:mm A')}
+</Typography.Text>
+</Col>
+
+<Col xs={12} sm={12}>
+<Typography.Title
+  className="fontFamily1"
+  style={{
+    fontSize: "16px",
+    fontWeight: 600,
+    color: "black",
+    textAlign: "left",
+    marginTop: 0,
+  }}
+>
+End Date
+</Typography.Title>
+<Typography.Text
+  className="fontFamily1"
+  style={{
+    fontSize: "14px",
+    color: "grey",
+    textAlign: "left",
+  }}
+>
+{dayjs(new Date(emp?.end)).format('hh:mm A')}
+</Typography.Text>
+</Col>
+</Row> 
+<Row style={{ padding: "10px 20px" }}>
+<Col xs={12} sm={12}>
+<Typography.Title
+  className="fontFamily1"
+  style={{
+    fontSize: "16px",
+    fontWeight: 600,
+    color: "black",
+    textAlign: "left",
+    marginTop: 0,
+  }}
+>
+Reason For Leaving
+</Typography.Title>
+<Typography.Text
+  className="fontFamily1"
+  style={{
+    fontSize: "14px",
+    color: "grey",
+    textAlign: "left",
+  }}
+>
+  {emp?.reason}
+</Typography.Text>
+</Col>
+</Row> 
+
+  </>);
+})}
+
+<br/><br/>
+<Row style={{ padding: "20px" }}>
+
+<Typography.Title
+  className="fontFamily1"
+  style={{
+    fontSize: "20px",
+    fontWeight: 600,
+    color: "black",
+    textAlign: "left",
+    marginTop: 0,
+    marginBottom:0
+  }}
+>
+Professional References
+</Typography.Title>
+</Row>
+
+{coach.reference.map((ref,indx) =>{
+  return(<>
+  <Row style={{ padding: "0px 20px 10px" }}>
+<Col xs={12} sm={6}>
+<Typography.Text
+  className="fontFamily1"
+  style={{
+    fontSize: "16px",
+   textDecoration:"underline",
+    color: "black",
+    textAlign: "left",
+    marginTop: 0,
+  }}
+>
+Refrence {indx + 1}
+</Typography.Text>
+
+</Col>
+
+</Row> 
+<Row style={{ padding: "10px 20px" }}>
+<Col xs={12} sm={6}>
+<Typography.Title
+  className="fontFamily1"
+  style={{
+    fontSize: "16px",
+    fontWeight: 600,
+    color: "black",
+    textAlign: "left",
+    marginTop: 0,
+  }}
+>
+Name
+</Typography.Title>
+<Typography.Text
+  className="fontFamily1"
+  style={{
+    fontSize: "14px",
+    color: "grey",
+    textAlign: "left",
+  }}
+>
+  {ref?.name}
+</Typography.Text>
+</Col>
+
+<Col xs={12} sm={12}>
+<Typography.Title
+  className="fontFamily1"
+  style={{
+    fontSize: "16px",
+    fontWeight: 600,
+    color: "black",
+    textAlign: "left",
+    marginTop: 0,
+  }}
+>
+Company
+</Typography.Title>
+<Typography.Text
+  className="fontFamily1"
+  style={{
+    fontSize: "14px",
+    color: "grey",
+    textAlign: "left",
+  }}
+>
+  {ref?.company}
+</Typography.Text>
+</Col>
+</Row> 
+<Row style={{ padding: "10px 20px" }}>
+<Col xs={12} sm={6}>
+<Typography.Title
+  className="fontFamily1"
+  style={{
+    fontSize: "16px",
+    fontWeight: 600,
+    color: "black",
+    textAlign: "left",
+    marginTop: 0,
+  }}
+>
+Phone
+</Typography.Title>
+<Typography.Text
+  className="fontFamily1"
+  style={{
+    fontSize: "14px",
+    color: "grey",
+    textAlign: "left",
+  }}
+>
+  {ref.phone}
+</Typography.Text>
+</Col>
+
+<Col xs={12} sm={12}>
+<Typography.Title
+  className="fontFamily1"
+  style={{
+    fontSize: "16px",
+    fontWeight: 600,
+    color: "black",
+    textAlign: "left",
+    marginTop: 0,
+  }}
+>
+Year Acquainted
+</Typography.Title>
+<Typography.Text
+  className="fontFamily1"
+  style={{
+    fontSize: "14px",
+    color: "grey",
+    textAlign: "left",
+  }}
+>
+{ref.year}
+</Typography.Text>
+</Col>
+</Row> 
+  </>);
+})}
+
+{/* */}
+
+<br/>
+
+
             <Row style={{ padding: "20px" }}>
               {coach.status == "ACTIVE" ? (
                 <Button
@@ -565,6 +1013,7 @@ function LearnerDetails() {
                 }}
                 ghost
                 size="large"  
+                onClick={() => navigate("/tutor-coach-schedule/"+ id)}
               >
                 Schedule
               </Button>
@@ -583,6 +1032,7 @@ function LearnerDetails() {
                 }}
                 ghost
                 size="large"
+                onClick={() => navigate("/tutor-coach-rates/"+ id)}
               >
                 Hourly Rates
               </Button>
@@ -601,6 +1051,7 @@ function LearnerDetails() {
                 }}
                 ghost
                 size="large"
+                onClick={() => navigate("/tutor-coach-review/"+ id)}
               >
                 Rating & Review
               </Button>

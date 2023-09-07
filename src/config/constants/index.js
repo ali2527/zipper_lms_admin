@@ -28,6 +28,28 @@ export const AUTH = {
     commentPost:"/post/comment/",
     addPost:"/post/addPost"
 }
+
+export const RATES = {
+  getMyRates: "/rates/getMyRates",
+  getCoachRates:"/rates/getCoachRates/",
+  setRates : "/rates/setRates"
+}
+
+export const COMISSSION = {
+  getComission : "/comission/getComission"
+}
+
+export const REVIEWS={
+  getAll:"/review/getAllReviewsByCoachId/",
+  getCoachRatings:"/review/getCoachRatings/"
+}
+
+export const SCHEDULE = {
+  addSchedule: "/schedule/addSchedule",
+  getMySchedule:"/schedule/getMySchedule",
+  getScheduleByCoachId:"/schedule/getScheduleByCoachId/"
+}
+
 export const GALLERY = {
   addGallery:"/gallery/addGallery",
   getMyGallery: "/gallery/getMyGallery/",

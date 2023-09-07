@@ -10,6 +10,9 @@ import LearnerDetails from "../../views/learner-management/learnerDetails";
 import TutorCoachManagement from "../../views/tutor-coach-management"
 import TutorCoachDetails from "../../views/tutor-coach-management/tutorCoachDetails"
 import TutorCoachEducation from "../../views/tutor-coach-management/tutorCoachEducation"
+import TutorCoachRates from "../../views/tutor-coach-management/tutorCoachRates"
+import TutorCoachReview from "../../views/tutor-coach-management/tutorCoachReview"
+import TutorCoachSchedule from "../../views/tutor-coach-management/tutorCoachSchedule"
 import ServiceProviderManaqgement from "../../views/service-provider-management";
 import ServiceProviderDetails from "../../views/service-provider-management/spDetails";
 import SubscriptionManagement from "../../views/subscription-management";
@@ -177,6 +180,56 @@ const MyRouter = () => {
             </UserAuthCheck>
           }
         />
+         <Route
+          path="/tutor-coach-schedule/:id"
+          index
+          element={
+            <UserAuthCheck>
+              <ClientLayout
+                head={{
+                  title: "Tutor/Coach Schedule",
+                  description: "Some Description.",
+                }}
+              >
+                <TutorCoachSchedule />
+              </ClientLayout>
+            </UserAuthCheck>
+          }
+        />
+        <Route
+          path="/tutor-coach-review/:id"
+          index
+          element={
+            <UserAuthCheck>
+              <ClientLayout
+                head={{
+                  title: "Tutor/Coach Review",
+                  description: "Some Description.",
+                }}
+              >
+                <TutorCoachReview />
+              </ClientLayout>
+            </UserAuthCheck>
+          }
+        />
+
+<Route
+          path="/tutor-coach-rates/:id"
+          index
+          element={
+            <UserAuthCheck>
+              <ClientLayout
+                head={{
+                  title: "Tutor/Coach Rates",
+                  description: "Some Description.",
+                }}
+              >
+                <TutorCoachRates />
+              </ClientLayout>
+            </UserAuthCheck>
+          }
+        />
+
 
          <Route
           path="/posts/:id"
