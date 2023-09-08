@@ -29,6 +29,7 @@ export const AUTH = {
     addPost:"/post/addPost"
 }
 
+
 export const RATES = {
   getMyRates: "/rates/getMyRates",
   getCoachRates:"/rates/getCoachRates/",
@@ -36,7 +37,8 @@ export const RATES = {
 }
 
 export const COMISSSION = {
-  getComission : "/comission/getComission"
+  getComission : "/comission/getComission",
+  addComission:"/comission/addComission"
 }
 
 export const REVIEWS={
@@ -74,6 +76,18 @@ export const CONTEST = {
     getAllStudents: "/admin/user/getAllStudents",
     getStudentById: "/admin/user/getStudentById/",
     toggleStatus: "/admin/user/toggleStatus/",
+  };
+
+  export const LESSON = {
+    getAllUpcomingLessons: "/admin/lesson/getAllUpcomingLessons",
+    getAllCompletedLessons: "/admin/lesson/getAllCompletedLessons",
+    getAllPendingLessons: "/admin/lesson/getAllPendingLessons",
+    getAllLiveLessons: "/admin/lesson/getAllLiveLessons",
+    getAllRejectedLessons: "/admin/lesson/getAllRejectedLessons",
+    getAllMissedLessons: "/admin/lesson/getAllMissedLessons",
+    getLessonById: "/admin/lesson/getLessonById/",
+    deleteLesson: "/admin/lesson/deleteLesson/",
+    getLessonsByMonth:"/admin/lesson/getLessonsByMonth"
   };
 
 

@@ -19,9 +19,13 @@ import SubscriptionManagement from "../../views/subscription-management";
 import SubscriptionDetails from "../../views/subscription-management/subscriptionDetails";
 import ArticleManagement from "../../views/article-management";
 import AddArticle from "../../views/article-management/addArticle";
-import ContestManagement from "../../views/contest-management";
-import ContestDetails from "../../views/contest-management/contestDetails";
-import ContestView from "../../views/contest-management/contestView";
+import ComissionManagement from "../../views/comission-management";
+import UpcomingLessons from "../../views/upcoming-lessons";
+import CompletedLessons from "../../views/completed-lessons";
+import LiveLessons from "../../views/live-lessons";
+import SubmittedLessons from "../../views/submitted-lessons"
+import LessonDetails from "../../views/lesson-details";
+import Calander from "../../views/calander"
 import PaymentLogs from "../../views/payment-logs";
 import PaymentAndBooking from "../../views/booking-and-payment-details";
 import FeedbackManagement from "../../views/feedback-management";
@@ -33,7 +37,7 @@ import QueryDetails from "../../views/queries-management/queryDetails";
 import Dashboard from "../../views/dashboard";
 import Profile from "../../views/profile";
 import ChangePassword from "../../views/change-password"
-import Posts from "../../views/posts";
+import Posts from "../../views/posts";  
 import Gallery from "../../views/gallery"
 
 //components imports
@@ -115,6 +119,10 @@ const MyRouter = () => {
             </UserAuthCheck>
           }
         />
+
+
+
+
         <Route
           path="/learner-management/:id"
           index
@@ -131,6 +139,118 @@ const MyRouter = () => {
             </UserAuthCheck>
           }
         />
+
+<Route
+          path="/upcoming-lessons"
+          activeTab="test"
+          index
+          element={
+            <UserAuthCheck>
+              <ClientLayout
+                head={{
+                  title: "Upcoming Lessons",
+                  description: "Some Description.",
+                }}
+              >
+                <UpcomingLessons />
+              </ClientLayout>
+            </UserAuthCheck>
+          }
+        />
+
+<Route
+          path="/completed-lessons"
+          activeTab="test"
+          index
+          element={
+            <UserAuthCheck>
+              <ClientLayout
+                head={{
+                  title: "Completed Lessons",
+                  description: "Some Description.",
+                }}
+              >
+                <CompletedLessons />
+              </ClientLayout>
+            </UserAuthCheck>
+          }
+        />
+
+
+<Route
+          path="/live-lessons"
+          activeTab="test"
+          index
+          element={
+            <UserAuthCheck>
+              <ClientLayout
+                head={{
+                  title: "Live Lessons",
+                  description: "Some Description.",
+                }}
+              >
+                <LiveLessons />
+              </ClientLayout>
+            </UserAuthCheck>
+          }
+        />
+
+
+<Route
+          path="/submitted-lessons"
+          activeTab="test"
+          index
+          element={
+            <UserAuthCheck>
+              <ClientLayout
+                head={{
+                  title: "Submitted Lessons",
+                  description: "Some Description.",
+                }}
+              >
+                <SubmittedLessons />
+              </ClientLayout>
+            </UserAuthCheck>
+          }
+        />
+
+<Route
+          path="/calander"
+          activeTab="test"
+          index
+          element={
+            <UserAuthCheck>
+              <ClientLayout
+                head={{
+                  title: "Calander",
+                  description: "Some Description.",
+                }}
+              >
+                <Calander/>
+              </ClientLayout>
+            </UserAuthCheck>
+          }
+        />
+<Route
+          path="/lesson-details/:id"
+          activeTab="test"
+          index
+          element={
+            <UserAuthCheck>
+              <ClientLayout
+                head={{
+                  title: "Lessons Details",
+                  description: "Some Description.",
+                }}
+              >
+                <LessonDetails />
+              </ClientLayout>
+            </UserAuthCheck>
+          }
+        />
+
+
+
          <Route
           path="/tutor-coach-management"
           activeTab="test"
@@ -501,67 +621,17 @@ const MyRouter = () => {
           }
         />
          <Route
-          path="/contest-management"
+          path="/comission-management"
           index
           element={
             <UserAuthCheck>
               <ClientLayout
                 head={{
-                  title: "Contest Management",
+                  title: "Comission Management",
                   description: "Some Description.",
                 }}
               >
-                <ContestManagement />
-              </ClientLayout>
-            </UserAuthCheck>
-          }
-        />
-
-<Route
-          path="/contest-management/edit/:id"
-          index
-          element={
-            <UserAuthCheck>
-              <ClientLayout
-                head={{
-                  title: "Article Category Edit",
-                  description: "Some Description.",
-                }}
-              >
-                <ContestDetails />
-              </ClientLayout>
-            </UserAuthCheck>
-          }
-        />
-
-<Route
-          path="/contest-management/view/:id"
-          index
-          element={
-            <UserAuthCheck>
-              <ClientLayout
-                head={{
-                  title: "Article Category Edit",
-                  description: "Some Description.",
-                }}
-              >
-                <ContestView/>
-              </ClientLayout>
-            </UserAuthCheck>
-          }
-        />
-<Route
-          path="/contest-management/add"
-          index
-          element={
-            <UserAuthCheck>
-              <ClientLayout
-                head={{
-                  title: "Article Category Add",
-                  description: "Some Description.",
-                }}
-              >
-                <ContestDetails />
+                <ComissionManagement />
               </ClientLayout>
             </UserAuthCheck>
           }
@@ -584,22 +654,6 @@ const MyRouter = () => {
           }
         />
 
-<Route
-          path="/article-management/edit/:id"
-          index
-          element={
-            <UserAuthCheck>
-              <ClientLayout
-                head={{
-                  title: "Article Edit",
-                  description: "Some Description.",
-                }}
-              >
-                <ContestDetails />
-              </ClientLayout>
-            </UserAuthCheck>
-          }
-        />
 <Route
           path="/article-management/add"
           index

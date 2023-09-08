@@ -34,7 +34,7 @@ const sideNavItems = [
     key: 4,
     icon: "/images/dside-icon/4.png",
     label: "Contest Management",
-    path: "/contest-management",
+    path: "/comission-management",
   },
   {
     key: 5,

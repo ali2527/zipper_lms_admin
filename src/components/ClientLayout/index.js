@@ -26,7 +26,7 @@ import side5 from  "../../assets/images/property-management.png"
 import side6 from  "../../assets/images/chat.png"
 import logo from "../../assets/images/logo.png"
 import { HiOutlineSquares2X2,HiOutlineDocumentText,HiOutlineCalendar } from "react-icons/hi2";
-import {FiUser} from "react-icons/fi"
+import {FiUser,FiMonitor} from "react-icons/fi"
 import {BsClipboard,BsChatLeft,BsQuestionSquare} from "react-icons/bs"
 import {TfiLayoutListThumb} from "react-icons/tfi"
 import {CgPlayListCheck} from "react-icons/cg"
@@ -53,47 +53,52 @@ const sideNavItems = [
     key: 4,
     icon: <HiOutlineDocumentText style={{fontSize:20}}/>,
     label: "Comission Management",
-    path: "/contest-management",
+    path: "/comission-management",
   },
-
   {
     key: 5,
-    icon: <TfiLayoutListThumb style={{fontSize:18}}/>,
-    label: "Upcoming Lessons",
-    path: "/payment-logs",
+    icon: <FiMonitor style={{fontSize:18}}/>,
+    label: "Live Lessons",
+    path: "/live-lessons",
   },
   {
     key: 6,
-    icon: <BsChatLeft style={{fontSize:18}}/>,
-    label: "Completed Lessons",
-    path: "/feedback-management",
+    icon: <TfiLayoutListThumb style={{fontSize:18}}/>,
+    label: "Upcoming Lessons",
+    path: "/upcoming-lessons",
   },
   {
     key: 7,
-    icon: <BiListCheck style={{fontSize:28}}/>,
-    label: "Submitted Lessons",
-    path: "/feedback-management",
+    icon: <BsChatLeft style={{fontSize:18}}/>,
+    label: "Completed Lessons",
+    path: "/completed-lessons",
   },
   {
     key: 8,
-    icon: <HiOutlineCalendar style={{fontSize:20}}/>,
-    label: "Calander",
-    path: "/feedback-management",
+    icon: <BiListCheck style={{fontSize:28}}/>,
+    label: "Submitted Lessons",
+    path: "/submitted-lessons",
   },
   {
     key: 9,
+    icon: <HiOutlineCalendar style={{fontSize:20}}/>,
+    label: "Calander",
+    path: "/calander",
+  },
+  {
+    key: 10,
     icon: <SlWallet style={{fontSize:18}}/>,
     label: "Payment Logs",
     path: "/feedback-management",
   },
   {
-    key: 10,
+    key: 11,
     icon: <BiNotification style={{fontSize:18}}/>,
     label: "Push Notifications",
     path: "/feedback-management",
   },
   {
-    key: 11,
+    key: 12,
     icon: <BsQuestionSquare style={{fontSize:18}}/>,
     label: "Queries",
     path: "/feedback-management",
