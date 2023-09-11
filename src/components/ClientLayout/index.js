@@ -85,24 +85,24 @@ const sideNavItems = [
     label: "Calander",
     path: "/calander",
   },
-  {
-    key: 10,
-    icon: <SlWallet style={{fontSize:18}}/>,
-    label: "Payment Logs",
-    path: "/feedback-management",
-  },
-  {
-    key: 11,
-    icon: <BiNotification style={{fontSize:18}}/>,
-    label: "Push Notifications",
-    path: "/feedback-management",
-  },
-  {
-    key: 12,
-    icon: <BsQuestionSquare style={{fontSize:18}}/>,
-    label: "Queries",
-    path: "/feedback-management",
-  },
+  // {
+  //   key: 10,
+  //   icon: <SlWallet style={{fontSize:18}}/>,
+  //   label: "Payment Logs",
+  //   path: "/feedback-management",
+  // },
+  // {
+  //   key: 11,
+  //   icon: <BiNotification style={{fontSize:18}}/>,
+  //   label: "Push Notifications",
+  //   path: "/feedback-management",
+  // },
+  // {
+  //   key: 12,
+  //   icon: <BsQuestionSquare style={{fontSize:18}}/>,
+  //   label: "Queries",
+  //   path: "/feedback-management",
+  // },
 
 ]
 
@@ -316,7 +316,9 @@ const ClientLayout = ({ children, head }) => {
                 style={{
                   height: "100%",
                   borderRight: 0,
-                  background:'transparent'
+                  background:'transparent',
+                  maxHeight:"85vh",
+                  overflow:"auto"
                 }}
               >
                 {sideNavItems.map((item) => (

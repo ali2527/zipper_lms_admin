@@ -260,7 +260,7 @@ export default function Home() {
       <Col xs={24} md={6}>
         <div class="boxDetails1 analytics1" style={{backgroundColor:"#FFEBF6"}}>
           <Row
-          gutter={30}
+          gutter={20}
             style={{ width: "100%", display: "flex", alignItems: "center",justifyContent:'center'  }}
           >
                <Col>
@@ -286,7 +286,7 @@ export default function Home() {
       <Col xs={24} md={6}>
         <div class="boxDetails1 analytics1" style={{backgroundColor:"#E7FAFF"}}>
           <Row
-          gutter={30}
+          gutter={20}
             style={{ width: "100%", display: "flex", alignItems: "center",justifyContent:'center'  }}
           >
                <Col>
@@ -312,7 +312,7 @@ export default function Home() {
       <Col xs={24} md={6}>
         <div class="boxDetails1 analytics1" style={{backgroundColor:"#D7FDC3"}}>
           <Row
-          gutter={30}
+          gutter={20}
             style={{ width: "100%", display: "flex", alignItems: "center",justifyContent:'center'  }}
           >
                <Col>
@@ -338,7 +338,7 @@ export default function Home() {
       <Col xs={24} md={6}>
         <div class="boxDetails1 analytics1" style={{backgroundColor:"#BCF2F9"}}>
           <Row
-          gutter={30}
+          gutter={20}
             style={{ width: "100%", display: "flex", alignItems: "center",justifyContent:'center'  }}
           >
                <Col>

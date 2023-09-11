@@ -21,7 +21,7 @@ import dayjs from "dayjs";
 import { UserOutlined, InfoCircleOutlined } from "@ant-design/icons";
 import { FaCaretDown, FaFilter, FaArrowLeft } from "react-icons/fa";
 import { Get } from "../../config/api/get";
-import { UPLOAD_URL,UPLOAD_URL2 , NEWS } from "../../config/constants";
+import { UPLOAD_URL , NEWS } from "../../config/constants";
 import { useNavigate,useParams } from "react-router-dom";
 import VideoPlayer from "../../components/VideoPlayer";
 import { useSelector } from "react-redux";
@@ -311,7 +311,7 @@ function Posts() {
                                             height: "300px",
                                             objectFit: "cover",
                                           }}
-                                          src={UPLOAD_URL2  + imag}
+                                          src={UPLOAD_URL  + imag}
                                           alt="..."
                                           class="img-fluid"
                                         />
@@ -327,7 +327,7 @@ function Posts() {
                                       <div className="col-xs-6 col-md-3">
                                         {" "}
                                         <VideoPlayer
-                                          vdo={UPLOAD_URL2  + vdo}
+                                          vdo={UPLOAD_URL  + vdo}
                                         />{" "}
                                       </div>
                                     );
@@ -449,7 +449,7 @@ function Posts() {
                                       {cmnt?.image && (
                                         <img
                                           src={
-                                            UPLOAD_URL2 +
+                                            UPLOAD_URL +
                                             "Uploads/" +
                                             cmnt?.image
                                           }

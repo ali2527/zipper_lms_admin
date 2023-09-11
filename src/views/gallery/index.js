@@ -21,7 +21,7 @@ import dayjs from "dayjs";
 import { UserOutlined, InfoCircleOutlined } from "@ant-design/icons";
 import { FaCaretDown, FaFilter, FaArrowLeft } from "react-icons/fa";
 import { Get } from "../../config/api/get";
-import { UPLOAD_URL,UPLOAD_URL2 , GALLERY } from "../../config/constants";
+import { UPLOAD_URL,GALLERY } from "../../config/constants";
 import { useNavigate,useParams } from "react-router-dom";
 import VideoPlayer from "../../components/VideoPlayer";
 import { useSelector } from "react-redux";
