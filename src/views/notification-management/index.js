@@ -25,18 +25,18 @@ import { UserOutlined, InfoCircleOutlined } from "@ant-design/icons";
 import { FaSearch, FaFilter, FaCaretDown, FaEye } from "react-icons/fa";
 import ClientLayout from "../../components/ClientLayout";
 import { Get } from "../../config/api/get";
-import { NOTIFICATION } from "../../config/constants";
+import { FEEDBACK } from "../../config/constants";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-function Notifications() {
+function FeedbackManagement() {
   const token = useSelector((state) => state.user.userToken);
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(null);
   const [selectedUser, setSelectedUser] = useState(null);
-  const [users, setUsers] = useState([]);
+  const [serviceProviders, setServiceProviders] = useState([]);
   const [paginationConfig, setPaginationConfig] = useState({
     pageNumber: 1,
     limit: 10,
@@ -61,7 +61,7 @@ function Notifications() {
   const message = `Showing records ${endIndex} of ${paginationConfig.totalDocs}`;
 
   useEffect(() => {
-    getNotifications();
+    getServiceProviders();
   }, []);
 
   
@@ -72,7 +72,7 @@ function Notifications() {
       pageNumber: pageNumber,
     });
 
-    getNotifications(pageNumber);
+    getServiceProviders(pageNumber);
   };
 
   const handleSearch = (value) => {
@@ -96,7 +96,7 @@ function Notifications() {
       from: null,
       to: null,
     });
-    getNotifications(paginationConfig.pageNumber, paginationConfig.limit, "", true);
+    getServiceProviders(paginationConfig.pageNumber, paginationConfig.limit, "", true);
   };
 
   const handleOpenChange = (newOpen) => {
@@ -124,22 +124,22 @@ function Notifications() {
       current: 1,
     });
 
-    getNotifications(1, pageSize);
+    getServiceProviders(1, pageSize);
   };
 
   const handleStatus = async () => {
     try {
-      const index = users.findIndex((user) => user._id == selectedUser._id);
+      const index = serviceProviders.findIndex((user) => user._id == selectedUser._id);
 
       console.log(index)
-      const response = await Get(NOTIFICATION.toggleStatus + "/" + selectedUser._id , token,{});
-      const newUsers = [...users];
+      const response = await Get(FEEDBACK.toggleStatus + "/" + selectedUser._id , token,{});
+      const newUsers = [...serviceProviders];
       
       console.log(">>>>",newUsers[index].isActive)
       console.log(">>>>",selectedUser.isActive)
       newUsers[index].isActive = !selectedUser.isActive;
       setModalOpen(false);
-      setUsers(newUsers);
+      setServiceProviders(newUsers);
     } catch (error) {
       console.log(error.message);
     }  
@@ -147,13 +147,12 @@ function Notifications() {
   };
   
 
-  console.log("users", users.map(item => item.isActive))
 
 
-  const getNotifications = async (pageNumber, pageSize, search, reset = false) => {
+  const getServiceProviders = async (pageNumber, pageSize, search, reset = false) => {
     setLoading(true);
     try {
-      const response = await Get(NOTIFICATION.get, token, {
+      const response = await Get(FEEDBACK.get, token, {
         page: pageNumber
           ? pageNumber.toString()
           : paginationConfig.pageNumber.toString(),
@@ -167,13 +166,13 @@ function Notifications() {
       });
       setLoading(false);
       console.log("response", response);
-      if (response?.data?.docs) {
-        setUsers(response?.data?.docs);
+      if (response?.docs) {
+        setServiceProviders(response?.docs);
         setPaginationConfig({
-          pageNumber: response?.data?.page,
-          limit: response?.data?.limit,
-          totalDocs: response?.data?.totalDocs,
-          totalPages: response?.data?.totalPages,
+          pageNumber: response?.page,
+          limit: response?.limit,
+          totalDocs: response?.totalDocs,
+          totalPages: response?.totalPages,
         });
       } else {
         message.error("Something went wrong!");
@@ -202,46 +201,46 @@ function Notifications() {
       title: "S. No.	",
       dataIndex: "key",
       key: "key",
-      render: (value, item, index) => (index < 9 && "0") + (index + 1),
+      width: 100,
+      render: (value, item, index) => (index < 10 && "0") + (index + 1),
     },
     {
-      title: "Title",
-      dataIndex: "title",
-      key: "title",
-      render: (value, item, index) => value,
-    },
-   
-    {
-      title: "Type",
-      dataIndex: "type",
-      key: "type",
-      render: (value, item, index) => value,
+      title: "Name",
+      dataIndex: "name",
+      key: "name",
     },
     {
-      title: "Sent To",
-      dataIndex: "sendTo",
-      key: "sendTo",
-      render: (value, item, index) => value,
+      title: "Email	",
+      dataIndex: "email",
+      key: "email",
     },
     {
-      title: "Notification Date",
+        title: "Phone",
+        dataIndex: "phone",
+        key: "phone",
+      },
+      {
+        title: "Subject",
+        dataIndex: "subject",
+        key: "subject",
+      },
+    {
+      title: "Sent On",
       dataIndex: "createdAt",
       key: "createdAt",
       render: (item) => <span>{dayjs(item).format("M/D/YYYY")}</span>,
     },
     {
-        title: "Action",
-        dataIndex: "_id",
-        key: "_id",
-        render: (item) => (
-          <FaEye
-            style={{ fontSize: "16px", color: "#203453",  cursor: "pointer" }}
-               onClick={() => navigate("/notifications/edit/" + item )}
-          />
-        ),
-      },
-
-   
+      title: "Action",
+      dataIndex: "_id",
+      key: "_id",
+      render: (item) => (
+        <FaEye
+          style={{ fontSize: "16px", color: "#203453",  cursor: "pointer" }}
+             onClick={() => navigate("/feedback-management/" + item )}
+        />
+      ),
+    },
   ];
 
   const filterContent = (
@@ -292,7 +291,7 @@ function Notifications() {
           size={"large"}
           style={{ marginBottom: "10px" }}
           className="mainButton primaryButton"
-          onClick={() => getNotifications()}
+          onClick={() => getServiceProviders()}
         >
           Apply
         </Button>
@@ -312,36 +311,12 @@ function Notifications() {
 
   return (
     <Layout className="configuration">
-      <div className="boxDetails2">
-      <Row style={{ padding: "10px 20px" }}>
-          <Col
-            xs={24}
-            md={12}
-            style={{ display: "flex", alignItems: "center" }}
-          >
-            <h1 className="pageTitle">Notifications</h1>
-          </Col>
-          <Col
-            xs={24}
-            md={12}
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "flex-end",
-            }}
-          >
-            <Button
-              type="primary"
-              shape="round"
-              size={"large"}
-              style={{ padding: "8px 40px", height: "auto" }}
-              className="loginButton"
-              onClick={() => navigate("/notifications/add")}
-            >
-              Send Notification
-            </Button>
-          </Col>
+        <Row style={{ padding: "10px 20px" }}>
+          <h1 className="pageTitle">Feedback Management</h1>
         </Row>
+      <div className="boxDetails2">
+      
+
         <Row style={{ padding: "10px 20px" }}>
           <Col xs={24} md={12}>
             <h5 style={{ display: "inline", fontSize: 16 }}>Show : </h5>
@@ -387,12 +362,12 @@ function Notifications() {
                     cursor: "pointer",
                   }}
                   onClick={() =>
-                    getNotifications(1, paginationConfig.limit, filter.keyword)
+                    getServiceProviders(1, paginationConfig.limit, filter.keyword)
                   }
                 />
               }
               onPressEnter={(e) =>
-                getNotifications(1, paginationConfig.limit, filter.keyword)
+                getServiceProviders(1, paginationConfig.limit, filter.keyword)
               }
             />
             &emsp;
@@ -433,7 +408,7 @@ function Notifications() {
           ) : (
             <Table
               className="styledTable"
-              dataSource={users}
+              dataSource={serviceProviders}
               columns={columns}
               pagination={false}
             />
@@ -505,11 +480,11 @@ function Notifications() {
           {selectedUser?.isActive ? "Deactivate" : "Activate"}
         </Typography.Title>
         <Typography.Text style={{ fontSize: 16 }}>
-        Do You Want To  {selectedUser?.isActive ? "Deactivate" : "Activate"} This User?
+        Do You Want To  {selectedUser?.isActive ? "Deactivate" : "Activate"} This Service Provider?
         </Typography.Text>
       </Modal>
     </Layout>
   );
 }
 
-export default Notifications;
+export default FeedbackManagement;

@@ -31,6 +31,7 @@ import PaymentAndBooking from "../../views/booking-and-payment-details";
 import FeedbackManagement from "../../views/feedback-management";
 import FeedbackDetails from "../../views/feedback-management/feedbackDetails";
 import Notifications from "../../views/notifications";
+import MyNotifications from "../../views/myNotifications"
 import NotificationDetails from "../../views/notifications/notificationDetails";
 import QueryManagement from "../../views/queries-management";
 import QueryDetails from "../../views/queries-management/queryDetails";
@@ -39,6 +40,7 @@ import Profile from "../../views/profile";
 import ChangePassword from "../../views/change-password"
 import Posts from "../../views/posts";  
 import Gallery from "../../views/gallery"
+
 
 //components imports
 import UserAuthCheck from "../../components/AuthCheck/UserAuthCheck";
@@ -531,6 +533,23 @@ const MyRouter = () => {
                 }}
               >
                 <Notifications />
+              </ClientLayout>
+            </UserAuthCheck>
+          }
+        />
+
+<Route
+          path="/myNotifications"
+          index
+          element={
+            <UserAuthCheck>
+              <ClientLayout
+                head={{
+                  title: "My Notifications",
+                  description: "Some Description.",
+                }}
+              >
+                <MyNotifications />
               </ClientLayout>
             </UserAuthCheck>
           }

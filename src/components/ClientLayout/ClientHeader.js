@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { Image, Badge, Avatar, Dropdown, Popover, Alert,Modal } from "antd";
 import { MdMenu } from "react-icons/md";
 import { AiFillCaretDown, AiFillApple } from "react-icons/ai";
@@ -14,10 +14,12 @@ import {
   Typography,
   message,
 } from "antd";
+import socket from "../../config/socket"
 // import { useRouter } from "next/router";
 import MainButton from "../MainButton";
 // import Link from "next/link";
 import { FaBell } from "react-icons/fa";
+import {GoBellFill} from "react-icons/go"
 
 
 import { UPLOAD_URL,AUTH } from "../../config/constants";
@@ -28,6 +30,8 @@ import { useNavigate } from "react-router-dom";
 import { removeUser } from "../../redux/slice/authSlice";
 import logo from "../../assets/images/logo2.png"
 import bg from "../../assets/images/logo.png"
+import { fetchNotifications } from '../../redux/slice/notificationSlice';
+import { incrementCount,addLatestNotification  } from "../../redux/slice/notificationSlice";
 
 const { Header } = Layout;
 
@@ -35,15 +39,59 @@ const { Header } = Layout;
 
 const ClientHeader = ({ visible, setVisible, visible2, setVisible2 }) => {
   const [logoutModal, setLogoutModal] = useState(false);
+  const latestNotifications = useSelector((state) => state.notification.latestNotifications);
+  const notificationsCount = useSelector((state) => state.notification.count);
+
   const [path, setPath] = useState(
     window.location.pathname.slice(1, window.location.pathname.length)
   );
   const user = useSelector((state) => state.user.userData);
   const token = useSelector((state) => state.user.userToken);
 
-  console.log("usersss", user)
+  console.log("usersssnotificationsCount", notificationsCount)
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+console.log()
+  useEffect(() => {
+    if(token){
+      
+      socket.connect();
+
+      socket.emit("setupAdmin");
+      dispatch(fetchNotifications(token));
+      // socket.on("connected", () => {
+      //   console.log("Connected to socket");
+      // });
+    }
+    return () => {
+      socket.disconnect();
+    };
+  }, [token]);
+
+
+  useEffect(() => {
+    socket.on("notification", (notification) => {
+      console.log("New Notification", notification);
+
+      // Assuming your notification object contains data to determine if you should increment the count
+      const shouldIncrement = true; // You should replace this with your logic
+
+      if (shouldIncrement) {
+        dispatch(incrementCount());
+      }
+      
+
+      dispatch(addLatestNotification(notification));
+    });
+
+    // Don't forget to remove the event listener when the component unmounts
+    return () => {
+      socket.off("notification");
+    };
+  }, [dispatch]);
+
+
 
   const logout = () => {
     setLogoutModal(true);
@@ -108,14 +156,16 @@ const ClientHeader = ({ visible, setVisible, visible2, setVisible2 }) => {
         style={{
           padding: "10px 20px",
           display: "flex",
-          fontSize:"20px",
-          fontWeight:"bold",
           justifyContent: "space-between",
           alignItems: "center",
         }}
       >
         <h3>Notifications</h3>
-      
+        <Alert
+          message={`${notificationsCount} New`}
+          type="success"
+          style={{ fontSize: "12px", padding: "2px 10px", color: "green" }}
+        />
       </div>
       <hr
         style={{
@@ -126,72 +176,50 @@ const ClientHeader = ({ visible, setVisible, visible2, setVisible2 }) => {
         }}
       />
       <div style={{ height: "250px", overflow: "auto" }}>
-        <div style={{ padding: 10 }}>
-        <Row style={{ flexDirection: "row", justifyContent: "space-between",padding:10, borderBottom:"1px solid #dadada" }}>
-          
-            <Col>
-              <p class="notificationText">
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Id nam
-                veniam aperiam eveniet mollitia quos nemo! Officiis voluptates
-                illo delectus.
-              </p>
-              <div style={{display:'flex',justifyContent:'space-between',flexDirection:"row"}}>
-              <p class="notificationText" style={{color:'black',fontSize:"12px", fontWeight:"bold"}}>
-                25, May 2023
-              </p>
-              <p class="notificationText" style={{color:'black',fontSize:"12px", fontWeight:"bold"}}>
-                10:23 PM
-              </p>
+        {latestNotifications && latestNotifications.length > 0 && latestNotifications.map(item => {
+          return(<div style={{ padding: 10,minHeight:"100px", borderBottom:"1px solid #dadada", marginBottom:"5px" }}>
+            <Row
+              style={{ flexDirection: "row", justifyContent: "space-between" }}
+            >
+              <Col xs={4}>
+                <div
+                  style={{
+                    // padding: "10px 10px 10px 10px",
+                                    
+                    display: "flex",
+                    width:'40px',
+                    justifyContent:'center',
+                    alignItems:"center",
+                    height:'40px',
+                    backgroundColor: "#385790",
+                    borderRadius: "5px",
+                  }}
+                >
+                 <GoBellFill style={{ fontSize: "20px",color:"white", }} />
                 </div>
-            </Col>
-          </Row>
-        </div>
+              </Col>
+              <Col xs={18}>
+              <Typography.Title
+                    className="fontFamily1"
+                    style={{ fontSize: "14px", color: "black",margin:0 }}
+                  >
+                   {item.title}
+                  </Typography.Title>
+  
+                  <Typography.Text
+                    className="fontFamily1"
+                    style={{ fontSize: "12px", color: "black",margin:0 }}
+                  >
+                   {item?.content?.slice(0,100)} {item.content.length > 100 && "..."}
+                  </Typography.Text>
+               
+              </Col>
+            </Row>
+          </div>);
+        }) }
+        
 
-        <div style={{ padding: 10 }}>
-          <Row
-            style={{ flexDirection: "row", justifyContent: "space-between",padding:10, borderBottom:"1px solid #dadada" }}
-          >
-          
-            <Col>
-              <p class="notificationText">
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Id nam
-                veniam aperiam eveniet mollitia quos nemo! Officiis voluptates
-                illo delectus.
-              </p>
-              <div style={{display:'flex',justifyContent:'space-between',flexDirection:"row"}}>
-              <p class="notificationText" style={{color:'black',fontSize:"12px", fontWeight:"bold"}}>
-                25, May 2023
-              </p>
-              <p class="notificationText" style={{color:'black',fontSize:"12px", fontWeight:"bold"}}>
-                10:23 PM
-              </p>
-                </div>
-            </Col>
-          </Row>
-        </div>
-
-        <div style={{ padding: 10 }}>
-        <Row
-            style={{ flexDirection: "row", justifyContent: "space-between",padding:10, borderBottom:"1px solid #dadada" }}
-          >
-          
-            <Col>
-              <p class="notificationText">
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Id nam
-                veniam aperiam eveniet mollitia quos nemo! Officiis voluptates
-                illo delectus.
-              </p>
-              <div style={{display:'flex',justifyContent:'space-between',flexDirection:"row"}}>
-              <p class="notificationText" style={{color:'black',fontSize:"12px", fontWeight:"bold"}}>
-                25, May 2023
-              </p>
-              <p class="notificationText" style={{color:'black',fontSize:"12px", fontWeight:"bold"}}>
-                10:23 PM
-              </p>
-                </div>
-            </Col>
-          </Row>
-        </div>
+       
       </div>
 
       <hr
@@ -211,7 +239,7 @@ const ClientHeader = ({ visible, setVisible, visible2, setVisible2 }) => {
           alignItems: "center",
         }}
       >
-        <Button type="link">View All</Button>
+        <Button onClick={()=> navigate("/myNotifications")} type="link">View All</Button>
       </div>
     </div>
   );
@@ -246,8 +274,8 @@ const ClientHeader = ({ visible, setVisible, visible2, setVisible2 }) => {
                 arrow={false}
                 className="headerPopover"
               >
-                <Badge count={0} style={{ backgroundColor: "#7e5bb2" }}>
-                  <FaBell style={{ fontSize: "25px",color:"white", }} />
+               <Badge count={notificationsCount} style={{ backgroundColor: "red" }}>
+                  <GoBellFill style={{ fontSize: "25px",color:"white", }} />
                 </Badge>
               </Popover>
               &emsp; &emsp;

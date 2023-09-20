@@ -95,7 +95,7 @@ const sideNavItems = [
     key: 11,
     icon: <BiNotification style={{fontSize:18}}/>,
     label: "Push Notifications",
-    path: "/feedback-management",
+    path: "/notifications",
   },
   {
     key: 12,
