@@ -61,7 +61,7 @@ function QueriesManagement() {
   const message = `Showing records ${endIndex} of ${paginationConfig.totalDocs}`;
 
   useEffect(() => {
-    getServiceProviders();
+    getQueries();
   }, []);
 
   
@@ -72,7 +72,7 @@ function QueriesManagement() {
       pageNumber: pageNumber,
     });
 
-    getServiceProviders(pageNumber);
+    getQueries(pageNumber);
   };
 
   const handleSearch = (value) => {
@@ -96,7 +96,7 @@ function QueriesManagement() {
       from: null,
       to: null,
     });
-    getServiceProviders(paginationConfig.pageNumber, paginationConfig.limit, "", true);
+    getQueries(paginationConfig.pageNumber, paginationConfig.limit, "", true);
   };
 
   const handleOpenChange = (newOpen) => {
@@ -124,7 +124,7 @@ function QueriesManagement() {
       current: 1,
     });
 
-    getServiceProviders(1, pageSize);
+    getQueries(1, pageSize);
   };
 
   const handleStatus = async () => {
@@ -149,7 +149,7 @@ function QueriesManagement() {
 
 
 
-  const getServiceProviders = async (pageNumber, pageSize, search, reset = false) => {
+  const getQueries = async (pageNumber, pageSize, search, reset = false) => {
     setLoading(true);
     try {
       const response = await Get(QUERY.get, token, {
@@ -166,13 +166,13 @@ function QueriesManagement() {
       });
       setLoading(false);
       console.log("response", response);
-      if (response?.docs) {
-        setServiceProviders(response?.docs);
+      if (response?.data?.docs) {
+        setServiceProviders(response?.data?.docs);
         setPaginationConfig({
-          pageNumber: response?.page,
-          limit: response?.limit,
-          totalDocs: response?.totalDocs,
-          totalPages: response?.totalPages,
+          pageNumber: response?.data?.page,
+          limit: response?.data?.limit,
+          totalDocs: response?.data?.totalDocs,
+          totalPages: response?.data?.totalPages,
         });
       } else {
         message.error("Something went wrong!");
@@ -214,11 +214,6 @@ function QueriesManagement() {
       dataIndex: "email",
       key: "email",
     },
-    {
-        title: "Phone",
-        dataIndex: "phone",
-        key: "phone",
-      },
       {
         title: "Subject",
         dataIndex: "subject",
@@ -291,7 +286,7 @@ function QueriesManagement() {
           size={"large"}
           style={{ marginBottom: "10px" }}
           className="mainButton primaryButton"
-          onClick={() => getServiceProviders()}
+          onClick={() => getQueries()}
         >
           Apply
         </Button>
@@ -311,7 +306,7 @@ function QueriesManagement() {
 
   return (
     <Layout className="configuration">
-      <div className="boxDetails">
+      <div className="boxDetails2">
         <Row style={{ padding: "10px 20px" }}>
           <h1 className="pageTitle">Queries Management</h1>
         </Row>
@@ -348,6 +343,26 @@ function QueriesManagement() {
               alignItems: "center",
             }}
           >
+             <Popover
+              content={filterContent}
+              trigger="click"
+              open={open}
+              onOpenChange={handleOpenChange}
+              placement="bottomRight"
+              arrow={false}
+            >
+              <Button
+                style={{
+                  padding: "8px 11px",
+                  height: "auto",
+                  borderRadius:"50px",
+                  backgroundColor: "#7cc059",
+                }}
+              >
+                <FaFilter style={{ fontSize: "16px", color: "white" }} />
+              </Button>
+            </Popover>
+            &emsp;
             <Input
               style={{ width: "250px" }}
               className="mainInput dashInput"
@@ -361,33 +376,16 @@ function QueriesManagement() {
                     cursor: "pointer",
                   }}
                   onClick={() =>
-                    getServiceProviders(1, paginationConfig.limit, filter.keyword)
+                    getQueries(1, paginationConfig.limit, filter.keyword)
                   }
                 />
               }
               onPressEnter={(e) =>
-                getServiceProviders(1, paginationConfig.limit, filter.keyword)
+                getQueries(1, paginationConfig.limit, filter.keyword)
               }
             />
-            &emsp;
-            <Popover
-              content={filterContent}
-              trigger="click"
-              open={open}
-              onOpenChange={handleOpenChange}
-              placement="bottomRight"
-              arrow={false}
-            >
-              <Button
-                style={{
-                  padding: "10px 15px",
-                  height: "auto",
-                  backgroundColor: "#203453",
-                }}
-              >
-                <FaFilter style={{ fontSize: "16px", color: "white" }} />
-              </Button>
-            </Popover>
+            
+           
           </Col>
         </Row>
 

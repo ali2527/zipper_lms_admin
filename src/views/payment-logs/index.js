@@ -226,7 +226,7 @@ function PaymentLogs() {
   const getPaymentLogs = async (pageNumber, pageSize, search, reset = false) => {
     setLoading(true);
     try {
-      const response = await Get(PAYMENT.getAllSubscriptionPayments, token, {
+      const response = await Get(PAYMENT.get, token, {
         page: pageNumber
           ? pageNumber.toString()
           : paginationConfig.pageNumber.toString(),
@@ -312,25 +312,55 @@ function PaymentLogs() {
       render: (value, item, index) => (index < 9 && "0") + (index + 1),
     },
     {
-      title: "USER NAME	",
+      title: "Lesson ID	",
+      dataIndex: "lesson",
+      key: "lesson",
+      render: (value, item, index) => value?.lessonId,
+    },
+    {
+      title: "Learner Name",
       dataIndex: "payee",
       key: "payee",
-      render: (value, item, index) => value?.fullName,
+      render: (item) => item?.firstName + " " + item?.lastName,
     },
     {
-      title: "PACKAGE NAME	",
-      dataIndex: "payee",
-      key: "payee",
-      render: (value, item, index) => item?.subscription?.plan?.title,
+      title: "Lesson Type",
+      dataIndex: "lesson",
+      key: "lesson",
+      render: (item) => item?.lessonType,
     },
     {
-      title: "AMOUNT",
-      dataIndex: "subscription",
-      key: "subscription",
-      render: (value, item, index) => <>${value?.amount}</>,
+      title: "Tutor/Coach ID",
+      dataIndex: "lesson",
+      key: "lesson",
+      render: (item) => item?.coach.coachId,
     },
     {
-      title: "PAID ON",
+      title: "Tutor/Coach Name",
+      dataIndex: "lesson",
+      key: "lesson",
+      render: (item) => item?.coach.firstName + " " + item?.coach.lastName,
+    },
+    {
+      title: "No of Lessons",
+      dataIndex: "lesson",
+      key: "lesson",
+      render: (item) => item?.noOfLesson,
+    },
+    {
+      title: "Lesson Date",
+      dataIndex: "lesson",
+      key: "lesson",
+      render: (item) => <span>{dayjs(item.lessonDate).format("M/D/YYYY")}</span>,
+    },
+    {
+      title: "Recieved Amount",
+      dataIndex: "amount",
+      key: "amount",
+      render: (item) => <>${item}</>,
+    },
+    {
+      title: "Receiving Date",
       dataIndex: "createdAt",
       key: "createdAt",
       render: (item) => <span>{dayjs(item).format("M/D/YYYY")}</span>,
@@ -506,6 +536,7 @@ function PaymentLogs() {
   );
   return (
     <Layout className="configuration">
+      <div className="boxDetails2">
       <Row style={{ padding: "10px 20px",display:'flex',justifyContent:'space-between' }}>
           <h1 className="pageTitle">Payment Logs</h1>
           <Radio.Group
@@ -517,12 +548,12 @@ function PaymentLogs() {
           marginBottom: 8,
         }}
       >
-        <Radio.Button value="subscription">Subscription</Radio.Button>
-        <Radio.Button value="contest">Contest</Radio.Button>
+        <Radio.Button value="subscription">Recieved Payment</Radio.Button>
+        <Radio.Button value="contest">Paid Payment</Radio.Button>
       </Radio.Group>
 
         </Row>
-      {mode =="subscription" ? <div className="boxDetails2">
+      {mode =="subscription" ? <div className="">
         
 
         <Row style={{ padding: "10px 20px" }}>
@@ -643,7 +674,7 @@ function PaymentLogs() {
           </Col>
         </Row>
         <br />
-      </div> : <div className="boxDetails2">
+      </div> : <div className="">
         
 
         <Row style={{ padding: "10px 20px" }}>
@@ -765,6 +796,7 @@ function PaymentLogs() {
         </Row>
         <br />
       </div>}
+      </div>
       <br />
     
     </Layout>

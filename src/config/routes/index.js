@@ -28,8 +28,6 @@ import LessonDetails from "../../views/lesson-details";
 import Calander from "../../views/calander"
 import PaymentLogs from "../../views/payment-logs";
 import PaymentAndBooking from "../../views/booking-and-payment-details";
-import FeedbackManagement from "../../views/feedback-management";
-import FeedbackDetails from "../../views/feedback-management/feedbackDetails";
 import Notifications from "../../views/notifications";
 import MyNotifications from "../../views/myNotifications"
 import NotificationDetails from "../../views/notifications/notificationDetails";
@@ -38,8 +36,7 @@ import QueryDetails from "../../views/queries-management/queryDetails";
 import Dashboard from "../../views/dashboard";
 import Profile from "../../views/profile";
 import ChangePassword from "../../views/change-password"
-import Posts from "../../views/posts";  
-import Gallery from "../../views/gallery"
+
 
 
 //components imports
@@ -352,41 +349,6 @@ const MyRouter = () => {
           }
         />
 
-
-         <Route
-          path="/posts/:id"
-          index
-          element={
-            <UserAuthCheck>
-              <ClientLayout
-                head={{
-                  title: "Posts",
-                  description: "Some Description.",
-                }}
-              >
-                <Posts />
-              </ClientLayout>
-            </UserAuthCheck>
-          }
-        />
-
-<Route
-          path="/gallery/:id"
-          index
-          element={
-            <UserAuthCheck>
-              <ClientLayout
-                head={{
-                  title: "Posts",
-                  description: "Some Description.",
-                }}
-              >
-                <Gallery />
-              </ClientLayout>
-            </UserAuthCheck>
-          }
-        />
-
         <Route
           path="/service-provider-management"
           index
@@ -421,7 +383,7 @@ const MyRouter = () => {
         />
 
 
-        <Route
+        {/* <Route
           path="/feedback-management"
           index
           element={
@@ -452,7 +414,7 @@ const MyRouter = () => {
               </ClientLayout>
             </UserAuthCheck>
           }
-        />
+        /> */}
 
         <Route
           path="/subscription-management"

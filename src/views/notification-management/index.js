@@ -237,7 +237,7 @@ function FeedbackManagement() {
       render: (item) => (
         <FaEye
           style={{ fontSize: "16px", color: "#203453",  cursor: "pointer" }}
-             onClick={() => navigate("/feedback-management/" + item )}
+             onClick={() => navigate("/query-management/" + item )}
         />
       ),
     },

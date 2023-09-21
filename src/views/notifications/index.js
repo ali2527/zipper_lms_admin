@@ -46,7 +46,7 @@ function Notifications() {
   const navigate = useNavigate();
 
   const [filter, setFilter] = useState({
-    status: null,
+    type: null,
     keyword: "",
     from: null,
     to: null,
@@ -82,16 +82,16 @@ function Notifications() {
     });
   };
 
-  const handleStatusChange = (value) => {
+  const handleTypeChange = (value) => {
     setFilter({
       ...filter,
-      status: value,
+      type: value,
     });
   };
 
   const resetFilter = () => {
     setFilter({
-      status: null,
+      type: null,
       keyword: "",
       from: null,
       to: null,
@@ -160,7 +160,7 @@ function Notifications() {
         limit: pageSize
           ? pageSize.toString()
           : paginationConfig.limit.toString(),
-        status: reset ? "" : filter.status || null,
+        type: reset ? "" : filter.type || null,
         keyword: search ? search : null,
         from: reset ? "" : filter?.from ? filter?.from.toISOString() : "",
         to: reset ? "" : filter?.to ? filter?.to.toISOString() : "",
@@ -254,7 +254,7 @@ function Notifications() {
       <hr style={{ margin: 0 }} />
 
       <div className="filterDropdownBody">
-        <p className="mainLabel">Creation Date:</p>
+        <p className="mainLabel">Notification Date:</p>
         <DatePicker
           className="mainInput filterInput"
           value={filter.from}
@@ -266,24 +266,26 @@ function Notifications() {
           onChange={(e) => handleTo(e)}
         />
 
-        <p className="mainLabel">Filter by Status:</p>
+        <p className="mainLabel">Filter by Type:</p>
 
         <Select
           size={"large"}
           className="filterSelectBox"
-          placeholder="Select Status"
-          value={filter.status}
-          onChange={(e) => handleStatusChange(e)}
+          placeholder="Select Type"
+          value={filter.type}
+          onChange={(e) => handleTypeChange(e)}
           style={{
             width: "100%",
             marginBottom: "10px",
             textAlign: "left",
           }}
           options={[
-            { value: "active", label: "Active" },
-            { value: "inactive", label: "Inactive" },
+            { value: "NOTIFICATION", label: "Noitification" },
+            { value: "ANNOUNCEMENT", label: "Announcement" },
+            { value: "ALERT", label: "Alert" },
           ]}
         />
+
 
         <Button
           type="primary"
@@ -374,6 +376,27 @@ function Notifications() {
               alignItems: "center",
             }}
           >
+           
+            <Popover
+              content={filterContent}
+              trigger="click"
+              open={open}
+              onOpenChange={handleOpenChange}
+              placement="bottomRight"
+              arrow={false}
+            >
+              <Button
+                style={{
+                 padding: "8px 11px",
+                  height: "auto",
+                  borderRadius:"50px",
+                  backgroundColor: "#7cc059",
+                }}
+              >
+                <FaFilter style={{ fontSize: "16px", color: "white" }} />
+              </Button>
+            </Popover>
+            &emsp;
             <Input
               style={{ width: "250px" }}
               className="mainInput dashInput"
@@ -395,25 +418,7 @@ function Notifications() {
                 getNotifications(1, paginationConfig.limit, filter.keyword)
               }
             />
-            &emsp;
-            <Popover
-              content={filterContent}
-              trigger="click"
-              open={open}
-              onOpenChange={handleOpenChange}
-              placement="bottomRight"
-              arrow={false}
-            >
-              <Button
-                style={{
-                  padding: "10px 15px",
-                  height: "auto",
-                  backgroundColor: "#203453",
-                }}
-              >
-                <FaFilter style={{ fontSize: "16px", color: "white" }} />
-              </Button>
-            </Popover>
+            
           </Col>
         </Row>
 

@@ -126,7 +126,7 @@ export const CONTEST = {
 
 
   export const PAYMENT = {
-    get: "/payment",
+    get: "/payment/getAllPayments",
     getOne: "/payment/",
     getAllSubscriptionPayments:"/admin/payment/getAllSubscriptionPayments",
     getAllContestPayments:"/admin/payment/getAllContestPayments"
@@ -143,8 +143,8 @@ export const CONTEST = {
   };
   
   export const QUERY = {
-    get: "/query",
-    getOne: "/query/queryById/",
+    get: "/query/getAllQueries",
+    getOne: "/query/getQueryById/",
   };
 
   export const ARTICLE = {

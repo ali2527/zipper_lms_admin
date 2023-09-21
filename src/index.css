@@ -532,6 +532,45 @@ padding:0!important;
 box-shadow: 0px 4px 22px 0px rgba(0, 0, 0, 0.07)!important;
 }
 
+.radioSelector .ant-radio-button-checked{
+background-color: #7cc059;
+border:1px solid #7cc059;
+
+  color: white!important;
+}
+
+.radioSelector .ant-radio-button-checked input{
+    color: white!important;
+  }
+
+.radioSelector .ant-radio-button-wrapper{
+  font-weight: bold;
+  padding: 5px 50px;
+  height: auto;
+  border: none;
+}
+
+
+.radioSelector .ant-radio-button-wrapper{
+  border:1px solid #dadada;
+  overflow: hidden;
+}
+
+.radioSelector .ant-radio-button-wrapper-checked{
+  border:1px solid #7CC059!important;
+  color:white!important;
+}
+
+.radioSelector .ant-radio-button-wrapper-checked:hover{
+  border:1px solid #7CC059!important;
+  color:white!important;
+}
+
+.radioSelector .ant-radio-button-wrapper:hover{
+  color:white;
+  background-color: #203453;
+}
+
 
 .tutorDetailCard .ant-card-body{
   padding: 0px;
