@@ -85,24 +85,24 @@ const sideNavItems = [
     label: "Calander",
     path: "/calander",
   },
-  // {
-  //   key: 10,
-  //   icon: <SlWallet style={{fontSize:18}}/>,
-  //   label: "Payment Logs",
-  //   path: "/feedback-management",
-  // },
-  // {
-  //   key: 11,
-  //   icon: <BiNotification style={{fontSize:18}}/>,
-  //   label: "Push Notifications",
-  //   path: "/feedback-management",
-  // },
-  // {
-  //   key: 12,
-  //   icon: <BsQuestionSquare style={{fontSize:18}}/>,
-  //   label: "Queries",
-  //   path: "/feedback-management",
-  // },
+  {
+    key: 10,
+    icon: <SlWallet style={{fontSize:18}}/>,
+    label: "Payment Logs",
+    path: "/payment-logs",
+  },
+  {
+    key: 11,
+    icon: <BiNotification style={{fontSize:18}}/>,
+    label: "Push Notifications",
+    path: "/notifications",
+  },
+  {
+    key: 12,
+    icon: <BsQuestionSquare style={{fontSize:18}}/>,
+    label: "Queries",
+    path: "/queries-management",
+  },
 
 ]
 
@@ -253,15 +253,17 @@ const ClientLayout = ({ children, head }) => {
   const [visible2, setVisible2] = useState(false);
   const [selectedItem, setSelectedItem] = useState("1");
   const navigate = useNavigate();
-
+  const path = window.location.pathname;
   useLayoutEffect(() => {
     // get the path and set selected item to key of the path that matches
-    const path = window.location.pathname;
+    
     const item = sideNavItems.find((item) => item.path == path);
     if (item) {
       setSelectedItem(item.key.toString());
+    }else{
+      setSelectedItem("")
     }
-  }, []);
+  }, [path]);
 
   let title = head?.title ? head?.title : "";
   if (title) {

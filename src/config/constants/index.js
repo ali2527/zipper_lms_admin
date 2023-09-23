@@ -1,12 +1,14 @@
 export const SITE_NAME = "Zipper LMS"
 
-// export const BASE_URL = "http://localhost:3002/api"
-// export const UPLOAD_URL = "http://localhost:3002/Uploads/"
+export const BASE_URL = "http://localhost:3002/api"
+export const UPLOAD_URL = "http://localhost:3002/Uploads/"
+export const UPLOAD_URL2 = "http://localhost:3002/"
+export const SOCKET_URL = "http://localhost:3002"
 
 
 
-export const BASE_URL = "https://secure.demo243.webhostlabs.net:3002/api/"
-export const UPLOAD_URL = "https://secure.demo243.webhostlabs.net:3002/Uploads/"
+// export const BASE_URL = "https://secure.demo243.webhostlabs.net:3002/api/"
+// export const UPLOAD_URL = "https://secure.demo243.webhostlabs.net:3002/Uploads/"
 
 
 
@@ -125,21 +127,25 @@ export const CONTEST = {
 
 
   export const PAYMENT = {
-    get: "/payment",
+    get: "/payment/getAllPayments",
     getOne: "/payment/",
     getAllSubscriptionPayments:"/admin/payment/getAllSubscriptionPayments",
     getAllContestPayments:"/admin/payment/getAllContestPayments"
   };
 
   export const NOTIFICATION = {
-    get: "/notification/getAllAlertsAndNotifications",
-    getOne: "/notification/notificationDetail/",
+    get: "/notification/getAllNotifications",
+    getOne: "/notification/getNotificationById/",
     create: "/notification/createAlertOrAnnoucement",
+    sendPushNotification:"/notification/sendPushNotification",
+    getAllAdminNotifications:"/notification/getAllAdminNotifications",
+    getUnreadAdminNotifications:"/notification/getUnreadAdminNotifications",
+    toggleNotification:"/notification/toggleNotification/"
   };
   
   export const QUERY = {
-    get: "/query",
-    getOne: "/query/queryById/",
+    get: "/query/getAllQueries",
+    getOne: "/query/getQueryById/",
   };
 
   export const ARTICLE = {

@@ -22,7 +22,7 @@ import dayjs from "dayjs";
 import { UserOutlined, InfoCircleOutlined } from "@ant-design/icons";
 import { FaCaretDown, FaFilter, FaArrowLeft } from "react-icons/fa";
 import { Get } from "../../config/api/get";
-import { UPLOAD_URL, QUERY } from "../../config/constants";
+import { UPLOAD_URL, FEEDBACK } from "../../config/constants";
 import { useNavigate, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 
@@ -36,31 +36,49 @@ const days = [
   "Saturday",
 ];
 
-function QueryDetails() {
+function SPDetails() {
   const navigate = useNavigate();
   const token = useSelector((state) => state.user.userToken);
-    const [loading, setLoading] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
   const { id } = useParams();
-  const [query, setQuery] = useState(null);
+  const [feedback, setFeedback] = useState(null);
 
   useEffect(() => {
-    getQuery();
+    getFeedback();
   }, []);
 
-  const getQuery = async () => {
+  const getFeedback = async () => {
     setLoading(true);
-    const response = await Get(
-      `${QUERY.getOne}${id}`,
+    const feedback = await Get(
+      `${FEEDBACK.getOne}${id}`,
       token
     );
 
-    setQuery(response?.data?.query);
+    setFeedback(feedback);
     setLoading(false);
+  };
+
+  const handleStatus = async () => {
+    try {
+      const response = await Get(
+        FEEDBACK.toggleStatus + "/" + feedback._id,
+        token,
+        {}
+      );
+      const newUser = { ...feedback };
+
+      newUser.isActive = !feedback.isActive;
+      setModalOpen(false);
+      setFeedback(newUser);
+    } catch (error) {
+      console.log(error.message);
+    }
   };
 
   return (
     <Layout className="configuration">
-      <div className="boxDetails2">
+      <div className="boxDetails">
         <Row style={{ padding: "10px 20px" }}>
           <Col
             xs={24}
@@ -73,7 +91,7 @@ function QueryDetails() {
             />
             &emsp;
             <h1 className="pageTitle" style={{ margin: 0 }}>
-              Query Details
+              Feedback Details
             </h1>
           </Col>
          
@@ -94,21 +112,20 @@ function QueryDetails() {
         )
             }
 
-            {!loading && query && (<>
+            {!loading && feedback && (<>
 
         <Row style={{ padding: "20px" }}>
           <Col xs={24} md={16}>
             <Row style={{ padding: "10px" }}>
-
-              <Col xs={24} md={24}>
-              <h5
+              <Col xs={24} md={12}>
+                <h5
                   style={{
                     display: "block",
                     fontSize: 16,
                     fontWeight: "normal",
                   }}
                 >
-                  Full Name{" "}
+                  Name{" "}
                 </h5>
                 <h5
                   style={{
@@ -118,12 +135,10 @@ function QueryDetails() {
                     fontWeight: "normal",
                   }}
                 >
-                  {query?.name}
+                  {feedback?.name}
                 </h5>
               </Col>
-            </Row>
-            <Row style={{ padding: "10px" }}>
-              <Col xs={24} md={24}>
+              <Col xs={24} md={12}>
               <h5
                   style={{
                     display: "block",
@@ -141,14 +156,33 @@ function QueryDetails() {
                     fontWeight: "normal",
                   }}
                 >
-                  {query?.email}
+                  {feedback?.email}
                 </h5>
               </Col>
             </Row>
-
-
             <Row style={{ padding: "10px" }}>
-            <Col xs={24} md={12}>
+              <Col xs={24} md={12}>
+              <h5
+                  style={{
+                    display: "block",
+                    fontSize: 16,
+                    fontWeight: "normal",
+                  }}
+                >
+                  Phone Number{" "}
+                </h5>
+                <h5
+                  style={{
+                    display: "block",
+                    fontSize: 16,
+                    color: "#7a7e7f",
+                    fontWeight: "normal",
+                  }}
+                >
+                  {feedback?.phone}
+                </h5>
+              </Col>
+              <Col xs={24} md={12}>
               <h5
                   style={{
                     display: "block",
@@ -166,7 +200,7 @@ function QueryDetails() {
                     fontWeight: "normal",
                   }}
                 >
-                  {query?.subject}
+                  {feedback?.subject}
                 </h5>
               </Col>
             </Row>
@@ -190,7 +224,7 @@ function QueryDetails() {
                     fontWeight: "normal",
                   }}
                 >
-                  {query?.message}
+                  {feedback?.message}
                 </h5>
               </Col>
             
@@ -208,11 +242,62 @@ function QueryDetails() {
         <br />
       </div>
 
-     
+      <Modal
+        open={modalOpen}
+        onOk={() => handleStatus()}
+        onCancel={() => setModalOpen(false)}
+        okText="Yes"
+        className="StyledModal"
+        style={{
+          left: 0,
+          right: 0,
+          marginLeft: "auto",
+          marginRight: "auto",
+          textAlign: "center",
+        }}
+        cancelText="No"
+        cancelButtonProps={{
+          style: {
+            border: "2px solid #203453",
+            color: "#203453",
+            height: "auto",
+            padding: "6px 35px",
+            borderRadius: "50px",
+            fontSize: "16px",
+            marginTop: "15px",
+          },
+        }}
+        okButtonProps={{
+          style: {
+            backgroundColor: "#203453",
+            color: "white",
+            marginTop: "15px",
+            height: "auto",
+            padding: "5px 35px",
+            borderRadius: "50px",
+            fontSize: "16px",
+            border: "2px solid #203453",
+          },
+        }}
+      >
+        <Image
+          src="../images/question.png"
+          preview={false}
+          width={100}
+          height={120}
+        />
+        <Typography.Title level={4} style={{ fontSize: "25px" }}>
+          {feedback?.isActive ? "Deactivate" : "Activate"}
+        </Typography.Title>
+        <Typography.Text style={{ fontSize: 16 }}>
+        Do You Want To  {feedback?.isActive ? "Deactivate" : "Activate"} This User?
+        </Typography.Text>
+      </Modal>
+
 
       <br />
       <br />
     </Layout>
   );
 }
-export default QueryDetails;
+export default SPDetails;

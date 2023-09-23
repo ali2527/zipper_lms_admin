@@ -40,7 +40,7 @@ const sideNavItems = [
     key: 5,
     icon: "/images/dside-icon/5.png",
     label: "Feedback Management",
-    path: "/feedback-management",
+    path: "/query-management",
   },
   {
     key: 6,
