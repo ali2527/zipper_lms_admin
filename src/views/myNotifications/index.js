@@ -232,13 +232,13 @@ function Notifications() {
   }, []);
 
   useEffect(() => {
-    socket.on("notification", (notification) => {
+    socket.on("notificationAll", (notification) => {
       getAllNotifications();
     });
 
     // Don't forget to remove the event listener when the component unmounts
     return () => {
-      socket.off("notification");
+      socket.off("notificationAll");
     };
   }, []);
 
