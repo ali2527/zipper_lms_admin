@@ -26,10 +26,12 @@ import side5 from  "../../assets/images/property-management.png"
 import side6 from  "../../assets/images/chat.png"
 import logo from "../../assets/images/logo.png"
 import { HiOutlineSquares2X2,HiOutlineDocumentText,HiOutlineCalendar } from "react-icons/hi2";
-import {FiUser,FiMonitor} from "react-icons/fi"
-import {BsClipboard,BsChatLeft,BsQuestionSquare} from "react-icons/bs"
+import {FiUser,FiMonitor,FiBook} from "react-icons/fi"
+import {PiBooksLight} from "react-icons/pi"
+import {BsClipboard,BsChatLeft,BsQuestionSquare,BsPersonVideo} from "react-icons/bs"
 import {TfiLayoutListThumb} from "react-icons/tfi"
 import {CgPlayListCheck} from "react-icons/cg"
+import {SiTestcafe} from "react-icons/si"
 import {SlWallet} from "react-icons/sl"
 import {BiNotification,BiListCheck} from "react-icons/bi"
 const { Header, Content, Sider } = Layout;
@@ -101,6 +103,24 @@ const sideNavItems = [
     key: 12,
     icon: <BsQuestionSquare style={{fontSize:18}}/>,
     label: "Queries",
+    path: "/queries-management",
+  },
+  {
+    key: 13,
+    icon: <PiBooksLight style={{fontSize:22}}/>,
+    label: "Courses",
+    path: "/course-management",
+  },
+  {
+    key: 14,
+    icon: <BsPersonVideo style={{fontSize:20}}/>,
+    label: "Lectures",
+    path: "/queries-management",
+  },
+  {
+    key: 15,
+    icon: <SiTestcafe style={{fontSize:22}}/>,
+    label: "Quizes",
     path: "/queries-management",
   },
 

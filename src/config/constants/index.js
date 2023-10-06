@@ -105,7 +105,7 @@ export const CONTEST = {
   };
 
   export const CATEGORIES = {
-    get: "/category/GetAllCategoriesNew",
+    getAllcategories: "/category/getAllcategories",
     getOne: "/category/admin/",
     toggleStatus: "/category/toggleActiveInActive",
     edit:"/category/edit/",
@@ -115,6 +115,15 @@ export const CONTEST = {
     get: "/contact",
     getOne: "/contact/feedbackById/",
   };
+
+
+  export const COURSE = {
+    addCourse:"/course/addCourse",
+    getAllCourses: "/course/getAllCourses",
+    getCourseById: "/course/getCourseById/",
+    updateCourse:"/course/updateCourse/"
+  };
+
 
 
   export const SUBSCRIPTION = {

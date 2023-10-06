@@ -36,8 +36,9 @@ import QueryDetails from "../../views/queries-management/queryDetails";
 import Dashboard from "../../views/dashboard";
 import Profile from "../../views/profile";
 import ChangePassword from "../../views/change-password"
-
-
+import CourseManagement from  "../../views/course-management"
+import CourseDetails from "../../views/course-management/courseDetails";
+import CourseAdd from "../../views/course-management/courseAdd"
 
 //components imports
 import UserAuthCheck from "../../components/AuthCheck/UserAuthCheck";
@@ -550,6 +551,59 @@ const MyRouter = () => {
             </UserAuthCheck>
           }
         />
+
+<Route
+          path="/course-management"
+          index
+          element={
+            <UserAuthCheck>
+              <ClientLayout
+                head={{
+                  title: "Course Management",
+                  description: "Some Description.",
+                }}
+              >
+                <CourseManagement />
+              </ClientLayout>
+            </UserAuthCheck>
+          }
+        />
+
+
+<Route
+          path="/course-details/:id"
+          index
+          element={
+            <UserAuthCheck>
+              <ClientLayout
+                head={{
+                  title: "Course Details",
+                  description: "Some Description.",
+                }}
+              >
+                <CourseDetails />
+              </ClientLayout>
+            </UserAuthCheck>
+          }
+        />
+
+<Route
+          path="/course-details/add"
+          index
+          element={
+            <UserAuthCheck>
+              <ClientLayout
+                head={{
+                  title: "Course Add",
+                  description: "Some Description.",
+                }}
+              >
+                <CourseAdd />
+              </ClientLayout>
+            </UserAuthCheck>
+          }
+        />
+
 
         {/* <Route
           path="/booking-and-payment-details"
