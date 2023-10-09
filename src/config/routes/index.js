@@ -40,8 +40,9 @@ import CourseManagement from  "../../views/course-management"
 import CourseDetails from "../../views/course-management/courseDetails";
 import CourseAdd from "../../views/course-management/courseAdd"
 import Category from "../../views/course-management/category"
-
-
+import LectureManagement from "../../views/lecture-management"
+import LectureDetails from "../../views/lecture-management/lectureDetails"
+import LectureAdd from "../../views/lecture-management/lectureAdd"
 
 //components imports
 import UserAuthCheck from "../../components/AuthCheck/UserAuthCheck";
@@ -555,6 +556,59 @@ const MyRouter = () => {
             </UserAuthCheck>
           }
         />
+
+<Route
+          path="/lecture-management"
+          index
+          element={
+            <UserAuthCheck>
+              <ClientLayout
+                head={{
+                  title: "Lecture Management",
+                  description: "Some Description.",
+                }}
+              >
+                <LectureManagement />
+              </ClientLayout>
+            </UserAuthCheck>
+          }
+        />
+
+<Route
+          path="/lecture-details/:id"
+          index
+          element={
+            <UserAuthCheck>
+              <ClientLayout
+                head={{
+                  title: "Lecture Details",
+                  description: "Some Description.",
+                }}
+              >
+                <LectureDetails />
+              </ClientLayout>
+            </UserAuthCheck>
+          }
+        />
+
+<Route
+          path="/lecture-details/add"
+          index
+          element={
+            <UserAuthCheck>
+              <ClientLayout
+                head={{
+                  title: "Lecture Add",
+                  description: "Some Description.",
+                }}
+              >
+                <LectureAdd />
+              </ClientLayout>
+            </UserAuthCheck>
+          }
+        />
+
+
 
 
 <Route

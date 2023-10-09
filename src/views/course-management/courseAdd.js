@@ -379,7 +379,7 @@ preview={false}
            className="signupSelectBox"
         >
           {categories.map((item,index) => {
-            return(<Option value={item._id}>{item.title}</Option>)
+            return(<Option disabled={item.status !== "ACTIVE"} value={item._id}>{item.title}</Option>)
           })}
 
         </Select>

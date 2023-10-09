@@ -108,8 +108,15 @@ export const CONTEST = {
     getAllcategories: "/category/getAllcategories",
     addCategory: "/category/addCategory",
     updateCategory: "/category/updateCategory/",
-    toggleStatus: "/category/toggleActiveInActive",
+    toggleStatus: "/category/toggleStatus/",
     edit:"/category/edit/",
+  };
+
+  export const LECTURES = {
+    getAllLectures: "/lecture/getAllLectures",
+    getLectureById:"/lecture/getLectureById/",
+    updateLecture:"/lecture/updateLecture/",
+    addLecture:"/lecture/addLecture"
   };
 
   export const FEEDBACK = {

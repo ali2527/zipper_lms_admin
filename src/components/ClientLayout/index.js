@@ -115,14 +115,14 @@ const sideNavItems = [
     key: 14,
     icon: <BsPersonVideo style={{fontSize:20}}/>,
     label: "Lectures",
-    path: "/queries-management",
+    path: "/lecture-management",
   },
-  {
-    key: 15,
-    icon: <SiTestcafe style={{fontSize:22}}/>,
-    label: "Quizes",
-    path: "/queries-management",
-  },
+  // {
+  //   key: 15,
+  //   icon: <SiTestcafe style={{fontSize:22}}/>,
+  //   label: "Quizes",
+  //   path: "/queries-management",
+  // },
 
 ]
 
