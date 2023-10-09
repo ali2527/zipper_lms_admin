@@ -39,6 +39,9 @@ import ChangePassword from "../../views/change-password"
 import CourseManagement from  "../../views/course-management"
 import CourseDetails from "../../views/course-management/courseDetails";
 import CourseAdd from "../../views/course-management/courseAdd"
+import Category from "../../views/course-management/category"
+
+
 
 //components imports
 import UserAuthCheck from "../../components/AuthCheck/UserAuthCheck";
@@ -384,39 +387,6 @@ const MyRouter = () => {
         />
 
 
-        {/* <Route
-          path="/feedback-management"
-          index
-          element={
-            <UserAuthCheck>
-              <ClientLayout
-                head={{
-                  title: "User Management",
-                  description: "Some Description.",
-                }}
-              >
-                <FeedbackManagement />
-              </ClientLayout>
-            </UserAuthCheck>
-          }
-        />
-        <Route
-          path="/feedback-management/:id"
-          index
-          element={
-            <UserAuthCheck>
-              <ClientLayout
-                head={{
-                  title: "Service Provider Management",
-                  description: "Some Description.",
-                }}
-              >
-                <FeedbackDetails />
-              </ClientLayout>
-            </UserAuthCheck>
-          }
-        /> */}
-
         <Route
           path="/subscription-management"
           index
@@ -479,6 +449,23 @@ const MyRouter = () => {
                 }}
               >
                 <PaymentLogs />
+              </ClientLayout>
+            </UserAuthCheck>
+          }
+        />
+
+<Route
+          path="/category"
+          index
+          element={
+            <UserAuthCheck>
+              <ClientLayout
+                head={{
+                  title: "Category",
+                  description: "Some Description.",
+                }}
+              >
+                <Category />
               </ClientLayout>
             </UserAuthCheck>
           }

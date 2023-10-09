@@ -25,15 +25,19 @@ import { UserOutlined, InfoCircleOutlined } from "@ant-design/icons";
 import { FaSearch, FaFilter, FaCaretDown, FaEye } from "react-icons/fa";
 import ClientLayout from "../../components/ClientLayout";
 import { Get } from "../../config/api/get";
-import { COURSE } from "../../config/constants";
+import { COURSE ,CATEGORIES } from "../../config/constants";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+const { Option } = Select;
+
+
 
 function CourseManagement() {
   const token = useSelector((state) => state.user.userToken);
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
+  const [categories, setCategories] = useState([]);
   const [selectedIndex, setSelectedIndex] = useState(null);
   const [selectedUser, setSelectedUser] = useState(null);
   const [courses, setCourses] = useState([]);
@@ -62,8 +66,24 @@ function CourseManagement() {
 
   useEffect(() => {
     getCourses();
+    getCategories();
   }, []);
 
+
+  const getCategories = async () => {
+    setLoading(true);
+    const res = await Get(
+      `${CATEGORIES.getAllcategories}`,
+      token,{
+        limit:"100"
+      }
+    );
+
+    console.log("<<<<>>>>>",res)
+
+    setCategories(res.data.docs);
+    setLoading(false);
+  };
   
 
   const handlePageChange = (pageNumber) => {
@@ -85,13 +105,13 @@ function CourseManagement() {
   const handleStatusChange = (value) => {
     setFilter({
       ...filter,
-      status: value,
+      category: value,
     });
   };
 
   const resetFilter = () => {
     setFilter({
-      status: null,
+      category: "",
       keyword: "",
       from: null,
       to: null,
@@ -159,7 +179,7 @@ function CourseManagement() {
         limit: pageSize
           ? pageSize.toString()
           : paginationConfig.limit.toString(),
-        status: reset ? "" : filter.status || null,
+        category: reset ? "" : filter.category || null,
         keyword: search ? search : null,
         from: reset ? "" : filter?.from ? filter?.from.toISOString() : "",
         to: reset ? "" : filter?.to ? filter?.to.toISOString() : "",
@@ -261,7 +281,7 @@ function CourseManagement() {
       <hr style={{ margin: 0 }} />
 
       <div className="filterDropdownBody">
-        <p className="mainLabel">Creation Date:</p>
+        <p className="mainLabel">Start Date:</p>
         <DatePicker
           className="mainInput filterInput"
           value={filter.from}
@@ -273,9 +293,9 @@ function CourseManagement() {
           onChange={(e) => handleTo(e)}
         />
 
-        <p className="mainLabel">Filter by Status:</p>
+        <p className="mainLabel">Filter by Category:</p>
 
-        <Select
+        {/* <Select
           size={"large"}
           className="filterSelectBox"
           placeholder="Select Status"
@@ -290,7 +310,25 @@ function CourseManagement() {
             { value: "active", label: "Active" },
             { value: "inactive", label: "Inactive" },
           ]}
-        />
+        /> */}
+
+<Select
+           size={"large"}
+           className="filterSelectBox"
+           placeholder="Select Category"
+           value={filter.category}
+           onChange={(e) => handleStatusChange(e)}
+           style={{
+             width: "100%",
+             marginBottom: "10px",
+             textAlign: "left",
+           }}
+        >
+          {categories.map((item,index) => {
+            return(<Option value={item._id}>{item.title}</Option>)
+          })}
+
+        </Select>
 
         <Button
           type="primary"
@@ -344,10 +382,22 @@ function CourseManagement() {
               size={"large"}
               style={{ padding: "8px 40px", height: "auto" }}
               className="loginButton"
+              onClick={() => navigate("/category")}
+            >
+              Add Category
+            </Button>
+            &emsp;
+            <Button
+              type="primary"
+              shape="round"
+              size={"large"}
+              style={{ padding: "8px 40px", height: "auto" }}
+              className="loginButton"
               onClick={() => navigate("/course-details/add")}
             >
               Add Course
             </Button>
+
           </Col>
         </Row>
 

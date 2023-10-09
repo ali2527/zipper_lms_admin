@@ -106,7 +106,8 @@ export const CONTEST = {
 
   export const CATEGORIES = {
     getAllcategories: "/category/getAllcategories",
-    getOne: "/category/admin/",
+    addCategory: "/category/addCategory",
+    updateCategory: "/category/updateCategory/",
     toggleStatus: "/category/toggleActiveInActive",
     edit:"/category/edit/",
   };
