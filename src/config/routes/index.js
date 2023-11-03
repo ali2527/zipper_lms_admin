@@ -51,7 +51,7 @@ import ClientLayout from "../../components/ClientLayout";
 
 const MyRouter = () => {
   return (
-    <BrowserRouter basename="/zipperlms/zipperlmsadmin">
+    <BrowserRouter >
       <Routes>
         <Route path="/signin" index element={<Signin />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />

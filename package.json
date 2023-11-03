@@ -1,7 +1,8 @@
 {
-  "name": "connet-nest-admin",
+  "name": "zipper-lms-admin",
   "version": "0.1.0",
-  "homepage": "https://secure.demo243.webhostlabs.net/zipperlms/zipperlmsadmin",
+  "homepage": "https://admin.zipperlearning.com",
+"proxy": "https://api.zipperlearning.com/api",
   "private": true,
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.5",
