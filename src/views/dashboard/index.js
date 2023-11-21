@@ -1,4 +1,4 @@
-import React, { useState, lazy, Suspense } from "react";
+import React, { useState, lazy, Suspense,useEffect } from "react";
 import {
   Col,
   Row,
@@ -12,7 +12,7 @@ import {
   Tabs,
   Table,
   Select,
-  Image,
+  message,
   Pagination,
 } from "antd";
 import {
@@ -36,8 +36,13 @@ import ClientLayout from "../../components/ClientLayout";
 import { HiUsers,HiUser } from "react-icons/hi";
 import {IoWallet} from "react-icons/io5"
 import {FaBook } from "react-icons/fa";
+import { USERS } from "../../config/constants";
 import styles from "../../styles/Home.module.css";
 import { render } from "react-dom";
+import { useSelector } from "react-redux";
+import { Get } from "../../config/api/get";
+
+
 
 ChartJS.register(
   CategoryScale,
@@ -76,7 +81,7 @@ const options = {
         color: "#000000",
       },
       min: 0,
-      max: 100,
+      max: 1000,
     },
     x: {
       title: {
@@ -249,6 +254,114 @@ export const data2 = {
 };
 
 export default function Home() {
+  const token = useSelector((state) => state.user.userToken);
+  const [loading, setLoading] = useState(false);
+  const [counts, setCounts] = useState([]);
+  const [data1, setData1] = useState( {
+    labels: ["Nov 2015", "March 2016", "July 2017", "August 2018", "Sep 2019", "Oct 2020", "July 2021","July 2021","July 2021"],
+    datasets: [{
+      label: "Users",
+      data: [10, 20, 15, 45, 75, 35,30,12, 25 , 30],
+      fill: true,
+      backgroundColor: 'rgba(124,192,89,0.4)',
+      borderColor: '#7cc059',
+      pointRadius: 0,
+    }]
+  });
+
+
+  useEffect(() => {
+    getCounts();
+    getChartData();
+  }, []);
+
+  const getCounts = async () => {
+    setLoading(true);
+    try {
+      const response = await Get(USERS.getCounts, token);
+      setLoading(false);
+      console.log("response101", response.data);
+      if (response?.status) {
+        setCounts(response?.data);
+      } else {
+        message.error("Something went wrong!");
+        console.log("error====>", response);
+      }
+    } catch (error) {
+      console.log(error.message);
+      setLoading(false);
+    }
+  };
+
+
+  
+  const getChartData = async () => {
+    setLoading(true);
+    try {
+      const response = await Get(USERS.getChartData, token);
+      setLoading(false);
+      console.log("response101", response.data);
+      
+      // Check if response has status and data properties
+      if (response?.status && response?.data) {
+        const apiResponse = response.data;
+  
+        // Check if the necessary properties exist in the API response
+        if (apiResponse.labels && apiResponse.datasets && apiResponse.datasets[0]?.data) {
+          // Function to fill in missing months with zero data
+          const fillMissingMonths = (labels, data) => {
+            const allMonths = getPastMonths(); // Function to get an array of past 12 months
+            const filledData = allMonths.map(month => {
+              const index = labels.indexOf(month);
+              return index !== -1 ? data[index] : 0;
+            });
+            return filledData;
+          };
+  
+          // Function to get an array of past 12 months in "YYYY-MM" format
+          const getPastMonths = () => {
+            const currentMonth = new Date().toISOString().substring(0, 7);
+            const pastMonths = [];
+            for (let i = 0; i < 12; i++) {
+              const date = new Date();
+              date.setMonth(date.getMonth() - i);
+              pastMonths.push(date.toISOString().substring(0, 7));
+            }
+            return pastMonths.reverse();
+          };
+  
+          // Fill in missing months with zero data
+          const filledData = fillMissingMonths(apiResponse.labels, apiResponse.datasets[0].data);
+  
+          // Update the API response with the filled data
+          const updatedApiResponse = {
+            labels: getPastMonths().map(month => new Date(month).toLocaleString('default', { month: 'short', year: 'numeric' })),
+            datasets: [{
+              label: apiResponse.datasets[0].label,
+              data: filledData,
+              fill: apiResponse.datasets[0].fill,
+              backgroundColor: apiResponse.datasets[0].backgroundColor,
+              borderColor: apiResponse.datasets[0].borderColor,
+              pointRadius: apiResponse.datasets[0].pointRadius,
+            }]
+          };
+  
+          setData1(updatedApiResponse);
+        } else {
+          message.error("Invalid data format in the API response");
+        }
+      } else {
+        message.error("Something went wrong!");
+        console.log("error====>", response);
+      }
+    } catch (error) {
+      console.log(error.message);
+      setLoading(false);
+    }
+  };
+
+
+
   return (
     <Layout className="configuration">
   
@@ -265,18 +378,18 @@ export default function Home() {
           >
                <Col>
                 <div className="iconCircle">
-                  <HiUser style={{fontSize:"40px",color:"#E86AAF"}}/>
+                  <HiUser style={{fontSize:"35px",color:"#E86AAF"}}/>
 
                 </div>
             </Col>
             
             <Col>
               <h6 class="analyticsTextSmall" style={{ margin: 0 }}>
-            New Learner
+            New Learners
               </h6>
               <br/>
               <h6 class="analyticsText" style={{ margin: 0 }}>
-               33
+               {counts?.studentCount || 0}
               </h6>
             </Col>
          
@@ -291,18 +404,18 @@ export default function Home() {
           >
                <Col>
                 <div className="iconCircle">
-                  <HiUsers style={{fontSize:"40px",color:"#27436B"}}/>
+                  <HiUsers style={{fontSize:"35px",color:"#27436B"}}/>
 
                 </div>
             </Col>
             
             <Col>
               <h6 class="analyticsTextSmall" style={{ margin: 0 }}>
-              New Tutor/Coach
+              New Tutors/ Coaches
               </h6>
               <br/>
               <h6 class="analyticsText" style={{ margin: 0 }}>
-               33
+              {counts?.tutorCount || 0}
               </h6>
             </Col>
          
@@ -317,18 +430,18 @@ export default function Home() {
           >
                <Col>
                 <div className="iconCircle">
-                  <IoWallet style={{fontSize:"40px",color:"#7CC059"}}/>
+                  <IoWallet style={{fontSize:"35px",color:"#7CC059"}}/>
 
                 </div>
             </Col>
             
             <Col>
               <h6 class="analyticsTextSmall" style={{ margin: 0 }}>
-              Total Earning
+              Total Earnings
               </h6>
               <br/>
               <h6 class="analyticsText" style={{ margin: 0 }}>
-               33
+             $  {counts?.totalEarnings || 0}
               </h6>
             </Col>
          
@@ -343,18 +456,18 @@ export default function Home() {
           >
                <Col>
                 <div className="iconCircle">
-                  <FaBook style={{fontSize:"38px",color:"#264168"}}/>
+                  <FaBook style={{fontSize:"35px",color:"#264168"}}/>
 
                 </div>
             </Col>
             
             <Col>
               <h6 class="analyticsTextSmall" style={{ margin: 0 }}>
-              New Lesson
+              New Lessons
               </h6>
               <br/>
               <h6 class="analyticsText" style={{ margin: 0 }}>
-               33
+              {counts?.lessonCount || 0}
               </h6>
             </Col>
          
@@ -383,7 +496,7 @@ export default function Home() {
           <Row style={{minHeight:"400px", overflowX:'auto'}}>
             <div style={{minWidth:"600px", width:'100%'}}>
               
-          <Line options={options} data={data} />
+          <Line options={options} data={data1} />
             </div>
           </Row>
         </div>
@@ -428,7 +541,7 @@ export default function Home() {
             style={{ width: "100%", display: "flex", alignItems: "center" }}
           >
             <Col xs={24} md={12}>
-              <h5 class="sectionTitle">Total Learner</h5>
+              <h5 class="sectionTitle">Total Learners</h5>
             </Col>
             
           </Row>

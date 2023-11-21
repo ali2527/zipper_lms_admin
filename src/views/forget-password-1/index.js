@@ -22,6 +22,7 @@ import { AUTH } from "../../config/constants/index";
 import { addUser, removeUser } from "../../redux/slice/authSlice";
 import { FiMail, FiLock } from "react-icons/fi";
 import swal from "sweetalert";
+import logo from "../../assets/images/logo.png"
 
 
 // import router from "next/router";
@@ -42,7 +43,15 @@ function ForgetPassword() {
   return (
      
     <Layout className="AuthBackground" style={{ minHeight: "100vh" }}>
-      <Row>
+         <Row STYLE={{position:'relative'}}>
+   <div style={{position:'absolute',top:20, left:30}}>
+        <Image
+                    preview={false}
+                    alt={"Failed to load image"}
+                    src={logo}
+                    style={{ maxWidth: 120 }}
+                  />
+     </div>
         <Col xs={0} sm={0} md={14}>
         <div className="authImageBox">
           <Row style={{width:'100%',paddingRight:'20px'}} gutter={40}>
@@ -52,7 +61,7 @@ function ForgetPassword() {
             <Col xs={0} sm={6} md={6}>
             <div className="authImage2" />
             </Col>
-            <Col xs={0} sm={12} md={12}>
+            <Col xs={0} sm={6} md={6}>
             <div className="authImage3" />
             </Col>
           </Row>

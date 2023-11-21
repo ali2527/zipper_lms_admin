@@ -22,6 +22,7 @@ import { AUTH } from "../../config/constants";
 import { addUser, removeUser } from "../../redux/slice/authSlice";
 import { FiMail, FiLock } from "react-icons/fi";
 import swal from "sweetalert";
+import logo from "../../assets/images/logo.png"
 
 // import router from "next/router";
 
@@ -31,13 +32,6 @@ function Signin() {
   const user = useSelector((state) => state.user.userData);
   const token = useSelector((state) => state.user.userToken);
   const [loading, setLoading] = React.useState(false);
-
-  // useEffect if user is already logged in
-  React.useEffect(() => {
-    if (user && token) {
-      navigate("/", { replace: true });
-    }
-  }, [user, token]);
 
   const onFinish = (values) => {
     console.log("Success:", values);
@@ -52,7 +46,7 @@ function Signin() {
 
           setLoading(false);
         if (response?.data?.status) {
-          navigate("/dashboard", { replace: true });
+          navigate("/", { replace: true });
 
           dispatch(
             addUser({ user: response.data.data.user, token: response.data.data.token })
@@ -77,7 +71,15 @@ function Signin() {
 
   return (
     <Layout className="AuthBackground" style={{ minHeight: "100vh" }}>
-      <Row>
+      <Row STYLE={{position:'relative'}}>
+   <div style={{position:'absolute',top:20, left:30}}>
+        <Image
+                    preview={false}
+                    alt={"Failed to load image"}
+                    src={logo}
+                    style={{ maxWidth: 120 }}
+                  />
+     </div>
         <Col xs={0} sm={0} md={14}>
         <div className="authImageBox">
           <Row style={{width:'100%',paddingRight:'20px'}} gutter={40}>
@@ -87,7 +89,7 @@ function Signin() {
             <Col xs={0} sm={6} md={6}>
             <div className="authImage2" />
             </Col>
-            <Col xs={0} sm={12} md={12}>
+            <Col xs={0} sm={12} md={6}>
             <div className="authImage3" />
             </Col>
           </Row>
@@ -219,7 +221,7 @@ function Signin() {
                   </Form.Item>
                 </Form>
 
-                <Typography.Text
+                {/* <Typography.Text
                   className="fontFamily1"
                   style={{
                     fontSize: "14px",
@@ -230,7 +232,7 @@ function Signin() {
                   }}
                 >
                   <>Not a User? <span onClick={()=> navigate("/signup")} style={{cursor:'pointer',fontWeight:'bold',textDecoration:"underline"}}>Register Now</span></>
-                </Typography.Text>
+                </Typography.Text> */}
               </Col>
             </Row>
           </div>

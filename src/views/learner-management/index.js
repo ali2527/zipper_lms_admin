@@ -213,7 +213,7 @@ function LearnerManagement() {
       key: "email",
     },
     {
-      title: "Registeration Date",
+      title: "Registration Date",
       dataIndex: "createdAt",
       key: "createdAt",
       render: (item) => <span>{dayjs(item).format("MM/DD/YYYY")}</span>,
@@ -233,11 +233,11 @@ function LearnerManagement() {
           options={[
             {
               value: "ACTIVE",
-              label: "Active",
+              label: "Activate",
             },
             {
               value: "INACTIVE",
-              label: "Inactive",
+              label: "Deactivate",
             },
           ]}
         />

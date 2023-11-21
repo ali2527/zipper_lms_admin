@@ -133,11 +133,11 @@ function CourseAdd() {
           options={[
             {
               value: "ACTIVE",
-              label: "Active",
+              label: "Activate",
             },
             {
               value: "INACTIVE",
-              label: "Inactive",
+              label: "Deactivate",
             },
           ]}
         />

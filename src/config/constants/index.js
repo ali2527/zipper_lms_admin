@@ -39,8 +39,8 @@ export const RATES = {
 }
 
 export const COMISSSION = {
-  getComission : "/comission/getComission",
-  addComission:"/comission/addComission"
+  getCommission : "/commission/getCommission",
+  addCommission:"/commission/addCommission"
 }
 
 export const REVIEWS={
@@ -78,6 +78,10 @@ export const CONTEST = {
     getAllStudents: "/admin/user/getAllStudents",
     getStudentById: "/admin/user/getStudentById/",
     toggleStatus: "/admin/user/toggleStatus/",
+    deleteStudent: "/admin/user/deleteStudent/",
+    deleteTutor: "/admin/user/deleteTutor/",
+    getCounts: "/admin/user/getCounts",
+    getChartData:"/admin/user/getChartData"
   };
 
   export const LESSON = {

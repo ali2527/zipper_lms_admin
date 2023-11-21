@@ -240,11 +240,11 @@ function SpManagement() {
           options={[
             {
               value: "active",
-              label: "Active",
+              label: "Activate",
             },
             {
               value: "inactive",
-              label: "Inactive",
+              label: "Deactivate",
             },
           ]}
         />

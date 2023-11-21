@@ -54,8 +54,8 @@ const sideNavItems = [
   {
     key: 4,
     icon: <HiOutlineDocumentText style={{fontSize:20}}/>,
-    label: "Comission Management",
-    path: "/comission-management",
+    label: "Commission Management",
+    path: "/commission-management",
   },
   {
     key: 5,
@@ -75,12 +75,12 @@ const sideNavItems = [
     label: "Completed Lessons",
     path: "/completed-lessons",
   },
-  {
-    key: 8,
-    icon: <BiListCheck style={{fontSize:28}}/>,
-    label: "Submitted Lessons",
-    path: "/submitted-lessons",
-  },
+  // {
+  //   key: 8,
+  //   icon: <BiListCheck style={{fontSize:28}}/>,
+  //   label: "Submitted Lessons",
+  //   path: "/submitted-lessons",
+  // },
   {
     key: 9,
     icon: <HiOutlineCalendar style={{fontSize:20}}/>,

@@ -1313,8 +1313,8 @@ select.mainInput {
 }
 .iconCircle{
     background-color: #FFFFFF;
-    height: 70px;
-    width: 70px;
+    height: 60px;
+    width: 60px;
     border-radius: 500px;
     display: flex;
     flex-direction: column;
@@ -1343,7 +1343,7 @@ select.mainInput {
 }
 
 .analyticsTextSmall {
-    font-size: 18px;
+    font-size: 16px;
     font-weight: bolder;
     font-family: 'Nunito', sans-serif!important;
     color:black;

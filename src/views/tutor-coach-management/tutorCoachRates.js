@@ -19,7 +19,7 @@ function CoachRates() {
     tutoringRate: 0,
     coachingRate: 0,
   });
-  const [comissions, setComissions] = useState({
+  const [commissions, setCommissions] = useState({
     coachingCommission: 0,
     tutoringCommission: 0,
   });
@@ -27,7 +27,7 @@ function CoachRates() {
   useEffect(() => {
     if (user) {
       getMyRates();
-      getComissions();
+      getCommissions();
     }
   }, []);
 
@@ -47,11 +47,11 @@ function CoachRates() {
   };
 
   
-  const getComissions = () => {
+  const getCommissions = () => {
     try {
-      Get(COMISSSION.getComission, token).then((response) => {
+      Get(COMISSSION.getCommission, token).then((response) => {
         if (response?.status) {
-          setComissions(response?.data);
+          setCommissions(response?.data);
         } else {
           console.log("response", response);
         }
@@ -76,7 +76,7 @@ function CoachRates() {
             />
             &emsp;
             <h1 className="pageTitle" style={{ margin: 0 }}>
-              Hourly Rates
+              Session Rates
             </h1>
           </Col>
         </Row>
@@ -109,7 +109,7 @@ function CoachRates() {
                       marginBottom: 10,
                     }}
                   >
-                    Average Hourly Rates
+                    Average Session Rates
                   </Typography.Title>
                   <Typography.Text
                       className="fontFamily1"
@@ -136,7 +136,7 @@ function CoachRates() {
                       marginBottom: 10,
                     }}
                   >
-                    Tutoring Hourly Rates
+                    Tutoring Session Rates
                   </Typography.Title>
                   <Typography.Text
                       className="fontFamily1"
@@ -163,7 +163,7 @@ function CoachRates() {
                       marginBottom: 10,
                     }}
                   >
-                    Coaching Hourly Rates
+                    Coaching Session Rates
                   </Typography.Title>
 
                   <Typography.Text

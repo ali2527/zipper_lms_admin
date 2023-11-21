@@ -37,10 +37,10 @@ import swal from "sweetalert";
 
 
 
-function ComissionManagement() {
+function CommissionManagement() {
   const token = useSelector((state) => state.user.userToken);
   const [editMode, setEditMode] = useState(false)
-  const [comissions, setComissions] = useState({
+  const [commissions, setCommissions] = useState({
     coachingCommission: 0,
     tutoringCommission: 0,
   });
@@ -57,14 +57,14 @@ function ComissionManagement() {
 
   const onFinish = (values) => {
   
-    Post(COMISSSION.addComission, values, token)
+    Post(COMISSSION.addCommission, values, token)
       .then((response) => {
         if (response?.data?.status) {
 
-          swal("Success!", "Comission Updated Successfully", "success");
+          swal("Success!", "Commission Updated Successfully", "success");
 
           setEditMode(false);
-          getComissions()
+          getCommissions()
         } else {
           swal("Oops!", response.data.message, "error");
         }
@@ -83,15 +83,15 @@ function ComissionManagement() {
  
   useEffect(() => {
 
-    getComissions();
+    getCommissions();
   }, []);
 
-  const getComissions = () => {
+  const getCommissions = () => {
     try {
-      Get(COMISSSION.getComission, token).then((response) => {
+      Get(COMISSSION.getCommission, token).then((response) => {
         if (response?.status) {
           if(response?.data){
-            setComissions(response?.data);
+            setCommissions(response?.data);
           }
         } else {
           console.log("response", response);
@@ -117,7 +117,7 @@ function ComissionManagement() {
             md={12}
             style={{ display: "flex", alignItems: "center" }}
           >
-           <h1 className="pageTitle">Comission Management</h1>
+           <h1 className="pageTitle">Commission Ma nagement</h1>
           </Col>
        
         </Row>
@@ -164,7 +164,7 @@ function ComissionManagement() {
                         marginBottom: 20,
                       }}
                     >
-                       {comissions?.coachingCommission} %
+                       {commissions?.coachingCommission} %
                     </Typography.Text>
                 </Col>
                 </Row>
@@ -195,7 +195,7 @@ function ComissionManagement() {
                         marginBottom: 20,
                       }}
                     >
-                       {comissions?.tutoringCommission} %
+                       {commissions?.tutoringCommission} %
                     </Typography.Text>
                 </Col>
                 </Row><br/>
@@ -216,7 +216,7 @@ function ComissionManagement() {
                   </Typography.Title>
                   <Form.Item
                         name="coachingCommission"
-                        initialValue={comissions?.coachingCommission}
+                        initialValue={commissions?.coachingCommission}
                         style={{ width: "100%" }}
                         rules={[
                           {
@@ -253,7 +253,7 @@ function ComissionManagement() {
                   </Typography.Title>
                   <Form.Item
                         name="tutoringCommission"
-                        initialValue={comissions?.tutoringCommission}
+                        initialValue={commissions?.tutoringCommission}
                         style={{ width: "100%" }}
                         rules={[
                           {
@@ -280,7 +280,7 @@ function ComissionManagement() {
                   // onClick={() => setModalOpen(true)}
                   style={{ fontWeight: "bold" }}
                 >
-                  Update Comission
+                  Update Commission
                 </Button> }
                 </Row>
 
@@ -293,7 +293,7 @@ function ComissionManagement() {
                   onClick={(e) => setEditMode(true)}
                   style={{ fontWeight: "bold" }}
                 >
-                  Edit Comission
+                  Edit Commission
                 </Button> }
                 </Row>
 
@@ -309,4 +309,4 @@ function ComissionManagement() {
   );
 }
 
-export default ComissionManagement;
+export default CommissionManagement;

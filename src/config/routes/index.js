@@ -19,7 +19,7 @@ import SubscriptionManagement from "../../views/subscription-management";
 import SubscriptionDetails from "../../views/subscription-management/subscriptionDetails";
 import ArticleManagement from "../../views/article-management";
 import AddArticle from "../../views/article-management/addArticle";
-import ComissionManagement from "../../views/comission-management";
+import CommissionManagement from "../../views/commission-management";
 import UpcomingLessons from "../../views/upcoming-lessons";
 import CompletedLessons from "../../views/completed-lessons";
 import LiveLessons from "../../views/live-lessons";
@@ -697,17 +697,17 @@ const MyRouter = () => {
           }
         />
          <Route
-          path="/comission-management"
+          path="/commission-management"
           index
           element={
             <UserAuthCheck>
               <ClientLayout
                 head={{
-                  title: "Comission Management",
+                  title: "Commission Ma nagement",
                   description: "Some Description.",
                 }}
               >
-                <ComissionManagement />
+                <CommissionManagement />
               </ClientLayout>
             </UserAuthCheck>
           }

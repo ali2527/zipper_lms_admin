@@ -262,11 +262,11 @@ function ArticleManagement() {
           options={[
             {
               value: true,
-              label: "Active",
+              label: "Activate",
             },
             {
               value: false,
-              label: "Inactive",
+              label: "Deactivate",
             },
           ]}
         />
