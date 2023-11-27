@@ -117,7 +117,7 @@ function CommissionManagement() {
             md={12}
             style={{ display: "flex", alignItems: "center" }}
           >
-           <h1 className="pageTitle">Commission Ma nagement</h1>
+           <h1 className="pageTitle">Commission Management</h1>
           </Col>
        
         </Row>

@@ -324,7 +324,7 @@ function PaymentLogs() {
       render: (item) => (item?.firstName  + " " + item?.lastName ) || "",
     },
     {
-      title: "Payment Type",
+      title: "Lesson Type",
       dataIndex: "type",
       key: "type",
       // render: (item) => item?.lessonType || "",
@@ -354,13 +354,13 @@ function PaymentLogs() {
       render: (item) => <span>{dayjs(item?.lessonDate).format("M/D/YYYY")}</span>,
     },
     {
-      title: "Recieved Amount",
+      title: "Paid Amount",
       dataIndex: "amount",
       key: "amount",
       render: (item) => <>${item}</>,
     },
     {
-      title: "Receiving Date",
+      title: "Paid Date",
       dataIndex: "createdAt",
       key: "createdAt",
       render: (item) => <span>{dayjs(item).format("M/D/YYYY")}</span>,
@@ -539,7 +539,7 @@ function PaymentLogs() {
       <div className="boxDetails2">
       <Row style={{ padding: "10px 20px",display:'flex',justifyContent:'space-between' }}>
           <h1 className="pageTitle">Payment Logs</h1>
-          <Radio.Group
+          {/* <Radio.Group
           className="radioSelector"
           size="large"
         onChange={handleModeChange}
@@ -550,7 +550,7 @@ function PaymentLogs() {
       >
         <Radio.Button value="subscription">Recieved Payment</Radio.Button>
         <Radio.Button value="contest">Paid Payment</Radio.Button>
-      </Radio.Group>
+      </Radio.Group> */}
 
         </Row>
       {mode =="subscription" ? <div className="">

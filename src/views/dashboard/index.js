@@ -567,7 +567,7 @@ export default function Home() {
             style={{ width: "100%", display: "flex", alignItems: "center" }}
           >
             <Col xs={24} md={12}>
-              <h5 class="sectionTitle">Total Tutor / Coaches</h5>
+              <h5 class="sectionTitle">Total Tutors / Coaches</h5>
             </Col>
             
           </Row>

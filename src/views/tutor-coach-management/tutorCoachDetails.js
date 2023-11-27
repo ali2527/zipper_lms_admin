@@ -983,7 +983,7 @@ Year Acquainted
                   onClick={() => setModalOpen(true)}
                   style={{ fontWeight: "bold" }}
                 >
-                  Inactive
+                  Deactivate
                 </Button>
               ) : (
                 <Button
@@ -1080,9 +1080,9 @@ Year Acquainted
                 size="large"
                 onClick={() => navigate("/tutor-coach-review/"+ id)}
               >
-                Rating & Review
+                Ratings & Reviews
               </Button>
-              &emsp;
+              {/* &emsp;
               <Button
                 className="fontFamily1"
                 style={{
@@ -1099,7 +1099,7 @@ Year Acquainted
                 size="large"
               >
                 Message
-              </Button>
+              </Button> */}
             </Row>
           </>
         )}
