@@ -100,7 +100,7 @@ function CourseAdd() {
       formObject.append("image", values.image.fileList[0].originFileObj);
     }
 
-    formObject.append("features", values.features.toString().split(","));
+    formObject.append("features","");
 
     for (const key in values) {
       if (key !== "image" && key !== "features") {
@@ -387,7 +387,7 @@ preview={false}
                     </Col>
                   </Row>
 
-                  <Row gutter={20}>
+                  {/* <Row gutter={20}>
                     <Col
                       xs={24}
                       sm={12}
@@ -458,10 +458,10 @@ preview={false}
                         />
                       </Form.Item>
                     </Col>
-                  </Row>
+                  </Row> */}
 
                   <Row gutter={20}>
-                    <Col
+                    {/* <Col
                       xs={24}
                       sm={12}
                       style={{ display: "flex", alignItems: "flex-start",flexDirection:'column' }}
@@ -496,7 +496,7 @@ preview={false}
                           className="signupFormInput"
                         />
                       </Form.Item>
-                    </Col>
+                    </Col> */}
 
                     <Col
                       xs={24}

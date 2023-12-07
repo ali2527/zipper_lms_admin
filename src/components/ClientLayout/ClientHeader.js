@@ -52,7 +52,7 @@ const ClientHeader = ({ visible, setVisible, visible2, setVisible2 }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-console.log()
+
   useEffect(() => {
     if(token){
       
@@ -60,9 +60,6 @@ console.log()
 
       socket.emit("setupAdmin");
       dispatch(fetchNotifications(token));
-      // socket.on("connected", () => {
-      //   console.log("Connected to socket");
-      // });
     }
     return () => {
       socket.disconnect();

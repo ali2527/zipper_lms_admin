@@ -221,7 +221,6 @@ function CourseManagement() {
       title: "S. No.	",
       dataIndex: "key",
       key: "key",
-      width: 100,
       render: (value, item, index) => (index < 10 && "0") + (index + 1),
     },
     {
@@ -241,18 +240,18 @@ function CourseManagement() {
       key: "category",
       render: (item) => item.title,
     },
-    {
-        title: "Duration",
-        dataIndex: "duration",
-        key: "duration",
+    // {
+    //     title: "Duration",
+    //     dataIndex: "duration",
+    //     key: "duration",
         
-      },
-      {
-        title: "Start Date",
-        dataIndex: "startDate",
-        key: "startDate",
-        render: (item) => <span>{dayjs(item).format("M/D/YYYY")}</span>,
-      },
+    //   },
+    //   {
+    //     title: "Start Date",
+    //     dataIndex: "startDate",
+    //     key: "startDate",
+    //     render: (item) => <span>{dayjs(item).format("M/D/YYYY")}</span>,
+    //   },
     {
       title: "Price",
       dataIndex: "price",

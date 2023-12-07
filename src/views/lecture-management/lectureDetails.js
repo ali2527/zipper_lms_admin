@@ -94,25 +94,6 @@ function LectureDetails() {
     setLoading(false);
   };
 
-  
-
-  const handleStatus = async () => {
-    try {
-      const response = await Get(
-        LECTURES.toggleStatus + "/" + lecture._id,
-        token,
-        {}
-      );
-      const newUser = { ...lecture };
-
-      newUser.isActive = !lecture.isActive;
-      setModalOpen(false);
-      setLecture(newUser);
-    } catch (error) {
-      console.log(error.message);
-    }
-  };
-
   const onFinish = (values) => {
     const formObject = new FormData();
 
