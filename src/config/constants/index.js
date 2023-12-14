@@ -1,10 +1,15 @@
 export const SITE_NAME = "Zipper LMS"
 
-export const BASE_URL = "https://api.zipperlearning.com/api"
-export const UPLOAD_URL = "https://api.zipperlearning.com/Uploads/"
-export const UPLOAD_URL2 = "https://api.zipperlearning.com/"
-export const SOCKET_URL = "https://api.zipperlearning.com"
+// export const BASE_URL = "https://api.zipperlearning.com/api"
+// export const UPLOAD_URL = "https://api.zipperlearning.com/Uploads/"
+// export const UPLOAD_URL2 = "https://api.zipperlearning.com/"
+// export const SOCKET_URL = "https://api.zipperlearning.com"
 
+
+export const BASE_URL = "http://localhost:3008/api"
+export const UPLOAD_URL = "http://localhost:3008/Uploads/"
+export const UPLOAD_URL2 = "http://localhost:3008/"
+export const SOCKET_URL = "http://localhost:3008"
 
 
 // export const BASE_URL = "https://secure.demo243.webhostlabs.net:3002/api/"
