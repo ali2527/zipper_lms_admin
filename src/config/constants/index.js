@@ -162,8 +162,8 @@ export const CONTEST = {
   export const PAYMENT = {
     get: "/payment/getAllPayments",
     getOne: "/payment/",
-    getAllSubscriptionPayments:"/admin/payment/getAllSubscriptionPayments",
-    getAllContestPayments:"/admin/payment/getAllContestPayments"
+    getAllLessonPayments:"/payment/getAllLessonPayments",
+    getAllCoursePayments:"/payment/getAllCoursePayments"
   };
 
   export const NOTIFICATION = {

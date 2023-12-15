@@ -468,12 +468,23 @@ const ClientLayout = ({ children, head }) => {
             getContainer={false}
             key={"drawer"}
           >
+             <div className="logoBox">
+              <Image
+                src={logo}
+                alt="Picture of the author"
+                style={{maxWidth:"130px"}}
+                preview={false}
+              />
+              </div>
+              <br/>
+
             <Menu
               mode="inline"
               selectedKeys={[selectedItem]}
               style={{
                 height: "100%",
                 borderRight: 0,
+                background:'transparent'
               }}
             >
               {sideNavItems.map((item) => (

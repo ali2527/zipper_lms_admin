@@ -28,7 +28,7 @@ import { useSelector,useDispatch } from "react-redux";
 import {Get} from "../../config/api/get";
 import { useNavigate } from "react-router-dom";
 import { removeUser } from "../../redux/slice/authSlice";
-import logo from "../../assets/images/logo2.png"
+import logo from "../../assets/images/logo.png"
 import bg from "../../assets/images/logo.png"
 import { fetchNotifications } from '../../redux/slice/notificationSlice';
 import { incrementCount,addLatestNotification  } from "../../redux/slice/notificationSlice";
@@ -344,7 +344,7 @@ const ClientHeader = ({ visible, setVisible, visible2, setVisible2 }) => {
                     preview={false}
                     alt={"Failed to load image"}
                     src={logo}
-                    style={{ maxWidth: 120 }}
+                    style={{ maxWidth: 100 }}
                   />
                 </a>
               </Col>

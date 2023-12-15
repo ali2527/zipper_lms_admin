@@ -55,7 +55,7 @@ function PaymentLogs() {
     totalDocs: 0,
     totalPages: 0,
   });
-  const [mode, setMode] = useState('subscription');
+  const [mode, setMode] = useState('lesson');
   const handleModeChange = (e) => {
     setMode(e.target.value);
   };
@@ -226,7 +226,7 @@ function PaymentLogs() {
   const getPaymentLogs = async (pageNumber, pageSize, search, reset = false) => {
     setLoading(true);
     try {
-      const response = await Get(PAYMENT.get, token, {
+      const response = await Get(PAYMENT.getAllLessonPayments, token, {
         page: pageNumber
           ? pageNumber.toString()
           : paginationConfig.pageNumber.toString(),
@@ -262,7 +262,7 @@ function PaymentLogs() {
   const getPaymentLogs2 = async (pageNumber, pageSize, search, reset = false) => {
     setLoading2(true);
     try {
-      const response = await Get(PAYMENT.getAllContestPayments, token, {
+      const response = await Get(PAYMENT.getAllCoursePayments, token, {
         page: pageNumber
           ? pageNumber.toString()
           : paginationConfig2.pageNumber.toString(),
@@ -324,16 +324,10 @@ function PaymentLogs() {
       render: (item) => (item?.firstName  + " " + item?.lastName ) || "",
     },
     {
-      title: "Lesson Type",
-      dataIndex: "type",
-      key: "type",
-      // render: (item) => item?.lessonType || "",
-    },
-    {
-      title: "Tutor/Coach ID",
+      title: "Stripe ID",
       dataIndex: "lesson",
       key: "lesson",
-      render: (item , value ) => value.type == "LESSON" ? item?.coach?.coachId : "-",
+      render: (item , value ) => item?.coach?.stripeAccount || "_" ,
     },
     {
       title: "Tutor/Coach Name",
@@ -355,8 +349,8 @@ function PaymentLogs() {
     },
     {
       title: "Paid Amount",
-      dataIndex: "amount",
-      key: "amount",
+      dataIndex: "payout",
+      key: "payout",
       render: (item) => <>${item}</>,
     },
     {
@@ -377,29 +371,44 @@ function PaymentLogs() {
       render: (value, item, index) => (index < 9 && "0") + (index + 1),
     },
     {
-      title: "USER NAME	",
+      title: "Course Code	",
+      dataIndex: "course",
+      key: "course",
+      render: (value, item, index) => value?.courseCode || "",
+    },
+    {
+      title: "Learner Name",
       dataIndex: "payee",
       key: "payee",
-      render: (value, item, index) => value?.fullName,
+      render: (item) => (item?.firstName  + " " + item?.lastName ) || "",
+    },
+
+    {
+      title: "Stripe ID",
+      dataIndex: "course",
+      key: "course",
+      render: (item , value ) => item?.author?.stripeAccount || "_" ,
     },
     {
-      title: "CONTEST NAME	",
-      dataIndex: "contest",
-      key: "contest",
-      render: (value, item, index) => value?.title,
+      title: "Author Name",
+      dataIndex: "course",
+      key: "course",
+      render: (item , value ) => item?.author.firstName + " " + item?.author?.lastName,
     },
     {
-      title: "AMOUNT",
-      dataIndex: "subscription",
-      key: "subscription",
-      render: (value, item, index) => <>${item?.amount}</>,
+      title: "Paid Amount",
+      dataIndex: "amount",
+      key: "amount",
+      render: (item) => <>${item}</>,
     },
     {
-      title: "TRANSACTION DATE	",
+      title: "Paid Date",
       dataIndex: "createdAt",
       key: "createdAt",
       render: (item) => <span>{dayjs(item).format("M/D/YYYY")}</span>,
-    },   
+    },
+
+   
   ];
 
   const filterContent = (
@@ -539,7 +548,7 @@ function PaymentLogs() {
       <div className="boxDetails2">
       <Row style={{ padding: "10px 20px",display:'flex',justifyContent:'space-between' }}>
           <h1 className="pageTitle">Payment Logs</h1>
-          {/* <Radio.Group
+          <Radio.Group
           className="radioSelector"
           size="large"
         onChange={handleModeChange}
@@ -548,12 +557,12 @@ function PaymentLogs() {
           marginBottom: 8,
         }}
       >
-        <Radio.Button value="subscription">Recieved Payment</Radio.Button>
-        <Radio.Button value="contest">Paid Payment</Radio.Button>
-      </Radio.Group> */}
+        <Radio.Button value="lesson">Lesson Payments</Radio.Button>
+        <Radio.Button value="course">Course Payments</Radio.Button>
+      </Radio.Group>
 
         </Row>
-      {mode =="subscription" ? <div className="">
+      {mode =="lesson" ? <div className="">
         
 
         <Row style={{ padding: "10px 20px" }}>
