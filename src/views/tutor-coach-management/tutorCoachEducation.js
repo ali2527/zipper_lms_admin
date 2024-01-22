@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { Col, Row, Typography, Layout, Skeleton } from "antd";
+import { Col,Button, Row, Typography, Layout, Skeleton } from "antd";
 import dayjs from "dayjs";
 import { FaArrowLeft } from "react-icons/fa";
 import { Get } from "../../config/api/get";
-import { COACH } from "../../config/constants";
+import { COACH, UPLOAD_URL } from "../../config/constants";
 import { useNavigate, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 
@@ -220,6 +220,18 @@ function CoachEducation() {
                       <br />
                     </>
                   )}
+
+
+<br/>
+{coach.resume && <Button
+                  type="primary"
+                  htmlType="submit"
+                  className="loginButton"
+                  onClick={() => window.open(UPLOAD_URL + coach.resume)}
+                  style={{ fontWeight: "bold" }}
+                >
+                  View Resume
+                </Button>}
                 </>
               );
             })}

@@ -1,46 +1,19 @@
-import React, { useState, lazy, Suspense,useEffect } from "react";
 import {
-  Col,
-  Row,
-  Typography,
-  List,
-  Form,
-  Input,
-  Button,
-  Layout,
-  Checkbox,
-  Tabs,
-  Table,
-  Select,
-  message,
-  Pagination,
+  Col, Layout, Row
 } from "antd";
 import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  BarElement,
-  LineElement,
-  Title,
-  Tooltip,
-  Filler,
-  Legend,
+  BarElement, CategoryScale, Chart as ChartJS, Filler,
+  Legend, LinearScale, LineElement, PointElement, Title,
+  Tooltip
 } from 'chart.js';
-import { Line } from 'react-chartjs-2';
-import { Bar } from 'react-chartjs-2';
-import img1 from "../../assets/images/trend.png"
-import img2 from "../../assets/images/trend2.png"
-import img3 from "../../assets/images/trend.png"
-import ClientLayout from "../../components/ClientLayout";
-import { HiUsers,HiUser } from "react-icons/hi";
-import {IoWallet} from "react-icons/io5"
-import {FaBook } from "react-icons/fa";
-import { USERS } from "../../config/constants";
-import styles from "../../styles/Home.module.css";
-import { render } from "react-dom";
+import React, { useEffect, useState } from "react";
+import { Bar, Line } from 'react-chartjs-2';
+import { FaBook } from "react-icons/fa";
+import { HiUser, HiUsers } from "react-icons/hi";
+import { IoWallet } from "react-icons/io5";
 import { useSelector } from "react-redux";
 import { Get } from "../../config/api/get";
+import { USERS } from "../../config/constants";
 
 
 

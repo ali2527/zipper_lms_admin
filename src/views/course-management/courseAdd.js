@@ -7,7 +7,7 @@ import {
   Form,
   Input,
   Button,
-  Popover,
+  InputNumber,
   Layout,
   Avatar,
   Upload,
@@ -30,8 +30,7 @@ import swal from "sweetalert";
 import { TbCameraPlus } from "react-icons/tb";
 import { InboxOutlined } from '@ant-design/icons';
 const { Option } = Select;
-const { Dragger } = Upload;
-
+const { TextArea } = Input;
 
 const days = [
   "Sunday",
@@ -309,7 +308,7 @@ preview={false}
                   </Row>
 
                   <Row gutter={20}>
-                    <Col
+                  <Col
                       xs={24}
                       sm={12}
                       style={{ display: "flex", alignItems: "flex-start",flexDirection:'column' }}
@@ -324,23 +323,23 @@ preview={false}
                           marginBottom: 20,
                         }}
                       >
-                       Description:
+                        Price :
                       </Typography.Title>
                    
                       <Form.Item
-                        name="description"
-                        initialValue={course?.description}
+                        name="price"
+                        initialValue={course?.price}
                         style={{ width: "100%" }}
                         rules={[
                           {
                             required: true,
-                            message: "Please input Course description",
+                            message: "Please input Price",
                           },
                         ]}
                       >
                         <Input
                           size="large"
-                          placeholder="Enter Description"
+                          placeholder="Enter Price"
                           className="signupFormInput"
                         />
                       </Form.Item>
@@ -385,6 +384,126 @@ preview={false}
         </Select>
                       </Form.Item>
                     </Col>
+                  </Row>
+
+                  <Row gutter={20}>
+
+<Col
+    xs={24}
+    sm={12}
+    style={{ display: "flex", alignItems: "flex-start",flexDirection:'column' }}
+  >
+    <Typography.Title
+      className="fontFamily1"
+      style={{
+        fontSize: "16px",
+        fontWeight: 600,
+        color: "black",
+        textAlign: "left",
+        marginBottom: 20,
+      }}
+    >
+      Video lesson length (Hours) :
+    </Typography.Title>
+ 
+    <Form.Item
+      name="hours"
+      initialValue={course?.hours}
+      style={{ width: "100%" }}
+      rules={[
+        {
+          required: true,
+          message: "Please input duration hours",
+        },
+      ]}
+    >
+      <InputNumber
+      style={{width:"100%",padding:"5px"}}
+        size="large"
+        placeholder="Enter hours"
+        className="signupFormInput"
+      />
+    </Form.Item>
+  </Col>
+ 
+  <Col
+    xs={24}
+    sm={12}
+    style={{ display: "flex", alignItems: "flex-start",flexDirection:'column' }}
+  >
+    <Typography.Title
+      className="fontFamily1"
+      style={{
+        fontSize: "16px",
+        fontWeight: 600,
+        color: "black",
+        textAlign: "left",
+        marginBottom: 20,
+      }}
+    >
+                Video lesson length  (Minutes) :
+    </Typography.Title>
+ 
+    <Form.Item
+      name="minutes"
+      initialValue={course?.minutes}
+      style={{ width: "100%" }}
+      rules={[
+        {
+          required: true,
+          message: "Please input minutes",
+        },
+      ]}
+    >
+      <InputNumber
+      style={{width:"100%",padding:"5px"}}
+        size="large"
+        placeholder="Enter minutes"
+        className="signupFormInput"
+      />
+    </Form.Item>
+  </Col>
+</Row>
+
+<Row gutter={20}>
+                  <Col
+                      xs={24}
+                      
+                      style={{ display: "flex", alignItems: "flex-start",flexDirection:'column' }}
+                    >
+                      <Typography.Title
+                        className="fontFamily1"
+                        style={{
+                          fontSize: "16px",
+                          fontWeight: 600,
+                          color: "black",
+                          textAlign: "left",
+                          marginBottom: 20,
+                        }}
+                      >
+                       Description:
+                      </Typography.Title>
+                   
+                      <Form.Item
+                        name="description"
+                        initialValue={course?.description}
+                        style={{ width: "100%" }}
+                        rules={[
+                          {
+                            required: true,
+                            message: "Please input Course description",
+                          },
+                        ]}
+                      >
+                        <TextArea
+                        rows={5}
+                          size="large"
+                          placeholder="Enter Description"
+                          className="signupFormInput2"
+                        />
+                      </Form.Item>
+                    </Col>
+                 
                   </Row>
 
                   {/* <Row gutter={20}>
@@ -460,82 +579,7 @@ preview={false}
                     </Col>
                   </Row> */}
 
-                  <Row gutter={20}>
-                    {/* <Col
-                      xs={24}
-                      sm={12}
-                      style={{ display: "flex", alignItems: "flex-start",flexDirection:'column' }}
-                    >
-                      <Typography.Title
-                        className="fontFamily1"
-                        style={{
-                          fontSize: "16px",
-                          fontWeight: 600,
-                          color: "black",
-                          textAlign: "left",
-                          marginBottom: 20,
-                        }}
-                      >
-                        Features :
-                      </Typography.Title>
-                   
-                      <Form.Item
-                        name="features"
-                        initialValue={course?.features}
-                        style={{ width: "100%" }}
-                        rules={[
-                          {
-                            required: true,
-                            message: "Please input Features",
-                          },
-                        ]}
-                      >
-                        <Input
-                          size="large"
-                          placeholder="Enter Features"
-                          className="signupFormInput"
-                        />
-                      </Form.Item>
-                    </Col> */}
-
-                    <Col
-                      xs={24}
-                      sm={12}
-                      style={{ display: "flex", alignItems: "flex-start",flexDirection:'column' }}
-                    >
-                      <Typography.Title
-                        className="fontFamily1"
-                        style={{
-                          fontSize: "16px",
-                          fontWeight: 600,
-                          color: "black",
-                          textAlign: "left",
-                          marginBottom: 20,
-                        }}
-                      >
-                        Price :
-                      </Typography.Title>
-                   
-                      <Form.Item
-                        name="price"
-                        initialValue={course?.price}
-                        style={{ width: "100%" }}
-                        rules={[
-                          {
-                            required: true,
-                            message: "Please input Price",
-                          },
-                        ]}
-                      >
-                        <Input
-                          size="large"
-                          placeholder="Enter Price"
-                          className="signupFormInput"
-                        />
-                      </Form.Item>
-                    </Col>
-                 
-                  </Row>
+               
          
 
 

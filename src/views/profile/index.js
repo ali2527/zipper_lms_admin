@@ -1,41 +1,17 @@
-import React, { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
 import {
-  Col,
-  Image,
-  Select,
-  Button,
-  InputNumber,
-  Row,
-  Avatar,
-  DatePicker,
-  Typography,
-  Layout,
-  Card,
-  Form,
-  Input,
-  Radio,
-  Upload,
+  Avatar, Button, Col, Form,
+  Input, Layout, Row, Typography, Upload
 } from "antd";
-import { useNavigate } from "react-router";
-import { UPLOAD_URL } from "../../config/constants";
-import { Post } from "../../config/api/post";
-import { AUTH, ADMIN } from "../../config/constants";
-import { addUser, removeUser } from "../../redux/slice/authSlice";
+import React, { useState } from "react";
 import { FaLongArrowAltLeft } from "react-icons/fa";
-import { CONTENT_TYPE } from "../../config/constants/index";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router";
 import swal from "sweetalert";
-import dayjs from "dayjs";
-
-import iconImage from "../../assets/images/profiel-loti.png";
+import { Post } from "../../config/api/post";
+import { ADMIN, UPLOAD_URL } from "../../config/constants";
+import { CONTENT_TYPE } from "../../config/constants/index";
+import { addUser } from "../../redux/slice/authSlice";
 //icons
-import {
-  FaCaretDown,
-  FaArrowLeft,
-  FaUserAlt,
-  FaBox,
-  FaUsers,
-} from "react-icons/fa";
 import { TbCameraPlus } from "react-icons/tb";
 
 function Profile() {

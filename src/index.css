@@ -424,6 +424,16 @@ height: 49px!important;
 font-size: 14px!important;
 }
 
+.signupFormInput2{
+  border-radius: 10px!important;
+background: #efefef9a!important;
+border:none;
+font-family: 'Visby', sans-serif!important;
+font-weight: auto;
+/* height: 49px!important; */
+font-size: 14px!important;
+}
+
 .signupTextField{
   border-radius: 10px!important;
 background: #efefef9a!important;

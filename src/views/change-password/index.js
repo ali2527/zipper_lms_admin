@@ -7,7 +7,7 @@ import { Col, Row,Image, Typography, Layout, Card,Form,  Input,
   Button } from "antd";
 import { FiMail, FiLock } from "react-icons/fi";
 import swal from "sweetalert";
-import iconImage from "../../assets/images/change-ps.png"
+// import iconImage from "../../assets/images/change-ps.png"
 
 
 

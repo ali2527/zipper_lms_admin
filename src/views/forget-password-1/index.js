@@ -22,24 +22,44 @@ import { AUTH } from "../../config/constants/index";
 import { addUser, removeUser } from "../../redux/slice/authSlice";
 import { FiMail, FiLock } from "react-icons/fi";
 import swal from "sweetalert";
-import logo from "../../assets/images/logo.png"
 
 
-// import router from "next/router";
-const onFinish = (values) => {
-  console.log("Success:", values);
-  // router.push("/forget-password-2")
-};
-const onFinishFailed = (errorInfo) => {
-  console.log("Failed:", errorInfo);
-};
+
+
 
 function ForgetPassword() {
-  const dispatch = useDispatch();
   const navigate = useNavigate();
-  const user = useSelector((state) => state.user.userData);
-  const token = useSelector((state) => state.user.userToken);
   const [loading, setLoading] = React.useState(false);
+
+
+  const onFinishFailed = (errorInfo) => {
+    console.log("Failed:", errorInfo);
+  };
+
+
+    const onFinish = (values) => {
+  
+    console.log("Success:", values);
+    setLoading(true);
+    
+  
+    Post(AUTH.emailCode, values)
+      .then((response) => {
+        setLoading(false);
+        if (response?.data) {
+          swal("Success", response?.data?.message, "success");
+          navigate("/forgot-password-2", { replace: true,state:values });
+        } else {
+          swal("Oops!", response?.data?.message || response?.response?.data?.message, "error");
+        }
+      })
+      .catch((e) => {
+        console.log(e,"ww")
+        swal("Oops!","internal server error", "error");
+        setLoading(false);
+      });
+  };
+
   return (
      
     <Layout className="AuthBackground" style={{ minHeight: "100vh" }}>
@@ -48,8 +68,7 @@ function ForgetPassword() {
         <Image
                     preview={false}
                     alt={"Failed to load image"}
-                    src={logo}
-                    style={{ maxWidth: 120 }}
+                    src={"/images/logo.png"}                    style={{ maxWidth: 120 }}
                   />
      </div>
         <Col xs={0} sm={0} md={14}>
@@ -144,7 +163,6 @@ function ForgetPassword() {
                       type="primary"
                       htmlType="submit"
                       className="loginButton"
-                      onClick={() => navigate("/forgot-password-2")}
                     >
                       {loading ? "Loading..." : "Continue"}
                     </Button>

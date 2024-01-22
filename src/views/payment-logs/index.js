@@ -390,7 +390,7 @@ function PaymentLogs() {
       render: (item , value ) => item?.author?.stripeAccount || "_" ,
     },
     {
-      title: "Author Name",
+      title: "Instructor Name",
       dataIndex: "course",
       key: "course",
       render: (item , value ) => item?.author.firstName + " " + item?.author?.lastName,

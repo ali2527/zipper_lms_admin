@@ -78,6 +78,7 @@ export const CONTEST = {
 
   export const ADMIN = {
     updateProfile: "/profile/updateProfile",
+    deleteAllAdminNotifications:"/notification/deleteAllAdminNotifications"
   };
 
   export const USERS = {

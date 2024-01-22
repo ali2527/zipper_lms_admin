@@ -1,39 +1,22 @@
 import React, { useEffect, useLayoutEffect, useState } from "react";
 // import Head from "next/head";
-// import Image from "next/image";
-import {
-  LaptopOutlined,
-  NotificationOutlined,
-  UserOutlined,
-} from "@ant-design/icons";
 
 import { useNavigate } from "react-router-dom";
 
 // import router from "next/router";
-import { Breadcrumb, Layout, Menu, theme, Row, Col, Drawer,Image } from "antd";
-import { AiFillCaretDown, AiFillApple } from "react-icons/ai";
-import { Badge, Avatar, Dropdown, Popover, Alert, Button } from "antd";
-import { FaBars, FaEllipsisV, FaUser, FaSignOutAlt } from "react-icons/fa";
-import { FiBell } from "react-icons/fi";
+import { Avatar, Badge, Button, Col, Drawer, Dropdown, Image, Layout, Menu, Popover, Row } from "antd";
+import { AiFillCaretDown } from "react-icons/ai";
+import { BiNotification } from "react-icons/bi";
+import { BsChatLeft, BsClipboard, BsPersonVideo, BsQuestionSquare } from "react-icons/bs";
+import { FaSignOutAlt, FaUser } from "react-icons/fa";
+import { FiBell, FiMonitor, FiUser } from "react-icons/fi";
+import { HiOutlineCalendar, HiOutlineDocumentText, HiOutlineSquares2X2 } from "react-icons/hi2";
+import { PiBooksLight } from "react-icons/pi";
+import { SlWallet } from "react-icons/sl";
+import { TfiLayoutListThumb } from "react-icons/tfi";
 import { SITE_NAME } from "../../config/constants";
 import "../../styles/Home.module.css";
 import ClientHeader from "./ClientHeader";
-import side1 from  "../../assets/images/dashboard.png"
-import side2 from  "../../assets/images/user-management.png"
-import side3 from  "../../assets/images/subscription-management.png"
-import side4 from  "../../assets/images/appointment-logs.png"
-import side5 from  "../../assets/images/property-management.png"
-import side6 from  "../../assets/images/chat.png"
-import logo from "../../assets/images/logo.png"
-import { HiOutlineSquares2X2,HiOutlineDocumentText,HiOutlineCalendar } from "react-icons/hi2";
-import {FiUser,FiMonitor,FiBook} from "react-icons/fi"
-import {PiBooksLight} from "react-icons/pi"
-import {BsClipboard,BsChatLeft,BsQuestionSquare,BsPersonVideo} from "react-icons/bs"
-import {TfiLayoutListThumb} from "react-icons/tfi"
-import {CgPlayListCheck} from "react-icons/cg"
-import {SiTestcafe} from "react-icons/si"
-import {SlWallet} from "react-icons/sl"
-import {BiNotification,BiListCheck} from "react-icons/bi"
 const { Header, Content, Sider } = Layout;
 
 
@@ -325,8 +308,7 @@ const ClientLayout = ({ children, head }) => {
               <br/>
               <div className="logoBox">
               <Image
-                src={logo}
-                alt="Picture of the author"
+   src={"/images/logo.png"}                alt="Picture of the author"
                 style={{maxWidth:"130px"}}
                 preview={false}
               />
@@ -470,8 +452,7 @@ const ClientLayout = ({ children, head }) => {
           >
              <div className="logoBox">
               <Image
-                src={logo}
-                alt="Picture of the author"
+   src={"/images/logo.png"}                alt="Picture of the author"
                 style={{maxWidth:"130px"}}
                 preview={false}
               />

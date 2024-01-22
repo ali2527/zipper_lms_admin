@@ -29,7 +29,7 @@ import { Post } from "../../config/api/post";
 import swal from "sweetalert";
 import { TbCameraPlus } from "react-icons/tb";
 const { Option } = Select;
-
+const {TextArea} = Input;
 
 
 const days = [
@@ -353,7 +353,7 @@ preview={false}
                   </Row>
 
                   <Row gutter={20}>
-                    <Col
+                  <Col
                       xs={24}
                       sm={12}
                       style={{ display: "flex", alignItems: "flex-start",flexDirection:'column' }}
@@ -368,23 +368,24 @@ preview={false}
                           marginBottom: 20,
                         }}
                       >
-                       Description:
+                        Price :
                       </Typography.Title>
                    
                       <Form.Item
-                        name="description"
-                        initialValue={course?.description}
+                        name="price"
+                        initialValue={course?.price}
                         style={{ width: "100%" }}
                         rules={[
                           {
                             required: true,
-                            message: "Please input Course description",
+                            message: "Please input price",
                           },
                         ]}
                       >
                         <Input
+                        prefix="$"
                           size="large"
-                          placeholder="Enter Description"
+                          placeholder="Enter Price"
                           className="signupFormInput"
                         />
                       </Form.Item>
@@ -431,79 +432,6 @@ preview={false}
                     </Col>
                   </Row>
 
-                  {/* <Row gutter={20}>
-                    <Col
-                      xs={24}
-                      sm={12}
-                      style={{ display: "flex", alignItems: "flex-start",flexDirection:'column' }}
-                    >
-                      <Typography.Title
-                        className="fontFamily1"
-                        style={{
-                          fontSize: "16px",
-                          fontWeight: 600,
-                          color: "black",
-                          textAlign: "left",
-                          marginBottom: 20,
-                        }}
-                      >
-                       Start Date :
-                      </Typography.Title>
-                   
-                      <Form.Item
-                        name="startDate"
-                        initialValue={dayjs(course?.startDate)}
-                        style={{ width: "100%" }}
-                        rules={[
-                          {
-                            required: true,
-                            message: "Please input start Date",
-                          },
-                        ]}
-                      >
-                        <DatePicker  style={{width:"100%"}} size="large"
-                          placeholder="Enter start Date"
-                          className="signupFormInput"/>
-                      </Form.Item>
-                    </Col>
-                    <Col
-                      xs={24}
-                      sm={12}
-                      style={{ display: "flex", alignItems: "flex-start",flexDirection:'column' }}
-                    >
-                      <Typography.Title
-                        className="fontFamily1"
-                        style={{
-                          fontSize: "16px",
-                          fontWeight: 600,
-                          color: "black",
-                          textAlign: "left",
-                          marginBottom: 20,
-                        }}
-                      >
-                        Duration :
-                      </Typography.Title>
-                   
-                      <Form.Item
-                        name="duration"
-                        initialValue={course?.duration}
-                        style={{ width: "100%" }}
-                        rules={[
-                          {
-                            required: true,
-                            message: "Please input course duration",
-                          },
-                        ]}
-                      >
-                        <Input
-                          size="large"
-                          placeholder="Enter Duration"
-                          className="signupFormInput"
-                        />
-                      </Form.Item>
-                    </Col>
-                  </Row> */}
-
                   <Row gutter={20}>
                   <Col
                       xs={24}
@@ -520,29 +448,29 @@ preview={false}
                           marginBottom: 20,
                         }}
                       >
-                        Price :
+                        Video Lesson Length (Hours) :
                       </Typography.Title>
                    
                       <Form.Item
-                        name="price"
-                        initialValue={course?.price}
+                        name="hours"
+                        initialValue={course?.hours}
                         style={{ width: "100%" }}
                         rules={[
                           {
                             required: true,
-                            message: "Please input price",
+                            message: "Please input hours",
                           },
                         ]}
                       >
                         <Input
-                        prefix="$"
+                     
                           size="large"
-                          placeholder="Enter Price"
+                          placeholder="Enter hours"
                           className="signupFormInput"
                         />
                       </Form.Item>
                     </Col>
-                    {/* <Col
+                    <Col
                       xs={24}
                       sm={12}
                       style={{ display: "flex", alignItems: "flex-start",flexDirection:'column' }}
@@ -557,29 +485,112 @@ preview={false}
                           marginBottom: 20,
                         }}
                       >
-                        Features :
+                        Video Lesson Length (Minutes) :
                       </Typography.Title>
                    
                       <Form.Item
-                        name="features"
-                        initialValue={course?.features}
+                        name="minutes"
+                        initialValue={course?.minutes || 0}
                         style={{ width: "100%" }}
                         rules={[
                           {
                             required: true,
-                            message: "Please input Features",
+                            message: "Please input minutes",
                           },
                         ]}
                       >
                         <Input
+                       
                           size="large"
-                          placeholder="Enter Features"
+                          placeholder="Enter minutes"
                           className="signupFormInput"
                         />
                       </Form.Item>
-                    </Col> */}
-                 
+                    </Col>
                   </Row>
+
+
+                  <Row gutter={20}>
+
+<Col
+    xs={24}
+                          style={{ display: "flex", alignItems: "flex-start",flexDirection:'column' }}
+  >
+    <Typography.Title
+      className="fontFamily1"
+      style={{
+        fontSize: "16px",
+        fontWeight: 600,
+        color: "black",
+        textAlign: "left",
+        marginBottom: 20,
+      }}
+    >
+     Description:
+    </Typography.Title>
+ 
+    <Form.Item
+      name="description"
+      initialValue={course?.description}
+      style={{ width: "100%" }}
+      rules={[
+        {
+          required: true,
+          message: "Please input Course description",
+        },
+      ]}
+    >
+      <TextArea
+        size="large"
+        rows={5}
+        placeholder="Enter Description"
+        className="signupFormInput2"
+      />
+    </Form.Item>
+  </Col>
+
+
+
+
+  {/* <Col
+    xs={24}
+    sm={12}
+    style={{ display: "flex", alignItems: "flex-start",flexDirection:'column' }}
+  >
+    <Typography.Title
+      className="fontFamily1"
+      style={{
+        fontSize: "16px",
+        fontWeight: 600,
+        color: "black",
+        textAlign: "left",
+        marginBottom: 20,
+      }}
+    >
+      Features :
+    </Typography.Title>
+ 
+    <Form.Item
+      name="features"
+      initialValue={course?.features}
+      style={{ width: "100%" }}
+      rules={[
+        {
+          required: true,
+          message: "Please input Features",
+        },
+      ]}
+    >
+      <Input
+        size="large"
+        placeholder="Enter Features"
+        className="signupFormInput"
+      />
+    </Form.Item>
+  </Col> */}
+
+</Row>
+
          
                 
                  
@@ -735,6 +746,60 @@ preview={false}
             
             </Row>
             <br/> */}
+
+<Row style={{ padding: "10px" }}>
+            <Col xs={24} md={12}>
+              <h5
+                  style={{
+                    display: "block",
+                    fontSize: 16,
+                    fontWeight: "bold",
+                    marginBottom:10
+                  }}
+                >
+                  Video Duration Hours{" "}
+                </h5>
+<h5
+                  style={{
+                    display: "block",
+                    fontSize: 16,
+                    color: "#7a7e7f",
+                    fontWeight: "normal",
+                    margin:"10px 0px"
+                  }}
+                >
+                 {course.hours}
+                
+                </h5>
+               
+              </Col>
+              <Col xs={24} md={12}>
+              <h5
+                  style={{
+                    display: "block",
+                    fontSize: 16,
+                    fontWeight: "bold",
+                    marginBottom:10
+                  }}
+                >
+                  Video Duration Minutes
+                </h5>
+                <h5
+                  style={{
+                    display: "block",
+                    fontSize: 16,
+                    color: "#7a7e7f",
+                    fontWeight: "normal",
+                  }}
+                >
+                  {course?.minuites || 0}
+                </h5>
+              </Col>
+            </Row>
+
+            <br/>
+
+            
             <Row style={{ padding: "10px" }}>
             <Col xs={24} md={12}>
               <h5
