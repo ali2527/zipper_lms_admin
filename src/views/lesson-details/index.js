@@ -198,7 +198,7 @@ function LessonDetails() {
                         marginTop: 0,
                       }}
                     >
-                      Service/ Subject Name
+                     Subject
                     </Typography.Title>
                     <Typography.Text
                       className="fontFamily1"
@@ -237,7 +237,7 @@ function LessonDetails() {
                         textAlign: "left",
                       }}
                     >
-                      {dayjs(lesson?.LessonDate).format("DD/MM/YYYY")}
+                      {dayjs(lesson?.lessonDate).format("MM/DD/YYYY")}
                     </Typography.Text>
                   </Col>
 
@@ -303,7 +303,7 @@ function LessonDetails() {
                   </Col>
                 </Row>
 
-                <Row style={{ marginTop: 40 }}>
+                {/* <Row style={{ marginTop: 40 }}>
                   <Typography.Text
                     className="fontFamily1"
                     style={{
@@ -315,7 +315,8 @@ function LessonDetails() {
                   >
                     Coach/ Tutor General Information
                   </Typography.Text>
-                </Row>
+                </Row> */}
+                 <br />
                 <br />
                 <Row>
                   <Col>
@@ -330,7 +331,7 @@ function LessonDetails() {
                         marginTop: 0,
                       }}
                     >
-                      Coach/ Tutor Name
+                     Tutor/Coach Name
                     </Typography.Title>
                     <Typography.Text
                       className="fontFamily1"
@@ -363,7 +364,7 @@ function LessonDetails() {
                   View Profile
                 </Button>
 
-                <Row style={{ marginTop: 30 }}>
+                {/* <Row style={{ marginTop: 30 }}>
                   <Typography.Text
                     className="fontFamily1"
                     style={{
@@ -375,7 +376,8 @@ function LessonDetails() {
                   >
                     Learner Information
                   </Typography.Text>
-                </Row>
+                </Row> */}
+                 <br />
                 <br />
                 <Row>
                   <Col>

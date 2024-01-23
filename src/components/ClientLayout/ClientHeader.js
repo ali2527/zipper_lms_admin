@@ -28,8 +28,6 @@ import { useSelector,useDispatch } from "react-redux";
 import {Get} from "../../config/api/get";
 import { useNavigate } from "react-router-dom";
 import { removeUser } from "../../redux/slice/authSlice";
-import logo from "../../assets/images/logo2.png"
-import bg from "../../assets/images/logo.png"
 import { fetchNotifications } from '../../redux/slice/notificationSlice';
 import { incrementCount,addLatestNotification  } from "../../redux/slice/notificationSlice";
 
@@ -52,7 +50,7 @@ const ClientHeader = ({ visible, setVisible, visible2, setVisible2 }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-console.log()
+
   useEffect(() => {
     if(token){
       
@@ -60,9 +58,6 @@ console.log()
 
       socket.emit("setupAdmin");
       dispatch(fetchNotifications(token));
-      // socket.on("connected", () => {
-      //   console.log("Connected to socket");
-      // });
     }
     return () => {
       socket.disconnect();
@@ -346,8 +341,7 @@ console.log()
                   <Image
                     preview={false}
                     alt={"Failed to load image"}
-                    src={logo}
-                    style={{ maxWidth: 120 }}
+                    src={"/images/logo.png"}                    style={{ maxWidth: 100 }}
                   />
                 </a>
               </Col>
@@ -410,7 +404,7 @@ console.log()
           Logout
         </Typography.Title>
         <Typography.Text style={{ fontSize: 16 }}>
-          Are You Sure You Want To Logout ?
+        Are you sure you want to log out?
         </Typography.Text>
       </Modal>
     </>

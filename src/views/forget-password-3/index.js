@@ -15,63 +15,54 @@ import {
   Image,
   Divider,
 } from "antd";
-import { useNavigate } from "react-router";
+import { useNavigate, useLocation } from "react-router";
 import { useSelector, useDispatch } from "react-redux";
 import { Post } from "../../config/api/post";
 import { AUTH } from "../../config/constants";
 import { addUser, removeUser } from "../../redux/slice/authSlice";
 import { FiMail, FiLock } from "react-icons/fi";
 import swal from "sweetalert";
-import logo from "../../assets/images/logo.png"
 
 // import router from "next/router";
 
 function ForgotPassword3() {
-  const dispatch = useDispatch();
+  const { state } = useLocation();
   const navigate = useNavigate();
-  const user = useSelector((state) => state.user.userData);
-  const token = useSelector((state) => state.user.userToken);
   const [loading, setLoading] = React.useState(false);
-
-  // useEffect if user is already logged in
-  React.useEffect(() => {
-    if (user && token) {
-      navigate("/", { replace: true });
-    }
-  }, [user, token]);
 
   const onFinish = (values) => {
     console.log("Success:", values);
     setLoading(true);
 
     let data = {
-      email: values.email,
       password: values.password,
-      devideId: "123456789",
+      confirmPassword: values.confirmPassword,
+      email: state.email,
+      code: state.code,
     };
-    Post(AUTH.signin, data)
+    Post(AUTH.resetPassword, data)
       .then((response) => {
         setLoading(false);
-        if (response?.data) {
-          console.log("response", response.data.token);
-          console.log("response", response.data.user);
-          dispatch(
-            addUser({ user: response.data.user, token: response.data.token })
-          );
-          navigate("/", { replace: true });
+        if (response?.data?.status) {
+          swal("Success", response?.data?.message, "success");
+          navigate("/signin", { replace: true });
         } else {
-          swal("Oops!", response.response.data.message, "error");
+          swal(
+            "Oops!",
+            response?.data?.message || response?.response?.data?.message,
+            "error"
+          );
         }
       })
       .catch((e) => {
-        console.log(":::;", e);
-        setLoading(false);
+        swal("Oops!", "internal server error", "error");
       });
   };
-
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
   };
+
+
 
   return (
     <Layout className="AuthBackground" style={{ minHeight: "100vh" }}>
@@ -80,8 +71,8 @@ function ForgotPassword3() {
         <Image
                     preview={false}
                     alt={"Failed to load image"}
-                    src={logo}
-                    style={{ maxWidth: 120 }}
+                    src={"/images/logo.png"}
+                                        style={{ maxWidth: 120 }}
                   />
      </div>
         <Col xs={0} sm={0} md={14}>

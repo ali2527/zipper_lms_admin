@@ -10,8 +10,6 @@ import reportWebVitals from './reportWebVitals';
 import { persistor, store } from './redux/store';
 import { PersistGate } from 'redux-persist/integration/react';
 import { Provider } from 'react-redux'
-import "../src/assets/css/responsive.css"
-import "../src/assets/css/style.css"
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

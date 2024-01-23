@@ -121,7 +121,7 @@ function CoachRates() {
                         marginBottom: 20,
                       }}
                     >
-                      $ {rates?.hourlyRate} / Hour
+                      $ {rates?.hourlyRate} / Session
                     </Typography.Text>
                 </Col>
                 <Col xs={24} >
@@ -148,7 +148,7 @@ function CoachRates() {
                         marginBottom: 20,
                       }}
                     >
-                      $ {rates?.tutoringRate} / Hour
+                      $ {rates?.tutoringRate} / Session
                     </Typography.Text>
                 </Col>
                 <Col xs={24} >
@@ -176,7 +176,7 @@ function CoachRates() {
                         marginBottom: 20,
                       }}
                     >
-                      $ {rates?.coachingRate} / Hour
+                      $ {rates?.coachingRate} / Session
                     </Typography.Text>
                 </Col>
               </Row>

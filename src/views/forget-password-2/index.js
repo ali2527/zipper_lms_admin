@@ -16,28 +16,18 @@ import {
   Image,
   Divider,
 } from "antd";
-import { useNavigate } from "react-router";
+import { useNavigate,useLocation } from "react-router";
 import { useSelector, useDispatch } from "react-redux";
 import { Post } from "../../config/api/post";
 import { AUTH } from "../../config/constants";
 import { addUser, removeUser } from "../../redux/slice/authSlice";
 import { FiMail, FiLock } from "react-icons/fi";
 import swal from "sweetalert";
-import logo from "../../assets/images/logo.png"
 
-
-// import router from "next/router";
-const onFinish = (values) => {
-  console.log("Success:", values);
-  // router.push("/forget-password-2")
-};
-const onFinishFailed = (errorInfo) => {
-  console.log("Failed:", errorInfo);
-};
 
 function ForgetPassword2() {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
+  const {state} = useLocation();
+    const navigate = useNavigate();
     let input_1 = useRef();
   let input_2 = useRef();
   let input_3 = useRef();
@@ -57,6 +47,40 @@ function ForgetPassword2() {
   }
 
 
+  const onFinish = (values) => {
+    let code = codeData.input1 + codeData.input2 + codeData.input3 + codeData.input4
+
+
+    if(codeData.input1 == "" || codeData.input2 == "" || codeData.input3 == "" || codeData.input4 == "" ){
+      swal("Error","Incomplete Code" ,"error");
+      return;
+    }
+
+
+    Post(AUTH.verifyCode, {code:code,email:state.email})
+      .then((response) => {
+        console.log(response,"response")
+        setLoading(false);
+        if (response?.data?.status) {
+          swal("Success", response?.data?.message, "success");
+          navigate("/forgot-password-3", { replace: true,state:{code:code,email:state.email} });
+        } else {
+          swal("Oops!", response?.data?.message || response?.response?.data?.message, "error");
+        }
+      })
+      .catch((e) => {
+        swal("Oops!","internal server error", "error");
+        setLoading(false);
+      });
+  };
+
+
+  const onFinishFailed = (errorInfo) => {
+    console.log("Failed:", errorInfo);
+  };
+
+
+
   return (
      
     <Layout className="AuthBackground" style={{ minHeight: "100vh" }}>
@@ -65,7 +89,7 @@ function ForgetPassword2() {
         <Image
                     preview={false}
                     alt={"Failed to load image"}
-                    src={logo}
+                    src={"/images/logo.png"}
                     style={{ maxWidth: 120 }}
                   />
      </div>
@@ -110,7 +134,7 @@ function ForgetPassword2() {
                   className="fontFamily1"
                   style={{ fontSize: "14px", color: "white" }}
                 >
-                 An email has been sent to you with a verification code. Please enter it here.
+                 Please enter the verification code that was sent to your registered email.
                 </Typography.Text>
                 <br /> <br />
               
@@ -163,7 +187,7 @@ function ForgetPassword2() {
                       type="primary"
                       htmlType="submit"
                       className="loginButton"
-                      onClick={() => navigate("/forgot-password-3")}
+                      onClick={() => onFinish()}
                     >
                       {loading ? "Loading..." : "Continue"}
                     </Button>

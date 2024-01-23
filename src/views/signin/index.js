@@ -22,7 +22,6 @@ import { AUTH } from "../../config/constants";
 import { addUser, removeUser } from "../../redux/slice/authSlice";
 import { FiMail, FiLock } from "react-icons/fi";
 import swal from "sweetalert";
-import logo from "../../assets/images/logo.png"
 
 // import router from "next/router";
 
@@ -43,18 +42,18 @@ function Signin() {
     };
     Post(AUTH.signin, data)
       .then((response) => {
-
-          setLoading(false);
+        setLoading(false);
         if (response?.data?.status) {
           navigate("/", { replace: true });
 
           dispatch(
-            addUser({ user: response.data.data.user, token: response.data.data.token })
+            addUser({
+              user: response.data.data.user,
+              token: response.data.data.token,
+            })
           );
           swal("Success", response.data.message, "success");
-         
         } else {
-          
           console.log("response", response);
           swal("Oops!", response.data.message, "error");
         }
@@ -71,28 +70,28 @@ function Signin() {
 
   return (
     <Layout className="AuthBackground" style={{ minHeight: "100vh" }}>
-      <Row STYLE={{position:'relative'}}>
-   <div style={{position:'absolute',top:20, left:30}}>
-        <Image
-                    preview={false}
-                    alt={"Failed to load image"}
-                    src={logo}
-                    style={{ maxWidth: 120 }}
-                  />
-     </div>
+      <Row STYLE={{ position: "relative" }}>
+        <div style={{ position: "absolute", top: 20, left: 30 }}>
+          <Image
+            preview={false}
+            alt={"Failed to load image"}
+            src={"/images/logo.png"}
+            style={{ maxWidth: 120 }}
+          />
+        </div>
         <Col xs={0} sm={0} md={14}>
-        <div className="authImageBox">
-          <Row style={{width:'100%',paddingRight:'20px'}} gutter={40}>
-            <Col xs={0} sm={6} md={6}>
-             <div className="authImage1" />
-            </Col>
-            <Col xs={0} sm={6} md={6}>
-            <div className="authImage2" />
-            </Col>
-            <Col xs={0} sm={12} md={6}>
-            <div className="authImage3" />
-            </Col>
-          </Row>
+          <div className="authImageBox">
+            <Row style={{ width: "100%", paddingRight: "20px" }} gutter={40}>
+              <Col xs={0} sm={6} md={6}>
+                <div className="authImage1" />
+              </Col>
+              <Col xs={0} sm={6} md={6}>
+                <div className="authImage2" />
+              </Col>
+              <Col xs={0} sm={12} md={6}>
+                <div className="authImage3" />
+              </Col>
+            </Row>
           </div>
         </Col>
 
@@ -221,18 +220,7 @@ function Signin() {
                   </Form.Item>
                 </Form>
 
-                {/* <Typography.Text
-                  className="fontFamily1"
-                  style={{
-                    fontSize: "14px",
-                    color: "white",
-                    textAlign: "left",
-                    marginTop: 0,
-                    marginBottom: 30,
-                  }}
-                >
-                  <>Not a User? <span onClick={()=> navigate("/signup")} style={{cursor:'pointer',fontWeight:'bold',textDecoration:"underline"}}>Register Now</span></>
-                </Typography.Text> */}
+      
               </Col>
             </Row>
           </div>

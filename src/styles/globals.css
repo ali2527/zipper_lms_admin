@@ -167,7 +167,10 @@ a {
   color:white!important;
 }
 
-
+.drawer{
+  background: url("/public/images/blue.png")!important;
+  background-size: cover!important;
+}
 .mainSider .ant-image{
   display: flex;
 }

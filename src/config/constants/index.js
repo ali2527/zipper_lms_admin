@@ -6,16 +6,15 @@ export const SITE_NAME = "Zipper LMS"
 // export const SOCKET_URL = "https://api.zipperlearning.com"
 
 
-export const BASE_URL = "http://localhost:3008/api"
-export const UPLOAD_URL = "http://localhost:3008/Uploads/"
-export const UPLOAD_URL2 = "http://localhost:3008/"
-export const SOCKET_URL = "http://localhost:3008"
+// export const BASE_URL = "http://localhost:3008/api"
+// export const UPLOAD_URL = "http://localhost:3008/Uploads/"
+// export const UPLOAD_URL2 = "http://localhost:3008/"
+// export const SOCKET_URL = "http://localhost:3008"
+
 
 
 // export const BASE_URL = "https://secure.demo243.webhostlabs.net:3002/api/"
 // export const UPLOAD_URL = "https://secure.demo243.webhostlabs.net:3002/Uploads/"
-
-
 
 
 export const AUTH = {
@@ -77,6 +76,7 @@ export const CONTEST = {
 
   export const ADMIN = {
     updateProfile: "/profile/updateProfile",
+    deleteAllAdminNotifications:"/notification/deleteAllAdminNotifications"
   };
 
   export const USERS = {
@@ -86,7 +86,11 @@ export const CONTEST = {
     deleteStudent: "/admin/user/deleteStudent/",
     deleteTutor: "/admin/user/deleteTutor/",
     getCounts: "/admin/user/getCounts",
-    getChartData:"/admin/user/getChartData"
+    getChartData:"/admin/user/getChartData",
+    getEarningChart:"/admin/user/getEarningChart",
+    getLessonChart:"/admin/user/getLessonChart",
+    getLearnersChart:"/admin/user/getLearnersChart",
+    getTutorAndCoachChart:"/admin/user/getTutorAndCoachChart"
   };
 
   export const LESSON = {
@@ -119,6 +123,7 @@ export const CONTEST = {
     updateCategory: "/category/updateCategory/",
     toggleStatus: "/category/toggleStatus/",
     edit:"/category/edit/",
+    deleteCategory:"/category/deleteCategory/"
   };
 
   export const LECTURES = {
@@ -138,7 +143,8 @@ export const CONTEST = {
     addCourse:"/course/addCourse",
     getAllCourses: "/course/getAllCourses",
     getCourseById: "/course/getCourseById/",
-    updateCourse:"/course/updateCourse/"
+    updateCourse:"/course/updateCourse/",
+    deleteCourse:"/course/deleteCourse/"
   };
 
 
@@ -155,8 +161,8 @@ export const CONTEST = {
   export const PAYMENT = {
     get: "/payment/getAllPayments",
     getOne: "/payment/",
-    getAllSubscriptionPayments:"/admin/payment/getAllSubscriptionPayments",
-    getAllContestPayments:"/admin/payment/getAllContestPayments"
+    getAllLessonPayments:"/payment/getAllLessonPayments",
+    getAllCoursePayments:"/payment/getAllCoursePayments"
   };
 
   export const NOTIFICATION = {
