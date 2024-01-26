@@ -834,7 +834,7 @@ function Notifications() {
          Delete
         </Typography.Title>
         <Typography.Text style={{ fontSize: 16 }}>
-          Do You Want To Delete All Notifications?
+        Do you want to delete all notifications?
         </Typography.Text>
       </Modal>
 

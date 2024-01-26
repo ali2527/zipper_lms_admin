@@ -477,7 +477,7 @@ function QueriesManagement() {
           {selectedUser?.isActive ? "Deactivate" : "Activate"}
         </Typography.Title>
         <Typography.Text style={{ fontSize: 16 }}>
-        Do You Want To  {selectedUser?.isActive ? "Deactivate" : "Activate"} This Service Provider?
+        Do you want to  {selectedUser?.isActive ? "Deactivate" : "Activate"} This Service Provider?
         </Typography.Text>
       </Modal>
     </Layout>

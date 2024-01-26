@@ -226,7 +226,7 @@ const MyRouter = () => {
             <UserAuthCheck>
               <ClientLayout
                 head={{
-                  title: "Calander",
+                  title: "Calendar",
                   description: "Some Description.",
                 }}
               >

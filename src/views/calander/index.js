@@ -125,7 +125,7 @@ const CustomTooltip = ({ event }) => {
 
       <div className="boxDetails2">
       <Row style={{ padding: "10px 20px 0" }}>
-          <h1 className="pageTitle">Calander</h1>
+          <h1 className="pageTitle">Calendar</h1>
         </Row>
        
    

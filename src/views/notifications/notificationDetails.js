@@ -282,7 +282,8 @@ const handleUserChange = (item,value) =>{
                             fontWeight: "normal",
                           }}
                         >
-                          {notification?.createdAt}
+                          {/* {notification?.createdAt} */}
+                          {dayjs(notification?.createdAt).format("MM/DD/YYYY   H:MM A")}
                         </h5>
                       </Col>
                     </Row>
@@ -299,7 +300,7 @@ const handleUserChange = (item,value) =>{
                         >
                           Sent To{" "}
                         </h5>
-                        <h5
+                        {(notification?.sendTo !== "selectStudents" && notification?.sendTo !== "selectTutors") ?  <h5
                           style={{
                             display: "block",
                             fontSize: 16,
@@ -309,7 +310,36 @@ const handleUserChange = (item,value) =>{
                           }}
                         >
                           {notification?.sendTo}
-                        </h5>
+                        </h5> : <>
+                        {notification?.sendTo == "selectStudents" && notification.students.map(item => {
+                          return( <h5
+                            style={{
+                              display: "block",
+                              fontSize: 16,
+                              marginTop:10,
+                              color: "#7a7e7f",
+                              fontWeight: "normal",
+                            }}
+                          >
+                            {item?.firstName + " " + item?.lastName}
+                          </h5>)
+                        })}
+
+{notification?.sendTo == "selectTutors" && notification.coaches.map(item => {
+                          return( <h5
+                            style={{
+                              display: "block",
+                              fontSize: 16,
+                              marginTop:10,
+                              color: "#7a7e7f",
+                              fontWeight: "normal",
+                            }}
+                          >
+                            {item?.firstName + " " + item?.lastName}
+                          </h5>)
+                        })}
+                        </>} 
+                       
                       </Col>
                     </Row>
 
@@ -324,7 +354,7 @@ const handleUserChange = (item,value) =>{
                             fontWeight: 600,
                           }}
                         >
-                          Discriptive Text{" "}
+                          Message
                         </h5>
                         <h5
                           style={{
@@ -584,7 +614,7 @@ const handleUserChange = (item,value) =>{
                     fontWeight: "normal",
                   }}
                 >
-                  Descriptive Text
+                 Message
                 </h5>
 
                 <TextArea

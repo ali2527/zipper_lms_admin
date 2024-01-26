@@ -130,7 +130,7 @@ function CoachEducation() {
                           textAlign: "left",
                         }}
                       >
-                        {dayjs(item.start).format("MMMM - YYYY")}
+                        {item.start}
                       </Typography.Text>
                     </Col>
                   </Row>
@@ -157,7 +157,7 @@ function CoachEducation() {
                           textAlign: "left",
                         }}
                       >
-                        {dayjs(item.end).format("MMMM - YYYY")}
+                        {item.end}
                       </Typography.Text>
                     </Col>
                     <Col xs={12} sm={6}>
@@ -222,6 +222,11 @@ function CoachEducation() {
                   )}
 
 
+                </>
+              );
+            })}
+
+            
 <br/>
 {coach.resume && <Button
                   type="primary"
@@ -231,10 +236,18 @@ function CoachEducation() {
                   style={{ fontWeight: "bold" }}
                 >
                   View Resume
-                </Button>}
-                </>
-              );
-            })}
+                </Button> }
+            
+&emsp;
+                {coach.photoId && <Button
+                  type="primary"
+                  htmlType="submit"
+                  className="loginButton"
+                  onClick={() => window.open(UPLOAD_URL + coach.photoId)}
+                  style={{ fontWeight: "bold" }}
+                >
+                  View PhotoId
+                </Button> }
           </div>
         )}
       </div>

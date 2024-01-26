@@ -1,9 +1,9 @@
 export const SITE_NAME = "Zipper LMS"
 
-// export const BASE_URL = "https://api.zipperlearning.com/api"
-// export const UPLOAD_URL = "https://api.zipperlearning.com/Uploads/"
-// export const UPLOAD_URL2 = "https://api.zipperlearning.com/"
-// export const SOCKET_URL = "https://api.zipperlearning.com"
+export const BASE_URL = "https://api.zipperlearning.com/api"
+export const UPLOAD_URL = "https://api.zipperlearning.com/Uploads/"
+export const UPLOAD_URL2 = "https://api.zipperlearning.com/"
+export const SOCKET_URL = "https://api.zipperlearning.com"
 
 
 // export const BASE_URL = "http://localhost:3008/api"
@@ -90,7 +90,8 @@ export const CONTEST = {
     getEarningChart:"/admin/user/getEarningChart",
     getLessonChart:"/admin/user/getLessonChart",
     getLearnersChart:"/admin/user/getLearnersChart",
-    getTutorAndCoachChart:"/admin/user/getTutorAndCoachChart"
+    getTutorAndCoachChart:"/admin/user/getTutorAndCoachChart",
+    updateCoach:"/admin/user/updateCoach/"
   };
 
   export const LESSON = {
@@ -130,7 +131,8 @@ export const CONTEST = {
     getAllLectures: "/lecture/getAllLectures",
     getLectureById:"/lecture/getLectureById/",
     updateLecture:"/lecture/updateLecture/",
-    addLecture:"/lecture/addLecture"
+    addLecture:"/lecture/addLecture",
+    deleteLecture:"/lecture/deleteLecture"
   };
 
   export const FEEDBACK = {

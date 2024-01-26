@@ -67,7 +67,7 @@ const sideNavItems = [
   {
     key: 9,
     icon: <HiOutlineCalendar style={{fontSize:20}}/>,
-    label: "Calander",
+    label: "Calendar",
     path: "/calander",
   },
   {

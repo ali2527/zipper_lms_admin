@@ -97,7 +97,7 @@ function CoachRates() {
         {!loading && (
           <div style={{ padding: "30px" }}>
             <Row gutter={[20, 50]}>
-                <Col xs={24} >
+                {/* <Col xs={24} >
                   <Typography.Title
                     className="fontFamily1"
                     style={{
@@ -123,7 +123,7 @@ function CoachRates() {
                     >
                       $ {rates?.hourlyRate} / Session
                     </Typography.Text>
-                </Col>
+                </Col> */}
                 <Col xs={24} >
                   <Typography.Title
                     className="fontFamily1"

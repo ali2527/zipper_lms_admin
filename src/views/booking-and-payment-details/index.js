@@ -489,7 +489,7 @@ function BookingAndPaymentDetails() {
           {selectedUser?.isActive ? "Deactivate" : "Activate"}
         </Typography.Title>
         <Typography.Text style={{ fontSize: 16 }}>
-        Do You Want To  {selectedUser?.isActive ? "Deactivate" : "Activate"} This User?
+        Do you want to  {selectedUser?.isActive ? "deactivate" : "activate"} this user?
         </Typography.Text>
       </Modal>
     </Layout>

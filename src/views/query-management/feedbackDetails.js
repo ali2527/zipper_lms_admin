@@ -290,7 +290,7 @@ function SPDetails() {
           {feedback?.isActive ? "Deactivate" : "Activate"}
         </Typography.Title>
         <Typography.Text style={{ fontSize: 16 }}>
-        Do You Want To  {feedback?.isActive ? "Deactivate" : "Activate"} This User?
+        Do you want to  {feedback?.isActive ? "Deactivate" : "Activate"} This User?
         </Typography.Text>
       </Modal>
 

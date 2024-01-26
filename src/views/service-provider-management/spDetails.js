@@ -619,7 +619,7 @@ function SPDetails() {
           {serviceProvider?.isActive ? "Deactivate" : "Activate"}
         </Typography.Title>
         <Typography.Text style={{ fontSize: 16 }}>
-          Do You Want To {serviceProvider?.isActive ? "Deactivate" : "Activate"}{" "}
+          Do you want to {serviceProvider?.isActive ? "Deactivate" : "Activate"}{" "}
           This User?
         </Typography.Text>
       </Modal>

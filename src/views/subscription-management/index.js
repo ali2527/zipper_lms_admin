@@ -606,7 +606,7 @@ function PlanManagement() {
           {selectedPlan?.isActive ? "Deactivate" : "Activate"}
         </Typography.Title>
         <Typography.Text style={{ fontSize: 16 }}>
-          Do You Want To {selectedPlan?.isActive ? "Deactivate" : "Activate"}{" "}
+          Do you want to {selectedPlan?.isActive ? "Deactivate" : "Activate"}{" "}
           This User?
         </Typography.Text>
       </Modal>
@@ -654,7 +654,7 @@ function PlanManagement() {
           {selectedPlan?.isActive ? "Deactivate" : "Activate"}
         </Typography.Title>
         <Typography.Text style={{ fontSize: 16 }}>
-        Do You Want To  {selectedPlan?.isActive ? "Deactivate" : "Activate"} This PLan?
+        Do you want to  {selectedPlan?.isActive ? "Deactivate" : "Activate"} This PLan?
         </Typography.Text>
       </Modal>
       <Modal
@@ -700,7 +700,7 @@ function PlanManagement() {
           Delete
         </Typography.Title>
         <Typography.Text style={{ fontSize: 16 }}>
-        Do You Want To  Delete This PLan?
+        Do you want to  Delete This PLan?
         </Typography.Text>
       </Modal>
 

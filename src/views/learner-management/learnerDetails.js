@@ -575,8 +575,8 @@ function LearnerDetails() {
           {user?.status == "ACTIVE" ? "Deactivate" : "Activate"}
         </Typography.Title>
         <Typography.Text style={{ fontSize: 16 }}>
-          Do You Want To {user?.status == "ACTIVE" ? "Deactivate" : "Activate"}{" "}
-          This User?
+          Do you want to {user?.status == "ACTIVE" ? "deactivate" : "activate"}{" "}
+          this user?
         </Typography.Text>
       </Modal>
 
@@ -637,7 +637,7 @@ function LearnerDetails() {
          Delete
         </Typography.Title>
         <Typography.Text style={{ fontSize: 16 }}>
-          Do You Want To Delete This User?
+        Do you want to delete this user?
         </Typography.Text>
       </Modal>
     </Layout>

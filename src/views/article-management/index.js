@@ -553,7 +553,7 @@ function ArticleManagement() {
           {selectedCategory?.status ? "Deactivate" : "Activate"}
         </Typography.Title>
         <Typography.Text style={{ fontSize: 16 }}>
-        Do You Want To  {selectedCategory?.status ? "Deactivate" : "Activate"} This Article?
+        Do you want to  {selectedCategory?.status ? "deactivate" : "activate"} this article?
         </Typography.Text>
       </Modal>
     </Layout>

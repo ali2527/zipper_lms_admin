@@ -569,7 +569,7 @@ function CourseManagement() {
           {selectedUser?.isActive ? "Deactivate" : "Activate"}
         </Typography.Title>
         <Typography.Text style={{ fontSize: 16 }}>
-        Do You Want To  {selectedUser?.isActive ? "Deactivate" : "Activate"} This Service Provider?
+        Do you want to  {selectedUser?.isActive ? "deactivate" : "activate"} this service provider?
         </Typography.Text>
       </Modal>
     </Layout>

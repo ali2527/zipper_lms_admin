@@ -502,7 +502,7 @@ function CourseAdd() {
           {selectedCategory?.isActive ? "Deactivate" : "Activate"}
         </Typography.Title>
         <Typography.Text style={{ fontSize: 16 }}>
-        Do You Want To  {selectedCategory?.status == "ACTIVE" ? "Deactivate" : "Activate"} This Category?
+        Do you want to  {selectedCategory?.status == "ACTIVE" ? "deactivate" : "activate"} this category?
         </Typography.Text>
       </Modal>
 
@@ -563,7 +563,7 @@ function CourseAdd() {
          Delete
         </Typography.Title>
         <Typography.Text style={{ fontSize: 16 }}>
-          Do You Want To Delete This Category?
+          Do you want to delete this category?
         </Typography.Text>
       </Modal>
 

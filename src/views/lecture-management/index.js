@@ -233,7 +233,7 @@ function LectureManagement() {
         render: (item) => <span>{item.title}</span>,
       },
       {
-        title: "Created At",
+        title: "Created",
         dataIndex: "createdAt",
         key: "createdAt",
         render: (item) => <span>{dayjs(item).format("M/D/YYYY")}</span>,
@@ -540,7 +540,7 @@ function LectureManagement() {
           {selectedUser?.isActive ? "Deactivate" : "Activate"}
         </Typography.Title>
         <Typography.Text style={{ fontSize: 16 }}>
-        Do You Want To  {selectedUser?.isActive ? "Deactivate" : "Activate"} This Service Provider?
+        Do you want to  {selectedUser?.isActive ? "deactivate" : "activate"} this lecture?
         </Typography.Text>
       </Modal>
     </Layout>

@@ -674,7 +674,7 @@ preview={false}
           {course?.isActive ? "Deactivate" : "Activate"}
         </Typography.Title>
         <Typography.Text style={{ fontSize: 16 }}>
-        Do You Want To  {course?.isActive ? "Deactivate" : "Activate"} This User?
+        Do you want to  {course?.isActive ? "deactivate" : "activate"} this user?
         </Typography.Text>
       </Modal>
 

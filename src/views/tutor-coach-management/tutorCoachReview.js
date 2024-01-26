@@ -81,7 +81,7 @@ function CoachReview() {
             />
             &emsp;
             <h1 className="pageTitle" style={{ margin: 0 }}>
-             Rating & Review
+             Ratings & Reviews
             </h1>
           </Col>
         </Row>
